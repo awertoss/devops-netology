@@ -47,3 +47,4 @@ override.tf.json
 Игнорировать .terraformrc и terraform.rc
 .terraformrc
 terraform.rc
+novaya strochka
