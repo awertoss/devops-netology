@@ -110,7 +110,29 @@ root@vagrant:/home/vagrant/devops-netology# python3 ya2.py
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/python
+import os
+import socket
+import json
+
+conf_file="config.json"
+
+with open(conf_file) as json_data_file:
+    conf = json.load(json_data_file)
+
+for host, ip in conf.items():
+    new_ip=socket.gethostbyname(host)
+
+    if (ip != new_ip):
+        print ('[ERROR] {} IP mismatch: {} {}'.format(host,ip,new_ip))
+        conf[host]=new_ip
+
+for host, ip in conf.items():
+    print('{} - {}'.format(host,ip))
+
+with open(conf_file, "w") as json_data_file:
+    json.dump(conf, json_data_file, indent=2)
+
 ```
 
 ### Вывод скрипта при запуске при тестировании:
