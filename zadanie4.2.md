@@ -35,7 +35,7 @@ is_change = False
 for result in result_os.split('\n'):
     if result.find('modified') != -1:
         prepare_result = result.replace('\tmodified:   ', '')
-       print(os.path.abspath(prepare_result))
+        print(prepare_result)
         break
 ```
 
@@ -51,7 +51,7 @@ print('Proverka')
 for result in result_os.split('\n'):
     if result.find('modified:') != -1:
                     prepare_result = result.replace('\tmodified:   ', '')
-                    print(prepare_result)
+                    print(os.path.abspath(prepare_result))
 ```
 
 ### Вывод скрипта при запуске при тестировании:
