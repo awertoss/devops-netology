@@ -35,28 +35,30 @@ is_change = False
 for result in result_os.split('\n'):
     if result.find('modified') != -1:
         prepare_result = result.replace('\tmodified:   ', '')
-        print(prepare_result)
+       print(os.path.abspath(prepare_result))
         break
 ```
 
 ### Ваш скрипт:
 ```python
-???
+
+#!/usr/bin/python
+import os
+
+bash_command = ["cd /home/vagrant/devops-netology/sysadm-homeworks", "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+print('Proverka')
+for result in result_os.split('\n'):
+    if result.find('modified:') != -1:
+                    prepare_result = result.replace('\tmodified:   ', '')
+                    print(prepare_result)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-Переменная is_change не используется.
-#!/usr/bin/env python3
-import os
-
-bash_command = ["cd ~/netology/sysadm-homeworks", "git status"]
-result_os = os.popen(' && '.join(bash_command)).read()
-
-for result in result_os.split('\n'):
-    if result.find('modified') != -1:
-        prepare_result = result.replace('\tmodified:   ', '')
-        print(prepare_result)
+root@vagrant:/home/vagrant/devops-netology# python3 ya.py
+Proverka
+/home/vagrant/devops-netology/README.md
 ```
 
 ## Обязательная задача 3
