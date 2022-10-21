@@ -66,24 +66,29 @@ Proverka
 
 ### Ваш скрипт:
 ```python
-#!/usr/bin/env python3
+#!/usr/bin/python
+
+print("Введите путь к репозиторию:")
+direktoria = input()
+
 import os
-import sys
 
-cmd = sys.argv[1]
-bash_command = ["cd "+cmd, "git status"]
+os.chdir(direktoria)
+bash_command = ["git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
-
+#is_change = False
 for result in result_os.split('\n'):
     if result.find('modified') != -1:
-         prepare_result = prepare_result.replace(' ', '') 
-        print(cmd+prepare_result)
-
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(direktoria+':'+prepare_result)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:/home/vagrant/devops-netology# python3 ya2.py
+Введите путь к репозиторию:
+/home/vagrant/devops-netology/sysadm-homeworks
+/home/vagrant/devops-netology/sysadm-homeworks:README.md
 ```
 
 ## Обязательная задача 4
