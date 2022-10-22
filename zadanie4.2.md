@@ -96,12 +96,44 @@ root@vagrant:/home/vagrant/devops-netology# python3 ya2.py
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/python
+import socket as s
+import time as t
+import datetime as dt
+
+
+i = 1
+wait = 2 # интервал проверок в секундах
+srv = {'drive.google.com':'0.0.0.0', 'mail.google.com':'0.0.0.0', 'google.com':'0.0.0.0'}
+init=0
+
+print('zapusk')
+print(srv)
+print('********************')
+
+while 1==1 : #отладочное число проверок
+  for host in srv:
+    ip = s.gethostbyname(host)
+    if ip != srv[host]:
+      if i==1 and init !=1:
+        print(str(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) +' [ERROR] ' + str(host) +' IP mistmatch: '+srv[host]+' '+ip)
+      srv[host]=ip
+# счетчик итераций для отладки, закомментировать для бесконечного цикла 3 строки
+  i+=1
+  if i >= 50 :
+    break
+  t.sleep(wait)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:/home/vagrant/devops-netology# python3 ya3.py
+zapusk
+{'drive.google.com': '0.0.0.0', 'mail.google.com': '0.0.0.0', 'google.com': '0.0.0.0'}
+********************
+2022-10-22 20:48:58 [ERROR] drive.google.com IP mistmatch: 0.0.0.0 173.194.73.194
+2022-10-22 20:48:58 [ERROR] mail.google.com IP mistmatch: 0.0.0.0 74.125.131.18
+2022-10-22 20:48:58 [ERROR] google.com IP mistmatch: 0.0.0.0 74.125.131.102
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
@@ -110,28 +142,6 @@ root@vagrant:/home/vagrant/devops-netology# python3 ya2.py
 
 ### Ваш скрипт:
 ```python
-#!/usr/bin/python
-import os
-import socket
-import json
-
-conf_file="config.json"
-
-with open(conf_file) as json_data_file:
-    conf = json.load(json_data_file)
-
-for host, ip in conf.items():
-    new_ip=socket.gethostbyname(host)
-
-    if (ip != new_ip):
-        print ('[ERROR] {} IP mismatch: {} {}'.format(host,ip,new_ip))
-        conf[host]=new_ip
-
-for host, ip in conf.items():
-    print('{} - {}'.format(host,ip))
-
-with open(conf_file, "w") as json_data_file:
-    json.dump(conf, json_data_file, indent=2)
 
 ```
 
