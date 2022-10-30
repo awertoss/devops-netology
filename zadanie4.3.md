@@ -50,44 +50,63 @@
 import socket as s
 import time as t
 import datetime as dt
-
-
+import json
+import yaml
 i = 1
 wait = 2 # интервал проверок в секундах
 srv = {'drive.google.com':'0.0.0.0', 'mail.google.com':'0.0.0.0', 'google.com':'0.0.0.0'}
 init=0
-
 print('zapusk')
 print(srv)
 print('********************')
 
-while 1==1 : #отладочное число проверок
+while 1==1 : #отладочное число проверок.
   for host in srv:
     ip = s.gethostbyname(host)
     if ip != srv[host]:
       if i==1 and init !=1:
         print(str(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) +' [ERROR] ' + str(host) +' IP mistmatch: '+srv[host]+' '+ip)
-      srv[host]=ip
+        with open(host+".json",'w') as jsf:
+                json_data= json.dumps({host:ip})
+                jsf.write(json_data).
+                                    # yaml
+        with open(host+".yaml",'w') as ymf:
+                yaml_data= yaml.dump([{host : ip}])
+                ymf.write(yaml_data).
+                                                                   
+    srv[host]=ip
 # счетчик итераций для отладки, закомментировать для бесконечного цикла 3 строки
-  i+=1
-  if i >= 50 :
+  i+=1.
+  if i >= 10 :.
     break
-  t.sleep(wait)
+t.sleep(wait)
+
+
+
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:/home/vagrant/devops-netology# python3 ya3.py
+zapusk
+{'drive.google.com': '0.0.0.0', 'mail.google.com': '0.0.0.0', 'google.com': '0.0.0.0'}
+********************
+2022-10-30 20:08:13 [ERROR] drive.google.com IP mistmatch: 0.0.0.0 173.194.73.194
+2022-10-30 20:08:13 [ERROR] mail.google.com IP mistmatch: 0.0.0.0 74.125.131.18
+2022-10-30 20:08:13 [ERROR] google.com IP mistmatch: 0.0.0.0 64.233.165.113
+root@vagrant:/home/vagrant/devops-netology#
+
+
 ```
 
 ### json-файл(ы), который(е) записал ваш скрипт:
 ```json
-???
+drive.google.com.json  google.com.json  mail.google.com.json
 ```
 
 ### yml-файл(ы), который(е) записал ваш скрипт:
 ```yaml
-???
+drive.google.com.yaml  google.com.yaml  mail.google.com.yaml
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
