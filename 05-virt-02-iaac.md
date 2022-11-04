@@ -39,6 +39,8 @@
 
 - Какой, на ваш взгляд, метод работы систем конфигурации более надёжный push или pull?
 
+push
+
 ## Задача 3
 
 Установить на личный компьютер:
@@ -47,9 +49,20 @@
 Установлена 6.1.36
 
 - Vagrant
-Установил в прошлом.
+Установил в прошлом. 
 
+C:\HashiCorp\fornamevm>vagrant -v
+Vagrant 2.2.19
+ 
 - Ansible
+
+root@vagrant:/home/vagrant/devops-netology# ansible --version
+ansible 2.9.6
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.8.10 (default, Mar 15 2022, 12:22:08) [GCC 9.4.0]
 
 *Приложить вывод команд установленных версий каждой из программ, оформленный в markdown.*
 
