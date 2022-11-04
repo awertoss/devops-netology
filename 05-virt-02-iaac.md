@@ -35,14 +35,20 @@
 ## Задача 2
 
 - Чем Ansible выгодно отличается от других систем управление конфигурациями?
+Для работы не требуется установки агентов. Для связи использует протокол ssh.
+
 - Какой, на ваш взгляд, метод работы систем конфигурации более надёжный push или pull?
 
 ## Задача 3
 
 Установить на личный компьютер:
 
-- VirtualBox
+- VirtualBox 
+Установлена 6.1.36
+
 - Vagrant
+Установил в прошлом.
+
 - Ansible
 
 *Приложить вывод команд установленных версий каждой из программ, оформленный в markdown.*
@@ -55,4 +61,13 @@
 - Зайти внутрь ВМ, убедиться, что Docker установлен с помощью команды
 ```
 docker ps
+
+Ответ:
+apt install docker
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+docker is already the newest version (1.5-2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
 ```
