@@ -69,14 +69,22 @@ Hey, Netology
 ## Задача 3
 
 - Запустите первый контейнер из образа ***centos*** c любым тэгом в фоновом режиме, подключив папку ```/data``` из текущей рабочей директории на хостовой машине в ```/data``` контейнера;
-docker run --name centos -v /data:/data -d centos
-
 - Запустите второй контейнер из образа ***debian*** в фоновом режиме, подключив папку ```/data``` из текущей рабочей директории на хостовой машине в ```/data``` контейнера;
-docker run --name debian -v /data:/data -d debian
-
 - Подключитесь к первому контейнеру с помощью ```docker exec``` и создайте текстовый файл любого содержания в ```/data```;
 - Добавьте еще один файл в папку ```/data``` на хостовой машине;
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
+
+mkdir /data
+docker run --name centos -v /data:/data -d centos tail -f /dev/null
+docker run --name debian -v /data:/data -d debian tail -f /dev/null
+
+docker exec -it centos touch /data/file
+Подключиться к докеру контейнеру
+ 
+На хостовой машине 
+touch /data/file2
+root@vagrant:/home/vagrant# docker exec -it debian ls /data
+file
 
 ## Задача 4 (*)
 
