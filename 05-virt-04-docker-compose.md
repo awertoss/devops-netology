@@ -31,7 +31,12 @@
 <p align="center">
   <img width="1200" height="600" src="05-04-zadanie1-packer.jpg">
 </p>
-
+<p align="center">
+  <img width="1200" height="600" src="05-04-zadanie1.jpg">
+</p>
+<p align="center">
+  <img width="1200" height="600" src="0504zadanie1.jpg">
+</p>
 
 ## Задача 2
 
