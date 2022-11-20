@@ -59,7 +59,9 @@ docker node ls
 ```
 docker service ls
 ```
-
+<p align="center">
+  <img width="1200" height="600" src="05-05-zadanie3.jpg">
+</p
 ## Задача 4 (*)
 
 Выполнить на лидере Docker Swarm кластера команду (указанную ниже) и дать письменное описание её функционала, что она делает и зачем она нужна:
