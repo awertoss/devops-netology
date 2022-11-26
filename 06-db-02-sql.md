@@ -11,6 +11,8 @@
 в который будут складываться данные БД и бэкапы.
 
 Приведите получившуюся команду или docker-compose манифест.
+docker-compose.yml:
+```yaml
 version: '3.6'
 
 volumes:
@@ -32,6 +34,7 @@ services:
       POSTGRES_PASSWORD: "sqluser"
       POSTGRES_DB: "baza_db"
     restart: always
+```
 
 
 ## Задача 2
