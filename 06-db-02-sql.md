@@ -11,6 +11,28 @@
 в который будут складываться данные БД и бэкапы.
 
 Приведите получившуюся команду или docker-compose манифест.
+version: '3.6'
+
+volumes:
+  data: {}
+  backup: {}
+
+services:
+
+  postgres:
+    image: postgres:12
+    container_name: psql
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+      - backup:/media/postgresql/backup
+    environment:
+      POSTGRES_USER: "sqluser"
+      POSTGRES_PASSWORD: "sqluser"
+      POSTGRES_DB: "baza_db"
+    restart: always
+
 
 ## Задача 2
 
