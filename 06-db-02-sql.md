@@ -142,6 +142,9 @@ SELECT* FROM clients WHERE заказ IS NOT NULL;
 (используя директиву EXPLAIN).
 
 Приведите получившийся результат и объясните что значат полученные значения.
+```
+Команда EXPLAIN — показать план выполнения оператора.
+```
 <p align="center">
   <img width="1200" height="600" src="06-02-zadanie5.jpg">
 </p>
