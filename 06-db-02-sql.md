@@ -13,27 +13,25 @@
 Приведите получившуюся команду или docker-compose манифест.
 docker-compose.yml:
 ```yaml
-version: '3.6'
+version: '3'
+services:
+ db:
+   container_name: pg12
+   image: postgres:12
+   environment:
+     POSTGRES_USER: vagrant
+     POSTGRES_PASSWORD: vagrant
+     POSTGRES_DB: vagrant_db
+   ports:
+     - "5432:5432"
+   volumes:
+     - database_volume:/home/database/
+     - backup_volume:/home/backup/
 
 volumes:
-  data: {}
-  backup: {}
+ database_volume:
+ backup_volume:
 
-services:
-
-  postgres:
-    image: postgres:12
-    container_name: psql
-    ports:
-      - "0.0.0.0:5432:5432"
-    volumes:
-      - data:/var/lib/postgresql/data
-      - backup:/media/postgresql/backup
-    environment:
-      POSTGRES_USER: "sqluser"
-      POSTGRES_PASSWORD: "sqluser"
-      POSTGRES_DB: "baza_db"
-    restart: always
 ```
 
 
