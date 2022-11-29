@@ -61,6 +61,15 @@ volumes:
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 - список пользователей с правами над таблицами test_db
 
+<p align="center">
+  <img width="1200" height="600" src="06-02-zadanie2.jpg">
+</p>
+<p align="center">
+  <img width="1200" height="600" src="06-02-zadanie2-2.jpg">
+</p>
+<p align="center">
+  <img width="1200" height="600" src="06-02-3.jpg">
+</p>
 ## Задача 3
 
 Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
