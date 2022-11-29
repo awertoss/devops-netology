@@ -126,7 +126,16 @@ INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'),
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.
  
 Подсказк - используйте директиву `UPDATE`.
+```
+UPDATE clients SET заказ=(select id from orders where наименование='Книга') WHERE фамилия='Иванов Иван Иванович';
+UPDATE clients SET заказ=(select id from orders where наименование='Монитор') WHERE фамилия='Петров Петр Петрович';
+UPDATE clients SET заказ=(select id from orders where наименование='Гитара') WHERE фамилия='Иоганн Себастьян Бах';
+SELECT* FROM clients WHERE заказ IS NOT NULL;
 
+```
+<p align="center">
+  <img width="1200" height="600" src="06-02-zadanie4.jpg">
+</p>
 ## Задача 5
 
 Получите полную информацию по выполнению запроса выдачи всех пользователей из задачи 4 
