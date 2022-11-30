@@ -159,6 +159,20 @@ SELECT* FROM clients WHERE заказ IS NOT NULL;
 Восстановите БД test_db в новом контейнере.
 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
+```
+docker exec -it pg12 bash
+root@c420df0c4c54:# pg_dump -U vagrant test_db > /home/backup/test_db.dump
+exit
+docker stop pg12
+docker run --name pg12_test -e POSTGRES_PASSWORD=vagrant -d postgres:12
+root@vagrant:/home/vagrant# mkdir backup
+docker cp pg12:/home/backup/test_db.dump backup/ && docker cp backup/test_db.dump pg12_test:/home/
+docker exec -it pg12_test bash
+root@061a39a19c74:/# psql -U postgres
+postgres=# test_db < /home/test_db.dump
+
+
+```
 
 ---
 
