@@ -27,7 +27,10 @@
 ```
 docker pull mysql/mysql-server:8.0
 docker run --name=mysql0603 -e MYSQL_ROOT_PASSWORD=vagrant -e MYSQL_DATABASE=my_db -p 3306:3306 -v $PWD/backup:/media/mysql/backup -v $PWD/config/conf.d:/etc/mysql/conf.d -v my_data:/var/lib/mysql -d mysql/mysql-server:8.0
-
+root@vagrant:/home/vagrant# cd backup
+wget https://github.com/netology-code/virt-homeworks/blob/virt-11/06-db-03-mysql/test_data/test_dump.sql
+root@vagrant:/home/vagrant/backup# docker exec -it mysql0603 bash
+mysql -u root -p my_db < /media/mysql/backup/test_dump.sql
 
 
 ```
