@@ -25,7 +25,7 @@
 В следующих заданиях мы будем продолжать работу с данным контейнером.
 
 ```
-docker pull mysql/mysql-server:80
+docker pull mysql/mysql-server:8.0
 ```
 
 ## Задача 2
