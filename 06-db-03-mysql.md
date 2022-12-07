@@ -26,6 +26,10 @@
 
 ```
 docker pull mysql/mysql-server:8.0
+docker run --name=mysql0603 -e MYSQL_ROOT_PASSWORD=vagrant -e MYSQL_DATABASE=my_db -p 3306:3306 -v $PWD/backup:/media/mysql/backup -v $PWD/config/conf.d:/etc/mysql/conf.d -v my_data:/var/lib/mysql -d mysql/mysql-server:8.0
+
+
+
 ```
 
 ## Задача 2
