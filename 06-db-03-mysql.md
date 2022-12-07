@@ -50,6 +50,14 @@ mysql -u root -p my_db < /media/mysql/backup/test_dump.sql
     
 Используя таблицу INFORMATION_SCHEMA.USER_ATTRIBUTES получите данные по пользователю `test` и 
 **приведите в ответе к задаче**.
+```
+CREATE USER 'test'@'localhost' 
+    IDENTIFIED WITH mysql_native_password BY 'test-pass'
+    WITH MAX_CONNECTIONS_PER_HOUR 100
+    PASSWORD EXPIRE INTERVAL 180 DAY
+    FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 2
+    ATTRIBUTE '{"first_name":"James", "last_name":"Pretty"}';
+```
 
 ## Задача 3
 
