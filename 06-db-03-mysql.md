@@ -92,6 +92,15 @@ CREATE USER 'test'@'localhost'
     PASSWORD EXPIRE INTERVAL 180 DAY
     FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 2
     ATTRIBUTE '{"first_name":"James", "last_name":"Pretty"}';
+GRANT SELECT ON my_db.* TO test@localhost;
+mysql> SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER = 'test';
++------+-----------+------------------------------------------------+
+| USER | HOST      | ATTRIBUTE                                      |
++------+-----------+------------------------------------------------+
+| test | localhost | {"last_name": "Pretty", "first_name": "James"} |
++------+-----------+------------------------------------------------+
+1 row in set (0.01 sec)
+
 ```
 
 ## Задача 3
