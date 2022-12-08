@@ -31,7 +31,42 @@ root@vagrant:/home/vagrant# cd backup
 wget https://github.com/netology-code/virt-homeworks/blob/virt-11/06-db-03-mysql/test_data/test_dump.sql
 root@vagrant:/home/vagrant/backup# docker exec -it mysql0603 bash
 mysql -u root -p my_db < /media/mysql/backup/test_dump.sql
+bash-4.4# mysql -u root -p
 
+mysql> \s
+--------------
+mysql  Ver 8.0.31 for Linux on x86_64 (MySQL Community Server - GPL)
+
+Connection id:          2834
+Current database:
+Current user:           root@localhost
+SSL:                    Not in use
+Current pager:          stdout
+Using outfile:          ''
+Using delimiter:        ;
+Server version:         8.0.31 MySQL Community Server - GPL
+Protocol version:       10
+Connection:             Localhost via UNIX socket
+Server characterset:    utf8mb4
+Db     characterset:    utf8mb4
+Client characterset:    latin1
+Conn.  characterset:    latin1
+UNIX socket:            /var/lib/mysql/mysql.sock
+Binary data as:         Hexadecimal
+Uptime:                 23 hours 28 min 41 sec
+
+mysql> USE my_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT COUNT(*) FROM orders WHERE price > 300;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
 
 ```
 
