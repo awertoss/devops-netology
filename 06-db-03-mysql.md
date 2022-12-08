@@ -113,7 +113,35 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER = 'test';
 Измените `engine` и **приведите время выполнения и запрос на изменения из профайлера в ответе**:
 - на `MyISAM`
 - на `InnoDB`
+```
+SELECT table_schema,table_name,engine FROM information_schema.tables WHERE table_schema = DATABASE();
++--------------+------------+--------+
+| TABLE_SCHEMA | TABLE_NAME | ENGINE |
++--------------+------------+--------+
+| my_db        | orders     | InnoDB |
++--------------+------------+--------+
+1 row in set (0.00 sec)
+SET profiling = 1;
 
+mysql> ALTER TABLE orders ENGINE = MyISAM;
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE orders ENGINE = InnoDB;
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> SHOW PROFILES;
++----------+------------+------------------------------------+
+| Query_ID | Duration   | Query                              |
++----------+------------+------------------------------------+
+|        1 | 0.02636700 | ALTER TABLE orders ENGINE = MyISAM |
+|        2 | 0.02885750 | ALTER TABLE orders ENGINE = InnoDB |
++----------+------------+------------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+```
 ## Задача 4 
 
 Изучите файл `my.cnf` в директории /etc/mysql.
