@@ -18,7 +18,7 @@
 docker pull postgres:13
 docker volume create volume_postges
 docker image tag postgres:13 namepostgres
-docker run --rm --name hw64 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432 -v volume_postges:/var/lib/postgresql/data postgres:13
+docker run --rm --name namepostgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432 -v volume_postges:/var/lib/postgresql/data postgres:13
 docker exec -ti namepostgres bash
 ```
 
