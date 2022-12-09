@@ -263,7 +263,7 @@ postgres=# CREATE DATABASE test_database;
 CREATE DATABASE
 \q
 
-psql -U postgres -d test_database < var/lib/postgresql/data/test_dump.sql
+psql -U postgres -d test_database < /var/lib/postgresql/data/test_dump.sql
 
 SET
 SET
@@ -336,12 +336,32 @@ test_database=# select attname, avg_width from pg_stats where tablename='orders'
 Предложите SQL-транзакцию для проведения данной операции.
 
 Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
+```
+BEGIN;
+CREATE TABLE orders_1 (LIKE orders);
+INSERT INTO orders_1 SELECT * FROM orders WHERE price >499;
+DELETE FROM orders WHERE price >499;
+CREATE TABLE orders_2 (LIKE orders);
+INSERT INTO orders_2 SELECT * FROM orders WHERE price <=499;
+DELETE FROM orders WHERE price <=499;
+COMMIT;
+```
+Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
+Можно попробовать PARTITION BY
+
 
 ## Задача 4
 
 Используя утилиту `pg_dump` создайте бекап БД `test_database`.
+```
+pg_dump -U postgres -d test_database > /var/lib/postgresql/data/test_database_dump.sql
 
+```
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
+
+```
+CREATE unique INDEX title_un ON public.orders(title);
+```
 
 ---
 
