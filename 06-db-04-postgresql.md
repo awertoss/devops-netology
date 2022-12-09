@@ -140,6 +140,15 @@ postgres-# \q
 с наибольшим средним значением размера элементов в байтах.
 
 **Приведите в ответе** команду, которую вы использовали для вычисления и полученный результат.
+```
+root@8821221c33f2:/# psql -U postgres
+psql (13.9 (Debian 13.9-1.pgdg110+1))
+Type "help" for help.
+
+postgres=# CREATE DATABASE test_database;
+CREATE DATABASE
+```
+
 
 ## Задача 3
 
