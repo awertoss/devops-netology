@@ -34,7 +34,7 @@ Docker файл:
 ```
 FROM centos:7
 
-ENV PATH=/usr/lib:/usr/lib/jvm/jre-11/bin:$PATH JAVA_HOME=/opt/elasticsearch-8.0.1/jdk/ ES_HOME=/opt/elasticsearch-8.0.1
+ENV PATH=/usr/lib:/usr/lib/jvm/jre-11/bin:$PATH JAVA_HOME=/opt/elasticsearch-8.5.3/jdk/ ES_HOME=/opt/elasticsearch-8.5.3
 
 RUN yum install wget -y \
     && yum install perl-Digest-SHA -y \
@@ -57,7 +57,7 @@ ADD elasticsearch.yml /opt/elasticsearch-8.5.3/config/
 
 USER elasticsearch
 CMD ["/usr/sbin/init"]
-CMD ["/opt/elasticsearch-8.0.1/bin/elasticsearch"]
+CMD ["/opt/elasticsearch-8.5.3/bin/elasticsearch"]
 
 ```
 
