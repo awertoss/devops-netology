@@ -34,30 +34,31 @@ Docker файл:
 ```
 FROM centos:7
 
-ENV PATH=/usr/lib:/usr/lib/jvm/jre-11/bin:$PATH JAVA_HOME=/opt/elasticsearch-8.5.3/jdk/ ES_HOME=/opt/elasticsearch-8.5.3
+EXPOSE 9200 9300
 
-RUN yum install wget -y \
-    && yum install perl-Digest-SHA -y \
-    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.5.3-linux-x86_64.tar.gz \
-    &&   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.5.3-linux-x86_64.tar.gz.sha512 \
-    && shasum -a 512 -c elasticsearch-8.5.3-linux-x86_64.tar.gz.sha512 \
-    && tar -C /opt elasticsearch-8.5.3-linux-x86_64.tar.gz \
-    && rm elasticsearch-8.5.3-linux-x86_64.tar.gz \
-    && rm elasticsearch-8.5.3-linux-x86_64.tar.gz.sha512 \
-    && groupadd elasticsearch \
-    && useradd -g elasticsearch elasticsearch \
-    && mkdir /var/lib/elasticsearch \
-    && mkdir /var/log/elasticsearch \
-    && mkdir /opt/elasticsearch-8.5.3/snapshots \
-    && chown elasticsearch:elasticsearch /var/lib/elasticsearch \
-    && chown elasticsearch:elasticsearch /var/log/elasticsearch \
-    && chown -R elasticsearch:elasticsearch /opt/elasticsearch-8.5.3/
+USER 0
 
-ADD elasticsearch.yml /opt/elasticsearch-8.5.3/config/
+COPY arhivelastic/* ./
 
-USER elasticsearch
-CMD ["/usr/sbin/init"]
-CMD ["/opt/elasticsearch-8.5.3/bin/elasticsearch"]
+RUN export ES_HOME="/var/lib/elasticsearch" && \
+    sha512sum -c elasticsearch-8.5.3-linux-x86_64.tar.gz.sha512 && \
+    tar -xzf elasticsearch-8.5.3-linux-x86_64.tar.gz && \
+    rm -f elasticsearch-8.5.3-linux-x86_64.tar* && \
+    mv elasticsearch-8.5.3 ${ES_HOME} && \
+    useradd -m -u 1000 elasticsearch && \
+    chown elasticsearch:elasticsearch -R ${ES_HOME}
+
+COPY --chown=elasticsearch:elasticsearch config/* /var/lib/elasticsearch/config/
+
+USER 1000
+
+ENV ES_HOME="/var/lib/elasticsearch" \
+    ES_PATH_CONF="/var/lib/elasticsearch/config"
+
+WORKDIR ${ES_HOME}
+
+CMD ["sh", "-c", "${ES_HOME}/bin/elasticsearch"]
+
 
 ```
 
