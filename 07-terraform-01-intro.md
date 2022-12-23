@@ -55,6 +55,12 @@ Terraform, Ansible, Packer, Docker, Kubernetes
 
 Установите терраформ при помощи менеджера пакетов используемого в вашей операционной системе.
 В виде результата этой задачи приложите вывод команды `terraform --version`.
+```
+root@vagrant:~# terraform --version
+Terraform v1.4.0-alpha20221109
+on linux_386
+root@vagrant:~#
+```
 
 ## Задача 3. Поддержка легаси кода. 
 
