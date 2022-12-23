@@ -11,6 +11,20 @@
 - напишите список операций, которые вы будете производить для остановки запроса пользователя
 - предложите вариант решения проблемы с долгими (зависающими) запросами в MongoDB
 
+```
+Нужно найти opid, затем закрыть.
+db.currentOp({ "active" : true, "secs_running" : { "$gt" : 180 }})
+db.killOp(номер опида)
+
+Про медленные запросы.
+Попробовать использовать метод maxTimeMS
+
+The maxTimeMS() method sets a time limit for an operation. When the operation reaches the specified time limit, 
+MongoDB interrupts the operation at the next interrupt point.
+
+Еще можно использовать Database Profiler.
+```
+
 ## Задача 2
 
 Перед выполнением задания познакомьтесь с документацией по [Redis latency troobleshooting](https://redis.io/topics/latency).
