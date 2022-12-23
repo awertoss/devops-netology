@@ -72,6 +72,34 @@ root@vagrant:~#
 В виде результата этой задачи приложите вывод `--version` двух версий терраформа доступных на вашем компьютере 
 или виртуальной машине.
 
+```
+mkdir /usr/local/tf
+mkdir /usr/local/tf/12
+cd /usr/local/tf/12
+wget https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip
+unzip terraform_0.12.20_linux_amd64.zip
+rm terraform_0.12.20_linux_amd64.zip
+ln -s /usr/local/tf/12/terraform /usr/bin/terraform12
+
+mkdir /usr/local/tf/13
+cd /usr/local/tf/13
+wget https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_linux_amd64.zip
+unzip terraform_0.13.0_linux_amd64.zip
+rm terraform_0.13.0_linux_amd64.zip
+ln -s /usr/local/tf/13/terraform /usr/bin/terraform13
+
+root@vagrant:~# terraform12 --version
+Terraform v0.12.20
+
+Your version of Terraform is out of date! The latest version
+is 1.3.6. You can update by downloading from https://www.terraform.io/downloads.html
+root@vagrant:~# terraform13 --version
+
+Your version of Terraform is out of date! The latest version
+is 1.3.6. You can update by downloading from https://www.terraform.io/downloads.html
+Terraform v0.13.0
+root@vagrant:~#
+```
 ---
 
 ### Как cдавать задание
