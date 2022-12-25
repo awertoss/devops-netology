@@ -24,6 +24,42 @@ export YC_TOKEN=`yc iam create-token`
 export YC_STORAGE_ACCESS_KEY='YCAJEDun8*************'
 export YC_STORAGE_SECRET_KEY='YCOs_xfvv1ECDQwuhDlLay-**********'
 
+terraform init
+
+
+ terraform plan
+var.OAUTH
+  Enter a value: y0_AgAAAAAFc1GrAATuwQ***************e5OnZFU6qQ
+
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # yandex_storage_bucket.netology will be created
+  + resource "yandex_storage_bucket" "netology" {
+      + acl                   = "private"
+      + bucket                = "netology-terraform"
+      + bucket_domain_name    = (known after apply)
+      + default_storage_class = (known after apply)
+      + folder_id             = (known after apply)
+      + force_destroy         = false
+      + id                    = (known after apply)
+      + website_domain        = (known after apply)
+      + website_endpoint      = (known after apply)
+
+      + anonymous_access_flags {
+          + list = (known after apply)
+          + read = (known after apply)
+        }
+
+      + versioning {
+          + enabled = (known after apply)
+        }
+    }
+
 ```
 
 
