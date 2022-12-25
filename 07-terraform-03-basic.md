@@ -19,6 +19,12 @@ access_key:
   key_id: YCAJED****mbXf-MoCxG3bm
 secret: YCOs_xfvv1EC****qt-p0nNljH-YXl
 
+Поместил ключи и токен в env
+
+export YC_TOKEN=`yc iam create-token`
+export YC_STORAGE_ACCESS_KEY='YCAJEDun8*************'
+export YC_STORAGE_SECRET_KEY='YCOs_xfvv1ECDQwuhDlLay-**********'
+
 ```
 
 
