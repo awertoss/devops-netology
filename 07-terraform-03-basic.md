@@ -83,6 +83,13 @@ dynamodb.
 * Вывод команды `terraform workspace list`.
 * Вывод команды `terraform plan` для воркспейса `prod`.  
 
+```
+terraform init
+terraform workspace new stage
+terraform workspace new prod
+
+```
+
 ---
 
 ### Как cдавать задание
