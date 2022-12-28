@@ -205,7 +205,10 @@ Apply complete! Resources: 1 added, 1 changed, 0 destroyed.
 root@vagrant:~/0703#
 
 ```
-<a href="07-03-zadanie1.jpg"cloud>
+
+<p align="center">
+  <img width="1200" src="07-03-zadanie1.jpg">
+</p>
 
 
 ## Задача 2. Инициализируем проект и создаем воркспейсы. 
