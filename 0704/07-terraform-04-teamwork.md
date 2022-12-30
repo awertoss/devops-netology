@@ -32,6 +32,8 @@
 
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.
 
+[server.yaml](./misc/74/server/server.yaml)
+[atlantis.tf](./misc/74/atlantis.yaml)
 ## Задача 3. Знакомство с каталогом модулей. 
 
 1. В [каталоге модулей](https://registry.terraform.io/browse/modules) найдите официальный модуль от aws для создания
