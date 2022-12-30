@@ -1,12 +1,12 @@
 version: 3
 projects:
-- dir: netology
+- dir: .
   # Надо запускать планирование и аплай для двух воркспейсов stage и prod.
   workspace: stage
   autoplan:
     # Необходимо включить автопланирование при изменении любых файлов *.tf.
     when_modified: ["../modules/**/*.tf", "*.tf*"]
-- dir: netology
+- dir: .
   # Надо запускать планирование и аплай для двух воркспейсов stage и prod.
   workspace: prod
   autoplan:
