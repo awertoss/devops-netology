@@ -11,20 +11,27 @@
 [https://github.com/hashicorp/terraform-provider-aws.git](https://github.com/hashicorp/terraform-provider-aws.git).
 Просто найдите нужные ресурсы в исходном коде и ответы на вопросы станут понятны.  
 
-
+```
 1. Найдите, где перечислены все доступные `resource` и `data_source`, приложите ссылку на эти строки в коде на 
 гитхабе.   
-1. Для создания очереди сообщений SQS используется ресурс `aws_sqs_queue` у которого есть параметр `name`. 
+Нашел в файле provider.go
+[resource](https://github.com/hashicorp/terraform-provider-aws/blob/ad0790284a3a27a557adfeb0e47cb52ac3dee264/internal/provider/provider.go#L871) и
+[data_source](https://github.com/hashicorp/terraform-provider-aws/blob/ad0790284a3a27a557adfeb0e47cb52ac3dee264/internal/provider/provider.go#L412)
+
+2. Для создания очереди сообщений SQS используется ресурс `aws_sqs_queue` у которого есть параметр `name`. 
     * С каким другим параметром конфликтует `name`? Приложите строчку кода, в которой это указано.
     * Какая максимальная длина имени? 
     * Какому регулярному выражению должно подчиняться имя? 
-    
+```    
 ## Задача 2. (Не обязательно) 
 В рамках вебинара и презентации мы разобрали как создать свой собственный провайдер на примере кофемашины. 
 Также вот официальная документация о создании провайдера: 
 [https://learn.hashicorp.com/collections/terraform/providers](https://learn.hashicorp.com/collections/terraform/providers).
 
+
 1. Проделайте все шаги создания провайдера.
+Нашел в файле provider.go
+
 2. В виде результата приложение ссылку на исходный код.
 3. Попробуйте скомпилировать провайдер, если получится то приложите снимок экрана с командой и результатом компиляции.   
 
