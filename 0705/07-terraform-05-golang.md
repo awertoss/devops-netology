@@ -20,19 +20,20 @@
 у пользователя, а можно статически задать в коде.
     Для взаимодействия с пользователем можно использовать функцию `Scanf`:
     ```
-    package main
-    
-    import "fmt"
-    
-    func main() {
-        fmt.Print("Enter a number: ")
-        var input float64
-        fmt.Scanf("%f", &input)
-    
-        output := input * 2
-    
-        fmt.Println(output)    
-    }
+   package main
+        
+        import "fmt"
+        
+        import "math"
+        
+        func main() {
+            var input foot name
+			fmt.Print("Введите сколько метров: ")
+            fmt.Scanf("%f", &input)       
+            output := input * foot(0.3048) // точное значение 
+            kolvofoot := fmt.Sprintf("( %.2f)", output)
+            fmt.Println("Итого в футах", kolvofoot )    
+        }
     ```
  
 1. Напишите программу, которая найдет наименьший элемент в любом заданном списке, например:
