@@ -183,8 +183,26 @@ root@promitey:/home/srg/0605# curl https://localhost:9200/_cluster/health?pretty
 ```
 
 Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
+```
+Из документации:
+Overview
 
+Yellow status indicates that one or more of the replica shards on the Elasticsearch cluster are not allocated to a node. 
+No need to panic! There are several reasons why a yellow status can be perfectly normal, and in many cases Elasticsearch will recover to green by itself, 
+so the worst thing you can do is start tweaking things without knowing exactly what the cause is. While status is yellow, search and index operations are 
+still available.
+
+--
+Желтый статус указывает на то, что один или несколько сегментов реплики в кластере Elasticsearch не выделены узлу. 
+```
+Оказалось нет прав пользователю admin
+root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/_all -ku 'admin:admin'
+{"error":{"root_cause":[{"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"}],"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"},"status":403}root@promitey:/home/srg/0605#
+
+```
 Удалите все индексы.
+
+
 
 **Важно**
 
