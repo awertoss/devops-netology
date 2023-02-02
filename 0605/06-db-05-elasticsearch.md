@@ -34,30 +34,40 @@ Docker файл:
 ```
 FROM centos:7
 
-EXPOSE 9200 9300
+
+
+EXPOSE 9200 9600
 
 USER 0
 
-COPY arhivelastic/* ./
+RUN export ES_HOME="/var/lib/opensearch" && \
+yum update -y && \
+yum install -y mc && \
+yum install -y wget && \
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.tar.gz && \
+tar -xvf opensearch-2.5.0-linux-x64.tar.gz && \
+rm -f opensearch-2.5.0-linux-x64.tar.gz && \
+mv opensearch-2.5.0 ${ES_HOME} && \
 
-RUN export ES_HOME="/var/lib/elasticsearch" && \
-    sha512sum -c elasticsearch-8.5.3-linux-x86_64.tar.gz.sha512 && \
-    tar -xzf elasticsearch-8.5.3-linux-x86_64.tar.gz && \
-    rm -f elasticsearch-8.5.3-linux-x86_64.tar* && \
-    mv elasticsearch-8.5.3 ${ES_HOME} && \
-    useradd -m -u 1000 elasticsearch && \
-    chown elasticsearch:elasticsearch -R ${ES_HOME}
 
-COPY --chown=elasticsearch:elasticsearch config/* /var/lib/elasticsearch/config/
+#swapoff -a \ &&
+#echo "vm.max_map_count=262144" > /etc/sysctl.conf && \
+useradd -m -u 1000 opensearch && \
+chown opensearch:opensearch -R ${ES_HOME}
+
+
+COPY --chown=opensearch:opensearch config/opensearch.yml /var/lib/opensearch/config/
+
+
 
 USER 1000
-
-ENV ES_HOME="/var/lib/elasticsearch" \
-    ES_PATH_CONF="/var/lib/elasticsearch/config"
-
+ENV ES_HOME="/var/lib/opensearch"
 WORKDIR ${ES_HOME}
 
-CMD ["sh", "-c", "${ES_HOME}/bin/elasticsearch"]
+#RUN su - opensearch && \
+#RUN /var/lib/opensearch/opensearch-tar-install.sh
+
+CMD ["sh", "-c", "/var/lib/opensearch/opensearch-tar-install.sh"]
 
 
 ```
