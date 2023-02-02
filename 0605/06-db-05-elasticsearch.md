@@ -34,8 +34,6 @@ Docker файл:
 ```
 FROM centos:7
 
-
-
 EXPOSE 9200 9600
 
 USER 0
@@ -49,16 +47,12 @@ tar -xvf opensearch-2.5.0-linux-x64.tar.gz && \
 rm -f opensearch-2.5.0-linux-x64.tar.gz && \
 mv opensearch-2.5.0 ${ES_HOME} && \
 
-
 #swapoff -a \ &&
 #echo "vm.max_map_count=262144" > /etc/sysctl.conf && \
 useradd -m -u 1000 opensearch && \
 chown opensearch:opensearch -R ${ES_HOME}
 
-
 COPY --chown=opensearch:opensearch config/opensearch.yml /var/lib/opensearch/config/
-
-
 
 USER 1000
 ENV ES_HOME="/var/lib/opensearch"
@@ -69,12 +63,39 @@ WORKDIR ${ES_HOME}
 
 CMD ["sh", "-c", "/var/lib/opensearch/opensearch-tar-install.sh"]
 
-
 ```
 ```
 docker build . -t awertoss/devops-opensearch:2.5.0
 docker login -u "awertoss" -p "***" docker.io
 $ docker push awertoss/devops-opensearch:2.5.0
+```
+
+```
+ссылку на образ в репозитории dockerhub https://hub.docker.com/repository/docker/podkovka/devops-elasticsearch
+
+docker run --rm -d --name elastic -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" awertoss/devops-opensearch:2.5.0
+
+ответ `opensearch` на запрос пути `/` в json виде
+
+curl https://localhost:9200 -ku 'admin:admin'
+{
+  "name" : "netology_test",
+  "cluster_name" : "opensearch",
+  "cluster_uuid" : "gqmcn8sxSsma7vOzQL3y7Q",
+  "version" : {
+    "distribution" : "opensearch",
+    "number" : "2.5.0",
+    "build_type" : "tar",
+    "build_hash" : "b8a8b6c4d7fc7a7e32eb2cb68ecad8057a4636ad",
+    "build_date" : "2023-01-18T23:48:48.981786100Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.4.2",
+    "minimum_wire_compatibility_version" : "7.10.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "The OpenSearch Project: https://opensearch.org/"
+}
+
 ```
 
 ## Задача 2
