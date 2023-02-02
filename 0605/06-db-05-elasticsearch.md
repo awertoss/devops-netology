@@ -158,6 +158,29 @@ yellow open   ind-2                        olxU7qo0QFGeAhFVq96dKA   2   1       
 ```
 
 Получите состояние кластера `elasticsearch`, используя API.
+```
+root@promitey:/home/srg/0605# curl https://localhost:9200/_cluster/health?pretty -ku 'admin:admin'
+{
+  "cluster_name" : "opensearch",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "discovered_master" : true,
+  "discovered_cluster_manager" : true,
+  "active_primary_shards" : 9,
+  "active_shards" : 9,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 11,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 45.0
+}
+
+```
 
 Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
 
