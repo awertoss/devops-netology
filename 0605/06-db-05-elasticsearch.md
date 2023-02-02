@@ -199,7 +199,7 @@ still available.
 root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/_all -ku 'admin:admin'
 {"error":{"root_cause":[{"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"}],"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"},"status":403}root@promitey:/home/srg/0605#
 
-```
+
 Удалите все индексы.
 
 
