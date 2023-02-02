@@ -69,9 +69,9 @@ docker build . -t awertoss/devops-opensearch:2.5.0
 docker login -u "awertoss" -p "***" docker.io
 $ docker push awertoss/devops-opensearch:2.5.0
 ```
-
+Cсылка на образ в репозитории dockerhub [https://hub.docker.com/repository/docker/awertoss/devops-opensearch](https://hub.docker.com/repository/docker/awertoss/devops-opensearch)
 ```
-ссылку на образ в репозитории dockerhub https://hub.docker.com/repository/docker/awertoss/devops-opensearch
+
 
 docker run --rm -d --name elastic -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" awertoss/devops-opensearch:2.5.0
 
