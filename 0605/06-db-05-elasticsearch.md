@@ -71,6 +71,11 @@ CMD ["sh", "-c", "/var/lib/opensearch/opensearch-tar-install.sh"]
 
 
 ```
+```
+docker build . -t awertoss/devops-opensearch:2.5.0
+docker login -u "awertoss" -p "***" docker.io
+$ docker push awertoss/devops-opensearch:2.5.0
+```
 
 ## Задача 2
 
