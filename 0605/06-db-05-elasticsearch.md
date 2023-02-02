@@ -69,7 +69,7 @@ docker build . -t awertoss/devops-opensearch:2.5.0
 docker login -u "awertoss" -p "***" docker.io
 $ docker push awertoss/devops-opensearch:2.5.0
 ```
-Cсылка на образ в репозитории dockerhub [https://hub.docker.com/repository/docker/awertoss/devops-opensearch](https://hub.docker.com/repository/docker/awertoss/devops-opensearch)
+Cсылка на образ в репозиторий dockerhub [https://hub.docker.com/repository/docker/awertoss/devops-opensearch](https://hub.docker.com/repository/docker/awertoss/devops-opensearch)
 ```
 
 
@@ -114,7 +114,48 @@ curl https://localhost:9200 -ku 'admin:admin'
 | ind-2 | 1 | 2 |
 | ind-3 | 2 | 4 |
 
+```
+curl -X PUT https://localhost:9200/ind-1 -ku 'admin:admin' -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+
+
+curl -X PUT https://localhost:9200/ind-2 -ku 'admin:admin' -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1
+  }
+}
+'
+
+
+curl -X PUT https://localhost:9200/ind-3 -ku 'admin:admin' -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 4,
+    "number_of_replicas": 2
+  }
+}
+'
+
+```
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
+```
+root@promitey:/home/srg/0605# curl  https://localhost:9200/_cat/indices?v -ku 'admin:admin'
+health status index                        uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   security-auditlog-2023.02.02 52UrIO7mRyOoMyXSDvUBCA   1   1         10            0      142kb          142kb
+green  open   ind-1                        ecfIH5pqTx2zWO2RrswPAQ   1   0          0            0       208b           208b
+green  open   .opendistro_security         Ow-QMc-gRxavig1nLjp5-A   1   0         10            0     71.7kb         71.7kb
+yellow open   ind-3                        JnjwFPJaTiSlVcmnX4uMfg   4   2          0            0       832b           832b
+yellow open   ind-2                        olxU7qo0QFGeAhFVq96dKA   2   1          0            0       416b           416b
+
+```
 
 Получите состояние кластера `elasticsearch`, используя API.
 
