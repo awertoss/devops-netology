@@ -218,9 +218,22 @@ root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/_all -ku 'ad
 - восстанавливать индексы из бэкапов
 
 Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
+```
+docker exec -it --user root 7848641d940f /bin/bash
+
+bash-4.2# mkdir $ES_HOME/snapshots
+
+
+```
 
 Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
 данную директорию как `snapshot repository` c именем `netology_backup`.
+```
+echo path.repo: [ "snapshots" ] >> "config/opensearch.yml"
+
+/home/srg/0605# docker restart 7848641d940f
+
+```
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
 
