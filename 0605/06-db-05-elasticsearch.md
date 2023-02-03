@@ -248,8 +248,6 @@ mcedit config/opensearch.yml
 ```
 curl -X PUT 'https://localhost:9200/_snapshot/netology_backup?pretty' -ku 'admin:admin' -H 'Content-Type: application/json' -d'{"type": "fs", "settings": {"location":"/var/lib/opensearch/snapshots" }}'
 
-' 
-
 ```
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
