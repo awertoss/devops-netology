@@ -233,7 +233,8 @@ docker exec -it 7848641d940f /bin/bash
 
 bash-4.2$ mkdir $ES_HOME/snapshots
 
-Добавим в конфиг строчку
+Добавим в конфиг строчку path.repo: /var/lib/opensearch/snapshots
+
 mcedit config/opensearch.yml
 
 
