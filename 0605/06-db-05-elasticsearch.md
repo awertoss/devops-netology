@@ -341,6 +341,10 @@ green  open .opendistro_security         Ow-QMc-gRxavig1nLjp5-A 1 0 10 0  71.7kb
 - возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
 
 ```
+Вначале смотрим спискок снапшотов.
+root@promitey:/home/srg/0605# curl -X GET  'https://localhost:9200/_snapshot/netology_backup/_all/' -ku 'admin:admin'
+{"snapshots":[{"snapshot":"my_snapshot","uuid":"DedCJ1GyT4OHuCXJNwsIGg","version_id":136267827,"version":"2.5.0","indices":[".opendistro_security","security-auditlog-2023.02.03","test","security-auditlog-2023.02.02"],"data_streams":[],"include_global_state":true,"state":"SUCCESS","start_time":"2023-02-03T09:36:38.349Z","start_time_in_millis":1675416998349,"end_time":"2023-02-03T09:36:41.160Z","end_time_in_millis":1675417001160,"duration_in_millis":2811,"failures":[],"shards":{"total":4,"failed":0
+
 
 curl -X POST  'https://localhost:9200/_snapshot/netology_backup/my_snapshot/_restore?pretty' -ku 'admin:admin' -H 'Content-Type: application/json' -d'{"include_global_state":true}'
 
