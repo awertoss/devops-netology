@@ -197,9 +197,22 @@ still available.
 ```
 Удалите все индексы.
 ```
-Оказалось нет прав пользователю admin
-root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/_all -ku 'admin:admin'
-{"error":{"root_cause":[{"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"}],"type":"security_exception","reason":"no permissions for [] and User [name=admin, backend_roles=[admin], requestedTenant=null]"},"status":403}root@promitey:/home/srg/0605#
+root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/ind-1?pretty -ku 'admin:admin'
+{
+  "acknowledged" : true
+}
+
+root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/ind-2?pretty -ku 'admin:admin'
+{
+  "acknowledged" : true
+}
+
+root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/ind-3?pretty -ku 'admin:admin'
+{
+  "acknowledged" : true
+}
+
+
 ```
 
 
