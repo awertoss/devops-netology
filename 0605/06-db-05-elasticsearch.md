@@ -147,7 +147,7 @@ curl -X PUT https://localhost:9200/ind-3 -ku 'admin:admin' -H 'Content-Type: app
 ```
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
 ```
-root@promitey:/home/srg/0605# curl  https://localhost:9200/_cat/indices?v -ku 'admin:admin'
+root@promitey:/home/srg/0605# curl https://localhost:9200/_cat/indices?v -ku 'admin:admin'
 health status index                        uuid                   pri rep docs.count docs.deleted store.size pri.store.size
 yellow open   security-auditlog-2023.02.02 52UrIO7mRyOoMyXSDvUBCA   1   1         10            0      142kb          142kb
 green  open   ind-1                        ecfIH5pqTx2zWO2RrswPAQ   1   0          0            0       208b           208b
@@ -284,7 +284,6 @@ root@promitey:/home/srg/0605# curl -X PUT 'https://localhost:9200/_snapshot/neto
   "accepted" : true
 }
 
-
 ```
 
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
@@ -335,6 +334,11 @@ green  open .opendistro_security         Ow-QMc-gRxavig1nLjp5-A 1 0 10 0  71.7kb
 
 Подсказки:
 - возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
+
+```
+
+curl -X POST  'https://localhost:9200/_snapshot/netology_backup/my_snapshot/_restore?pretty' -ku 'admin:admin' -H 'Content-Type: application/json' -d'{"include_global_state":true}'
+```
 
 ---
 
