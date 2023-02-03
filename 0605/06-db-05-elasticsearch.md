@@ -246,17 +246,49 @@ mcedit config/opensearch.yml
 данную директорию как `snapshot repository` c именем `netology_backup`.
 
 ```
+ curl -X PUT 'https://localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'' -ku 'admin:admin'
 
-
+{
+  "type": "fs",
+  "settings": {
+    "location": "/var/lib/elasticsearch/snapshots"
+  }
+}
+' 
 
 ```
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
 
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+```
+curl -X PUT https://localhost:9200/test -ku 'admin:admin' -H 'Content-Type: application/json' -d'
+
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,  
+      "number_of_replicas": 0 
+    }
+  }
+}
+' 
+
+
+root@promitey:/home/srg/0605# curl -X GET 'https://localhost:9200/_cat/indices?v&pretty' -ku 'admin:admin'
+
+health status index                        uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   security-auditlog-2023.02.03 1AEkp1UCSRWe7-I7nazi_g   1   1          6            0     86.3kb         86.3kb
+yellow open   security-auditlog-2023.02.02 52UrIO7mRyOoMyXSDvUBCA   1   1         22            0     94.2kb         94.2kb
+green  open   test                         SC-D6uEAQPWfZHphlS_Gsg   1   0          0            0       208b           208b
+green  open   .opendistro_security         Ow-QMc-gRxavig1nLjp5-A   1   0         10            0     71.7kb         71.7kb
+
+
+```
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
+
 
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
 
