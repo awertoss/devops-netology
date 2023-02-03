@@ -232,19 +232,22 @@ root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/ind-3?pretty
 
 Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
 ```
-docker exec -it --user root 7848641d940f /bin/bash
+docker exec -it 7848641d940f /bin/bash
 
-bash-4.2# mkdir $ES_HOME/snapshots
+bash-4.2$ mkdir $ES_HOME/snapshots
+
+Добавим в конфиг строчку
+mcedit config/opensearch.yml
 
 
 ```
 
 Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
 данную директорию как `snapshot repository` c именем `netology_backup`.
-```
-echo path.repo: [ "snapshots" ] >> "config/opensearch.yml"
 
-/home/srg/0605# docker restart 7848641d940f
+```
+
+
 
 ```
 
