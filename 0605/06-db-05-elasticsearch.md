@@ -289,7 +289,44 @@ root@promitey:/home/srg/0605# curl -X PUT 'https://localhost:9200/_snapshot/neto
 
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
 
+```
+root@promitey:/home/srg/0605# docker exec -it 7848641d940f /bin/bash
+[opensearch@7848641d940f ~]$ ls -l snapshots/
+total 20
+-rw-rw-r-- 1 opensearch opensearch 1213 Feb  3 09:36 index-0
+-rw-rw-r-- 1 opensearch opensearch    8 Feb  3 09:36 index.latest
+drwxrwxr-x 6 opensearch opensearch 4096 Feb  3 09:36 indices
+-rw-rw-r-- 1 opensearch opensearch  372 Feb  3 09:36 meta-DedCJ1GyT4OHuCXJNwsIGg.dat
+-rw-rw-r-- 1 opensearch opensearch  347 Feb  3 09:36 snap-DedCJ1GyT4OHuCXJNwsIGg.dat
+
+
+```
+
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
+
+```
+curl -X DELETE 'https://localhost:9200/test' -ku 'admin:admin'
+
+root@promitey:/home/srg/0605# curl -X PUT https://localhost:9200/test-2 -ku 'admin:admin' -H 'Content-Type: application/json' -d'
+> {
+>   "settings": {
+>     "number_of_shards": 1,
+>     "number_of_replicas": 0
+>   }
+> }
+> '
+{"acknowledged":true,"shards_acknowledged":true,"index":"test-2"}root@promitey:/home/srg/0605#
+
+Спискок индексов:
+
+root@promitey:/home/srg/0605# curl  https://localhost:9200/_cat/indices -ku 'admin:admin'
+green  open test-2                       flHeH3eJTReCpyquzG4UZw 1 0  0 0    208b    208b
+yellow open security-auditlog-2023.02.03 1AEkp1UCSRWe7-I7nazi_g 1 1  8 0 116.8kb 116.8kb
+yellow open security-auditlog-2023.02.02 52UrIO7mRyOoMyXSDvUBCA 1 1 22 0  94.2kb  94.2kb
+green  open .opendistro_security         Ow-QMc-gRxavig1nLjp5-A 1 0 10 0  71.7kb  71.7kb
+
+
+```
 
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
 кластера `elasticsearch` из `snapshot`, созданного ранее. 
