@@ -262,6 +262,10 @@ curl -X PUT https://localhost:9200/test -ku 'admin:admin' -H 'Content-Type: appl
     }
   }
 }
+
+
+
+
 ' 
 
 
@@ -339,6 +343,20 @@ green  open .opendistro_security         Ow-QMc-gRxavig1nLjp5-A 1 0 10 0  71.7kb
 ```
 
 curl -X POST  'https://localhost:9200/_snapshot/netology_backup/my_snapshot/_restore?pretty' -ku 'admin:admin' -H 'Content-Type: application/json' -d'{"include_global_state":true}'
+
+
+curl -X GET 'https://localhost:9200/_cat/indices?v&pretty' -ku 'admin:admin'
+curl  https://localhost:9200/_cat/indices -ku 'admin:admin'
+green  open test                         SC-D6uEAQPWfZHphlS_Gsg 1 0  0 0    208b    208b
+green  open test-2                       flHeH3eJTReCpyquzG4UZw 1 0  0 0    208b    208b
+yellow open security-auditlog-2023.02.03 1AEkp1UCSRWe7-I7nazi_g 1 1  8 0 116.8kb 116.8kb
+yellow open security-auditlog-2023.02.02 52UrIO7mRyOoMyXSDvUBCA 1 1 22 0  94.2kb  94.2kb
+green  open .opendistro_security         Ow-QMc-gRxavig1nLjp5-A 1 0 10 0  71.7kb  71.7kb
+
+
+
+
+
 ```
 
 ---
