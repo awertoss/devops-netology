@@ -216,9 +216,6 @@ root@promitey:/home/srg/0605# curl -X DELETE https://localhost:9200/ind-3?pretty
 ```
 
 
-
-
-
 **Важно**
 
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
@@ -282,7 +279,11 @@ green  open   .opendistro_security         Ow-QMc-gRxavig1nLjp5-A   1   0       
 состояния кластера `elasticsearch`.
 
 ```
-curl -X PUT 'https://localhost:9200/_snapshot/netology_backup/my_snapshot?pretty' -ku 'admin:admin'
+root@promitey:/home/srg/0605# curl -X PUT 'https://localhost:9200/_snapshot/netology_backup/my_snapshot?pretty' -ku 'admin:admin'
+{
+  "accepted" : true
+}
+
 
 ```
 
