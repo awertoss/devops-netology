@@ -251,7 +251,7 @@ mcedit config/opensearch.yml
 {
   "type": "fs",
   "settings": {
-    "location": "/var/lib/elasticsearch/snapshots"
+    "location": "/var/lib/opensearch/snapshots"
   }
 }
 ' 
@@ -289,6 +289,10 @@ green  open   .opendistro_security         Ow-QMc-gRxavig1nLjp5-A   1   0       
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
 
+```
+curl -X PUT 'https://localhost:9200/_snapshot/netology_backup/my_snapshot?pretty' -ku 'admin:admin'
+
+```
 
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
 
