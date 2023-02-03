@@ -246,14 +246,8 @@ mcedit config/opensearch.yml
 данную директорию как `snapshot repository` c именем `netology_backup`.
 
 ```
- curl -X PUT 'https://localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'' -ku 'admin:admin'
+curl -X PUT 'https://localhost:9200/_snapshot/netology_backup?pretty' -ku 'admin:admin' -H 'Content-Type: application/json' -d'{"type": "fs", "settings": {"location":"/var/lib/opensearch/snapshots" }}'
 
-{
-  "type": "fs",
-  "settings": {
-    "location": "/var/lib/opensearch/snapshots"
-  }
-}
 ' 
 
 ```
