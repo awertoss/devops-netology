@@ -30,7 +30,7 @@
 vector:
   hosts:
     vector-01:
-      ansible_host: 192.168.200.2
+      ansible_host: 172.18.0.2
 
 В файл site.yml добавлен новый play.
 - name: Install Vector
