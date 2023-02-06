@@ -2,4 +2,8 @@
 clickhouse:
   hosts:
     clickhouse-01:
-      ansible_host: <IP_here>
+      ansible_host: 192.168.200.1
+vector:
+  hosts:
+    vector-01:
+      ansible_host: 192.168.200.2
