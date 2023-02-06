@@ -23,6 +23,7 @@
 Ответ.
 
 Мой репозиторий (https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook)
+Подготовил виртуальную машину centos 7 на базе docker.
 
 ```
 Файл prod.yml добавил IP-адрес и конфиг:
@@ -31,7 +32,34 @@ vector:
     vector-01:
       ansible_host: 192.168.200.2
 
+В файл site.yml добавлен новый play.
+- name: Install Vector
+  hosts: vector
+  handlers:
+  - name: Start Vector service
+    become: true
+    ansible.builtin.service:
+      name: vector
+      state: restarted
 
+  tasks:
+    - name: Get Vector distrib
+      ansible.builtin.get_url:
+        url: "https://packages.timber.io/vector/0.21.1/vector-0.21.1-1.{{ ansible_architecture }}.rpm"
+        dest: "./vector-0.21.1-1.{{ ansible_architecture }}.rpm"
+
+    - name: Install Vector packages
+      become: true
+      ansible.builtin.yum:
+        name: vector-0.21.1-1.{{ ansible_architecture }}.rpm
+      notify: Start Vector service
+
+    - name: Deploy config Vector
+      template:
+        src: vector.j2
+        dest: /etc/vector/vector.toml
+        mode: 0755
+      notify: Start Vector service
 
 
 ```
