@@ -22,7 +22,19 @@
 
 Ответ.
 
-Мой [репозиторий] (https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook)
+Мой репозиторий (https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook)
+
+```
+Файл prod.yml добавил IP-адрес и конфиг:
+vector:
+  hosts:
+    vector-01:
+      ansible_host: 192.168.200.2
+
+
+
+
+```
 ```
 
 ```
