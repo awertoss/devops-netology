@@ -22,7 +22,7 @@
 
 Ответ.
 
-Мой [репозиторий] https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook
+Мой [репозиторий] (https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook)
 ```
 
 ```
