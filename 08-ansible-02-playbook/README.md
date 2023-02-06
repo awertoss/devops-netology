@@ -63,7 +63,37 @@ vector:
 
 
 ```
+5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 ```
+root@ubuntu:~/0802/playbook# ansible-lint site.yml
+WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
+WARNING  Listing 6 violation(s) that are fatal
+risky-file-permissions: File permissions unset or incorrect.
+site.yml:12 Task/Handler: Get Vector distrib
+
+fqcn-builtins: Use FQCN for builtin actions.
+site.yml:23 Task/Handler: Deploy config Vector
+
+unnamed-task: All tasks should be named.
+site.yml:38 Task/Handler: block/always/rescue
+
+risky-file-permissions: File permissions unset or incorrect.
+site.yml:39 Task/Handler: Get clickhouse distrib
+
+risky-file-permissions: File permissions unset or incorrect.
+site.yml:45 Task/Handler: Get clickhouse distrib
+
+fqcn-builtins: Use FQCN for builtin actions.
+site.yml:57 Task/Handler: Flush handlers
+
+You can skip specific rules or tags by adding them to your configuration file:
+# .config/ansible-lint.yml
+warn_list:  # or 'skip_list' to silence them completely
+  - experimental  # all rules tagged as experimental
+  - fqcn-builtins  # Use FQCN for builtin actions.
+  - unnamed-task  # All tasks should be named.
+
+Finished with 3 failure(s), 3 warning(s) on 1 files.
 
 ```
 
