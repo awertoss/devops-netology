@@ -96,7 +96,21 @@ warn_list:  # or 'skip_list' to silence them completely
 Finished with 3 failure(s), 3 warning(s) on 1 files.
 
 ```
+6. Попробуйте запустить playbook на этом окружении с флагом `--check`
+```
+Зпустил playbook. Завершился с ошибкой.
+root@ubuntu:~/0802/playbook# ansible-playbook site.yml -i inventory/prod.yml --check
 
+PLAY [Install Vector] ****************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************
+fatal: [vector-01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via s                           sh: ssh: connect to host 192.168.200.2 port 22: Connection timed out", "unreachable": true}
+
+PLAY RECAP ***************************************************************************************
+vector-01                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescue                           d=0    ignored=0
+
+
+```
 ---
 
 ### Как оформить ДЗ?
