@@ -9,7 +9,7 @@ Install Clickhouse - указывается handler для перезапуск�
 Get clickhouse distrib - скачиваются необходимые пакеты.
 Install clickhouse packages - устанавливаются скачанные пакеты  
 Start clickhouse service - стартует сервис.
-Create database - Создаётся БД logs.
+Create database - Создаётся БД.
 
 
 Install Vector - указывается handler для перезапуска сервиса
