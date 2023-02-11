@@ -8,7 +8,7 @@ Playbook устанавливает Clickhouse и Vector, а также прои
 Install Clickhouse - указывается handler для перезапуска сервиса  
 Get clickhouse distrib - скачиваются необходимые пакеты.
 Install clickhouse packages - устанавливаются скачанные пакеты  
-Start clickhouse-server - стартует server.
+Start clickhouse service - стартует сервис.
 Create database - Создаётся БД logs.
 
 
