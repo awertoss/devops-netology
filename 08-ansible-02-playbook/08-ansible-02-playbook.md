@@ -111,8 +111,7 @@ vector-01                  : ok=0    changed=0    unreachable=1    failed=0    s
 
 
 ```
-9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
-###Ссылка на readme файл
+9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. </br>Ссылка на readme файл
 [https://github.com/awertoss/devops-netology/blob/main/08-ansible-02-playbook/README.md]
 ---
 
