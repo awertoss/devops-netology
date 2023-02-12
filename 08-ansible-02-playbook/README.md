@@ -1,19 +1,15 @@
-# Домашнее задание к занятию "2. Работа с Playbook"
+## Установка `clickhouse` и `vector`
 
-Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги
+Данный playbook устанавливает `clichouse` и `vector` на соответствующие контейнеры `CentOS7` поднятые при помощи `docker-compose`, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
 
+В каталоге `group_vars` задаются необходимые версии дистрибутивов.
+
+Для работы playbook необходимо:
+ - запустить `docker-compose`
+```shell
+docker-compose up
 ```
-Playbook устанавливает Clickhouse и Vector, а также производит настройку на указанных серверах, которые указаны в файле inventory/prod.yml.
-
-Install Clickhouse - указывается handler для перезапуска сервиса  
-Get clickhouse distrib - скачиваются необходимые пакеты.
-Install clickhouse packages - устанавливаются скачанные пакеты  
-Start clickhouse service - стартует сервис.
-Create database - Создаётся БД.
-
-
-Install Vector - указывается handler для перезапуска сервиса
-Get vector distrib - скачиваются необходимые пакеты.
-Install vector package -  устанавливаются скачанные пакеты , оповещается handler для перезапуска сервиса 
-
+ - запустить `ansible-playbook`:
+```shell
+ansible-playbook -i inventory/prod.yml site.yml
 ```
