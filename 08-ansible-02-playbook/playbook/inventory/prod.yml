@@ -2,8 +2,9 @@
 clickhouse:
   hosts:
     clickhouse-01:
-      ansible_host: 172.18.0.2
+      ansible_connection: docker
 vector:
   hosts:
     vector-01:
-      ansible_host: 172.18.0.2
+      ansible_connection: docker
+
