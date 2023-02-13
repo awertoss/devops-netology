@@ -103,6 +103,9 @@ root@promitey:/home/srg/0802#
 
 
 ```
+7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+
+
 9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. </br>Ссылка на readme файл
 [https://github.com/awertoss/devops-netology/blob/main/08-ansible-02-playbook/README.md]
 
