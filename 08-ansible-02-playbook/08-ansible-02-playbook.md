@@ -23,49 +23,24 @@
 Ответ.
 
 Мой репозиторий (https://github.com/awertoss/devops-netology/tree/main/08-ansible-02-playbook/playbook)
-Подготовил виртуальную машину centos 7 на базе docker.
+Подготовил docker-compose.yml файл, который создает две виртуальные машину centos 7 на базе docker.
+
+1. Приготовьте свой собственный inventory файл `prod.yml`.
 
 ```
-Файл prod.yml добавил IP-адрес и конфиг:
-vector:
-  hosts:
-    vector-01:
-      ansible_host: 172.18.0.2
-
-В файл site.yml добавлен новый play.
-- name: Install Vector
-  hosts: vector
-  handlers:
-  - name: Start Vector service
-    become: true
-    ansible.builtin.service:
-      name: vector
-      state: restarted
-
-  tasks:
-    - name: Get Vector distrib
-      ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/0.21.1/vector-0.21.1-1.{{ ansible_architecture }}.rpm"
-        dest: "./vector-0.21.1-1.{{ ansible_architecture }}.rpm"
-
-    - name: Install Vector packages
-      become: true
-      ansible.builtin.yum:
-        name: vector-0.21.1-1.{{ ansible_architecture }}.rpm
-      notify: Start Vector service
-
-    - name: Deploy config Vector
-      template:
-        src: vector.j2
-        dest: /etc/vector/vector.toml
-        mode: 0755
-      notify: Start Vector service
-
+Мой prod.yml
+[https://github.com/awertoss/devops-netology/blob/main/08-ansible-02-playbook/playbook/inventory/prod.yml]
+```
+2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev).
+```
+Дописал playbok
+[https://github.com/awertoss/devops-netology/blob/main/08-ansible-02-playbook/playbook/site.yml]
 
 ```
+
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 ```
-root@ubuntu:~/0802/playbook# ansible-lint site.yml
+root@promitey:/home/srg/0802# ansible-lint site.yml
 WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
 WARNING  Listing 6 violation(s) that are fatal
 risky-file-permissions: File permissions unset or incorrect.
@@ -96,18 +71,35 @@ warn_list:  # or 'skip_list' to silence them completely
 Finished with 3 failure(s), 3 warning(s) on 1 files.
 
 ```
+```
+Исправил ошибки.
+
+root@promitey:/home/srg/0802# ansible-lint site.yml
+WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
+root@promitey:/home/srg/0802#
+
+```
+
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`
 ```
 Зпустил playbook. Завершился с ошибкой.
-root@ubuntu:~/0802/playbook# ansible-playbook site.yml -i inventory/prod.yml --check
+root@promitey:/home/srg/0802# ansible-playbook site.yml -i inventory/prod.yml --check
 
-PLAY [Install Vector] ****************************************************************************
+PLAY [Install Vector] ***********************************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] ***************************************************************************
-fatal: [vector-01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via s                           sh: ssh: connect to host 192.168.200.2 port 22: Connection timed out", "unreachable": true}
+TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+ok: [vector-01]
 
-PLAY RECAP ***************************************************************************************
-vector-01                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescue                           d=0    ignored=0
+TASK [Get Vector distrib] *******************************************************************************************************************************************************************************************************************
+ok: [vector-01]
+
+TASK [Install Vector packages] **************************************************************************************************************************************************************************************************************
+fatal: [vector-01]: FAILED! => {"changed": false, "module_stderr": "/bin/sh: sudo: command not found\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 127}
+
+PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+vector-01                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+root@promitey:/home/srg/0802#
 
 
 ```
