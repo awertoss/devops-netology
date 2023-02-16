@@ -2,10 +2,17 @@
 
 Playbook устанавливает clichouse и vector на две виртуальные машины Centos7 docker, собранные с помощью docker-compose файла, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
 
-## Variables
+### Variables
 В каталоге group_vars задаются необходимые версии дистрибутивов.
 
-    clickhouse_version, vector_version - версии устанавливаемых приложений;
+    clickhouse_version, vector_version - версии устанавливаемых приложений.
+    
+   ### Tags
+
+    clickhouse производит полную конфигурацию сервера clickhouse-01;
+    clickhouse_db производит конфигурацию базы данных и таблицы;
+    vector производит полную конфигурацию сервера vector-01;
+    vector_config производит изменение в конфиге приложения vector;
 
 Для работы playbook необходимо:
  - собрать и запустить из `docker-compose.yml` файла две виртуальные машины.
