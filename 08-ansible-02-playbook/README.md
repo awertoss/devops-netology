@@ -15,6 +15,15 @@ Playbook устанавливает clichouse и vector на две виртуа
  
 ### Install vector
 Скачиваются пакеты, устанавливается vector. Запуск службы.
+
+### Tags
+
+    clickhouse производит полную конфигурацию сервера clickhouse-01;
+    clickhouse_db производит конфигурацию базы данных и таблицы;
+    vector производит полную конфигурацию сервера vector-01;
+    vector_config производит изменение в конфиге приложения vector;
+    drop_clickhouse_database_logs удаляет базу данных (по умолчанию не выполняется);
+
 </br></br>Для работы playbook необходимо:
  - собрать и запустить из `docker-compose.yml` файла две виртуальные машины.
 ```shell
