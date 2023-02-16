@@ -1,14 +1,15 @@
 ## Установка `clickhouse` и `vector`
 
-Playbook устанавливает clichouse и vector на контейнер CentOS7 поднятый из `docker-файла`, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
+Playbook устанавливает clichouse и vector на две виртуальные машины Centos7 docker, собранные с помощью docker-compose файла, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
 
 В каталоге group_vars задаются необходимые версии дистрибутивов.
 
 Для работы playbook необходимо:
- - собрать и запустить `docker-образ`
+ - собрать и запустить из `docker-compose.yml` файла две виртуальные машины.
 ```shell
-docker build -t centos7
-docker run -d centos7
+docker-compose up
+
+Проверить, что docker-контейнеры запущены
 ```
  - запустить `ansible-playbook`:
 ```shell
