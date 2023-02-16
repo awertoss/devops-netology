@@ -5,6 +5,8 @@ Playbook устанавливает clichouse и vector на две виртуа
 ### Variables
 В каталоге group_vars задаются необходимые версии дистрибутивов.
 
+|Столбец 1|Столбец 2|
+
     clickhouse_version, vector_version - версии устанавливаемых приложений.
     
  ### Install Clickhouse
