@@ -12,7 +12,7 @@ Playbook устанавливает clichouse и vector на две виртуа
  
 ### Install vector
 Скачиваются пакеты, устанавливается vector. Запуск службы.
-</br>Для работы playbook необходимо:
+</br></br>Для работы playbook необходимо:
  - собрать и запустить из `docker-compose.yml` файла две виртуальные машины.
 ```shell
 docker-compose up
