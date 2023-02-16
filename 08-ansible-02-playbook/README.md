@@ -1,4 +1,4 @@
-## Установка `clickhouse` и `vector`
+## Playbook install `clickhouse` and `vector`.
 
 Playbook устанавливает clichouse и vector на две виртуальные машины Centos7 docker, собранные с помощью docker-compose файла, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
 
