@@ -8,7 +8,7 @@ Playbook устанавливает clichouse и vector на две виртуа
 |clickhouse_version|версия clickhous| 
 |-|--------|
 |vector_version|версия vector|
-|-|--------|
+
     
  ### Install Clickhouse
  Скачиваются rpm пакеты, устанавливается Clickhouse, создается база logs. 
