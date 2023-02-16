@@ -18,6 +18,7 @@ Playbook устанавливает clichouse и vector на две виртуа
 docker-compose up
 
 Проверить, что docker-контейнеры запущены
+docker ps
 ```
  - запустить `ansible-playbook`:
 ```shell
