@@ -240,7 +240,7 @@ vector-01                  : ok=3    changed=0    unreachable=0    failed=0    s
 [https://github.com/awertoss/devops-netology/blob/main/08-ansible-02-playbook/README.md]
 
 10. Готовый playbook выложите в свой репозиторий, поставьте тег 08-ansible-02-playbook на фиксирующий коммит, в ответ предоставьте ссылку на него.
-
+[https://github.com/awertoss/devops-netology/tree/08-ansible-02-playbook/08-ansible-02-playbook/playbook]
 
 ---
 
