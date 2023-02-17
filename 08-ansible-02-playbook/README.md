@@ -18,8 +18,9 @@ Playbook устанавливает clichouse и vector на две виртуа
 
 ### Tags
 
-    clickhouse производит полную конфигурацию сервера clickhouse-01;
-    vector производит полную конфигурацию сервера vector-01.
+    
+   `clickhouse` производит полную конфигурацию сервера clickhouse-01;
+    `vector` производит полную конфигурацию сервера vector-01.
     
 
 Для работы playbook необходимо:
