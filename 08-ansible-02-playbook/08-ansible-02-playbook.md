@@ -120,31 +120,31 @@ root@promitey:/home/srg/0802# docker exec -it e9fab923ec72 /bin/bash
 [root@e9fab923ec72 /]# cat /vector-0.2
 cat: /vector-0.2: No such file or directory
 [root@e9fab923ec72 /]# cat /etc/vector/vector.toml
-#                                    __   __  __
-#                                    \ \ / / / /
-#                                     \ V / / /
-#                                      \_/  \/
-#
-#                                    V E C T O R
-#                                   Configuration
-#
-# ------------------------------------------------------------------------------
-# Website: https://vector.dev
-# Docs: https://vector.dev/docs
-# Chat: https://chat.vector.dev
-# ------------------------------------------------------------------------------
+                                   __   __  __
+                                  \ \ / / / /
+                                    \ V / / /
+                                     \_/  \/
 
-# Change this to use a non-default directory for Vector data storage:
-# data_dir = "/var/lib/vector"
+                                 V E C T O R
+                                 Configuration
 
-# Random Syslog-formatted logs
+ ------------------------------------------------------------------------------
+ Website: https://vector.dev
+ Docs: https://vector.dev/docs
+ Chat: https://chat.vector.dev
+ ------------------------------------------------------------------------------
+
+ Change this to use a non-default directory for Vector data storage:
+ data_dir = "/var/lib/vector"
+
+ Random Syslog-formatted logs
 [sources.dummy_logs]
 type = "demo_logs"
 format = "syslog"
 interval = 1
 
-# Parse Syslog logs
-# See the Vector Remap Language reference for more info: https://vrl.dev
+ Parse Syslog logs
+ See the Vector Remap Language reference for more info: https://vrl.dev
 [transforms.parse_logs]
 type = "remap"
 inputs = ["dummy_logs"]
@@ -152,18 +152,18 @@ source = '''
 . = parse_syslog!(string!(.message))
 '''
 
-# Print parsed logs to stdout
+ Print parsed logs to stdout
 [sinks.print]
 type = "console"
 inputs = ["parse_logs"]
 encoding.codec = "json"
 
-# Vector's GraphQL API (disabled by default)
-# Uncomment to try it out with the `vector top` command or
-# in your browser at http://localhost:8686
-#[api]
-#enabled = true
-#address = "127.0.0.1:8686"
+ Vector's GraphQL API (disabled by default)
+ Uncomment to try it out with the `vector top` command or
+in your browser at http://localhost:8686
+[api]
+enabled = true
+address = "127.0.0.1:8686"
 
 ```
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
