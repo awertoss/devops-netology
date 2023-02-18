@@ -45,6 +45,9 @@ root@promitey:/home/srg/0802# ansible-lint site.yml
 WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
 root@promitey:/home/srg/0802#
 ```
+<p align="center">
+  <img width="1200" src="ansible-lint-site.jpg ">
+</p>
 
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`
 ```
@@ -92,8 +95,6 @@ vector-01                  : ok=3    changed=0    unreachable=0    failed=0    s
 Проверил изменения в докере.
 ```
 root@promitey:/home/srg/0802# docker exec -it e9fab923ec72 /bin/bash
-[root@e9fab923ec72 /]# cat /vector-0.2
-cat: /vector-0.2: No such file or directory
 [root@e9fab923ec72 /]# cat /etc/vector/vector.toml
 #                                    __   __  __
 #                                    \ \ / / / /
