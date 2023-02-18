@@ -48,7 +48,9 @@ WARNING  Overriding detected file kind 'yaml' with 'playbook' for given position
 root@promitey:/home/srg/0802#
 
 ```
-
+<p align="center">
+  <img width="1200"  src="ansible-lint-site.jpg">
+</p>
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`
 ```
 Зпустил playbook. Завершился с ошибкой.
