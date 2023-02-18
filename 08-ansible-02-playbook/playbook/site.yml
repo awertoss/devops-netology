@@ -18,7 +18,7 @@
       rescue:
         - name: Get clickhouse distrib
           ansible.builtin.get_url:
-# https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm
+#rabochay ssylka https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
     - name: Install clickhouse packages
