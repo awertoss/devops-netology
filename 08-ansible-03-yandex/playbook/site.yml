@@ -57,6 +57,7 @@
       notify: Start vector service
 
 - name: Install lighthouse
+  tags: lighthouse
   hosts: lighthouse
 
   handlers:
