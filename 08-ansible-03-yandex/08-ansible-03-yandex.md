@@ -228,7 +228,6 @@ srg@promitey:~/0803$
 </br>
 Ссылка на readme файл [https://github.com/awertoss/devops-netology/blob/main/08-ansible-03-yandex/playbook/README.md]
 
-
 10. Готовый playbook выложите в свой репозиторий, поставьте тег 08-ansible-03-yandex на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
 [https://github.com/awertoss/devops-netology/tree/08-ansible-03-yandex/08-ansible-03-yandex/playbook]
