@@ -1,6 +1,6 @@
 ## Playbook
 
-Playbook устанавливает clichouse и vector на две виртуальные машины Centos7 docker, собранные с помощью docker-compose файла, запускает службу `clichouse-server` и `vector`, а также создает базу `logs` в `clichouse`. 
+Playbook устанавливает clichouse, vector и lighthouse на три подготовленные заранее хосты, запускает службу `clichouse-server` и `vector`, создает базу `logs` в `clichouse`. Устанавливает веб-север nginx, настраивает конфиги, и зарускает его. 
 
 ### Variables
 В каталоге group_vars задаются необходимые версии дистрибутивов.
@@ -8,7 +8,8 @@ Playbook устанавливает clichouse и vector на две виртуа
 |clickhouse_version|версия clickhous| 
 |-|--------|
 |vector_version|версия vector|
-
+|lighthouse_vcs|ссылка на репозиторий git lighthouse|
+|nginx_user_name|от какого пользователя запускать веб-сервер nginx|
     
  ### Install Clickhouse
  Скачиваются rpm пакеты, устанавливается Clickhouse, создается база logs. 
