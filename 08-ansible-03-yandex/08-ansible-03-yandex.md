@@ -33,7 +33,7 @@
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 
 ```
-Ошибок было много исправил.
+Ошибок было много, исправил.
 
 root@promitey:/home/srg/0803# ansible-lint site.yml
 WARNING  Overriding detected file kind 'yaml' with 'playbook' for given positional argument: site.yml
