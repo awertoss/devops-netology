@@ -224,11 +224,11 @@ vector-01                  : ok=3    changed=0    unreachable=0    failed=0    s
 srg@promitey:~/0803$
 
 ```
-8. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
 </br>
 Ссылка на readme файл [https://github.com/awertoss/devops-netology/blob/main/08-ansible-03-yandex/playbook/README.md]
 
-
+10. Готовый playbook выложите в свой репозиторий, поставьте тег 08-ansible-03-yandex на фиксирующий коммит, в ответ предоставьте ссылку на него.
 ### Как оформить ДЗ?
 
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
