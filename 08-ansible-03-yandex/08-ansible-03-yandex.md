@@ -41,6 +41,29 @@ root@promitey:/home/srg/0803#
 
 ```
 
+6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+
+```
+Завершился с ошибкой.
+root@promitey:/home/srg/0803# ansible-playbook site.yml -i inventory/prod.yml --check
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [Install Clickhouse] **********************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************************
+The authenticity of host '158.160.42.130 (158.160.42.130)' can't be established.
+ED25519 key fingerprint is SHA256:FTdYOjBDlNe/IYQKTbAxu2RaKtN8mnHeqVwZkCZpnas.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+fatal: [clickhouse-01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '158.160.42.130' (ED25519) to the list of known hosts.\r\nConnection closed by 158.160.42.130 port 22", "unreachable": true}
+
+PLAY RECAP *************************************************************************************************************************************************************
+clickhouse-01              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0
+
+root@promitey:/home/srg/0803#
+
+
+```
 
 
 
