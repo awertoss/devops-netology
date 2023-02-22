@@ -18,7 +18,7 @@
       rescue:
         - name: Get clickhouse distrib
           ansible.builtin.get_url:
-# https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm
+#rabochay ssylka https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
     - name: Install clickhouse packages
@@ -34,6 +34,7 @@
       register: create_db
       failed_when: create_db.rc != 0 and create_db.rc !=82
       changed_when: create_db.rc == 0
+
 
 - name: Install vector
   tags: vector
@@ -54,3 +55,69 @@
       ansible.builtin.yum:
         name: vector-{{ vector_version }}-1.x86_64.rpm
       notify: Start vector service
+
+- name: Install lighthouse
+  hosts: lighthouse
+
+  handlers:
+    - name: Start nginx service
+      become: true
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+  tasks:
+#    - name: Install epel-release | Install Nginx
+#      become: true
+#      yum:
+#        name: epel-release
+#        state: present
+    - name: Install Nginx 
+      become: true
+      yum:
+        name: nginx
+        state: present
+      notify: Start nginx service
+    - name: Install git | Install Nginx
+      become: true
+      yum:
+        name: git
+        state: present
+      notify: Start nginx service
+    - name: Create Nginx config | Install Nginx
+      become: true
+      template:
+        src: nginx.j2
+        dest: /etc/nginx/nginx.conf
+        mode: 0644
+      notify: Start nginx service
+    - name: Create Nginx config lighthouse | Install Nginx
+      become: true
+      template:
+        src: lighthouse.j2
+        dest: /etc/nginx/conf.d/lighthouse.conf
+        mode: 0644
+      notify: Start nginx service
+    - name: Start Nginx
+      become: true
+      ansible.builtin.systemd:
+        name: nginx
+        state: started
+    - name: Autorun Nginx
+      become: true
+      ansible.builtin.systemd:
+        name: nginx
+        enabled: true
+    - name: Create directory
+      become: true
+      ansible.builtin.file:
+        path: /var/www/lighthouse
+        state: directory
+        owner: nginx
+        group: nginx
+        mode: "0755"
+    - name: Copy lighthouse from git
+      git:
+        repo: "{{ lighthouse_vcs }}"
+        version: master
+        dest: "/var/www/lighthouse"
+      become: true
