@@ -1,6 +1,6 @@
 ## Playbook
 
-Playbook устанавливает clichouse, vector и lighthouse на три подготовленные заранее хосты, запускает службу `clichouse-server` и `vector`, создает базу `logs` в `clichouse`. Устанавливает веб-север nginx, настраивает конфиги, и зарускает его. 
+Playbook устанавливает clichouse, vector и lighthouse на три подготовленные заранее хосты, запускает службу `clichouse-server` и `vector`, создает базу `logs` в `clichouse`. В lighthouse-01 устанавливает веб-север nginx, настраивает конфиги, и стартует. Устанавливает git. 
 
 ### Variables
 В каталоге group_vars задаются необходимые версии дистрибутивов.
