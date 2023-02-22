@@ -133,7 +133,25 @@ vector-01                  : ok=3    changed=0    unreachable=0    failed=0    s
 
 ```
 
+```
+Проверяю изменения.
+srg@promitey:~/0803$ ssh 62.84.118.205
+[srg@lighthous-01 ~]$ cat /etc/nginx/conf.d/lighthouse.conf
+server {
+    listen       80;
+    server_name  localhost;
 
+    access_log /var/log/nginx/lighthouse_access__access_log compression;
+    error_log /var/log/nginx/lighthouse_access_log_error_log;
+
+    location / {
+        root   /var/www/lighthouse;
+        index   index.html;
+    }
+}[srg@lighthous-01 ~]$
+
+
+```
 
 
 
