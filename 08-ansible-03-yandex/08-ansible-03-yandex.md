@@ -62,11 +62,8 @@ clickhouse-01              : ok=0    changed=0    unreachable=1    failed=0    s
 
 root@promitey:/home/srg/0803#
 
-7. Запустите playbook на prod.yml окружении с флагом --diff. Убедитесь, что изменения на системе произведены.
-
-
 ```
-
+7. Запустите playbook на prod.yml окружении с флагом --diff. Убедитесь, что изменения на системе произведены.
 
 
 
