@@ -230,6 +230,9 @@ srg@promitey:~/0803$
 </br>
 
 10. Готовый playbook выложите в свой репозиторий, поставьте тег 08-ansible-03-yandex на фиксирующий коммит, в ответ предоставьте ссылку на него.
+</br>
+[https://github.com/awertoss/devops-netology/tree/08-ansible-03-yandex/08-ansible-03-yandex/playbook]
+
 ### Как оформить ДЗ?
 
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
