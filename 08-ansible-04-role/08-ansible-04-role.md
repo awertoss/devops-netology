@@ -29,8 +29,15 @@ root@promitey:/home/srg/0804/playbook#
 
 ```
 
-4. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
-5. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
+3. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
+```
+root@promitey:/home/srg/0804/playbook# ansible-galaxy role init vector-role
+- Role vector-role was created successfully
+root@promitey:/home/srg/0804/playbook#
+
+```
+
+4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
 6. Перенести нужные шаблоны конфигов в `templates`.
 7. Описать в `README.md` обе роли и их параметры.
 8. Повторите шаги 3-6 для lighthouse. Помните, что одна роль должна настраивать один продукт.
