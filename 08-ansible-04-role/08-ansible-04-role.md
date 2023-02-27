@@ -20,15 +20,24 @@
    ```
 Готово.</br>
 2. При помощи `ansible-galaxy` скачать себе эту роль.
-3. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
-4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
-5. Перенести нужные шаблоны конфигов в `templates`.
-6. Описать в `README.md` обе роли и их параметры.
-7. Повторите шаги 3-6 для lighthouse. Помните, что одна роль должна настраивать один продукт.
-8. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию Добавьте roles в `requirements.yml` в playbook.
-9. Переработайте playbook на использование roles. Не забудьте про зависимости lighthouse и возможности совмещения `roles` с `tasks`.
-10. Выложите playbook в репозиторий.
-11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
+```
+root@promitey:/home/srg/0804/playbook# ansible-galaxy install -r requirements.yml
+Starting galaxy role install process
+- extracting clickhouse to /root/.ansible/roles/clickhouse
+- clickhouse (1.11.0) was installed successfully
+root@promitey:/home/srg/0804/playbook#
+
+```
+
+4. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
+5. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
+6. Перенести нужные шаблоны конфигов в `templates`.
+7. Описать в `README.md` обе роли и их параметры.
+8. Повторите шаги 3-6 для lighthouse. Помните, что одна роль должна настраивать один продукт.
+9. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию Добавьте roles в `requirements.yml` в playbook.
+10. Переработайте playbook на использование roles. Не забудьте про зависимости lighthouse и возможности совмещения `roles` с `tasks`.
+11. Выложите playbook в репозиторий.
+12. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
 
 ---
 
