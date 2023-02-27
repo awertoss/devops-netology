@@ -18,7 +18,7 @@
        version: "1.11.0"
        name: clickhouse 
    ```
-Готово.
+Готово.</br>
 2. При помощи `ansible-galaxy` скачать себе эту роль.
 3. Создать новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
