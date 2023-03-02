@@ -1,3 +1,2 @@
 # vars file for lighthouse-role
-lighthouse_vcs: https://github.com/VKCOM/lighthouse.git
-nginx_user_name: root
+
