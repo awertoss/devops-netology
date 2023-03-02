@@ -58,6 +58,8 @@ root@promitey:/home/srg/0804/playbook# ansible-galaxy role init clickhouse-role
 
 7. Повторите шаги 3-6 для lighthouse. Помните, что одна роль должна настраивать один продукт.
 8. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию Добавьте roles в `requirements.yml` в playbook.
+</br>
+[<a href="https://github.com/awertoss/devops-netology/blob/main/08-ansible-04-role/playbook/requirements.yml">]
 9. Переработайте playbook на использование roles. Не забудьте про зависимости lighthouse и возможности совмещения `roles` с `tasks`.
 10. Выложите playbook в репозиторий.
 11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
