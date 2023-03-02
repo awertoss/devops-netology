@@ -35,6 +35,13 @@ root@promitey:/home/srg/0804/playbook# ansible-galaxy role init vector-role
 - Role vector-role was created successfully
 root@promitey:/home/srg/0804/playbook#
 
+root@promitey:/home/srg/0804/playbook# ansible-galaxy role init lighthouse-role
+- Role lighthouse-role was created successfully
+
+root@promitey:/home/srg/0804/playbook# ansible-galaxy role init clickhouse-role
+- Role clickhouse-role was created successfully
+
+
 ```
 
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
