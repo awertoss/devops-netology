@@ -27,14 +27,3 @@ Playbook устанавливает clichouse, vector и lighthouse на три 
 |vector|производит полную конфигурацию сервера vector-01|
 |vector|производит полную конфигурацию сервера lighthouse-01|
    
-Для работы playbook необходимо:
- - собрать и запустить из `docker-compose.yml` файла две виртуальные машины.
-```shell
-docker-compose up
-Проверить, что docker-контейнеры запущены
-docker ps
-```
- - запустить `ansible-playbook`:
-```shell
-ansible-playbook -i inventory/prod.yml site.yml
-```
