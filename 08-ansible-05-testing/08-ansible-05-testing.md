@@ -393,6 +393,8 @@ root@promitey:~/.ansible/roles/vector-role#
 ```
 
 6. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
+[vector-role v1.1.0](https://github.com/awertoss/vector-role/tree/1.1.0)
+
 
 ### Tox
 
