@@ -90,6 +90,14 @@ INFO     Pruning extra files from scenario ephemeral directory
 
 ```
 2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.
+```
+root@promitey:~/.ansible/roles/vector-role# molecule init scenario --driver-name docker
+INFO     Initializing new scenario default...
+INFO     Initialized scenario in /root/.ansible/roles/vector-role/molecule/default successfully.
+root@promitey:~/.ansible/roles/vector-role#
+
+```
+
 3. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
 5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
