@@ -292,6 +292,8 @@ root@promitey:~/.ansible/roles/vector-role#
 
 ```
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
+[verify.yml](https://github.com/awertoss/vector-role/blob/main/molecule/centos/verify.yml)
+
 5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
 ```
 root@promitey:~/.ansible/roles/vector-role# molecule test -s centos
