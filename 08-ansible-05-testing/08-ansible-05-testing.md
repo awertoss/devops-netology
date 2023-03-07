@@ -502,7 +502,7 @@ ERROR:   py39-ansible30: commands failed
 ```
 4. Создайте облегчённый сценарий для `molecule` с драйвером `molecule_podman`. Проверьте его на исполнимость.
 ```
-# molecule init scenario tox --driver-name=molecule_podman
+# molecule init scenario tox --driver-name=podman
 -----------------------------------
 scenario:
   test_sequence:
