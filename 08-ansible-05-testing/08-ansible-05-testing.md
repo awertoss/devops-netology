@@ -501,7 +501,30 @@ ERROR:   py39-ansible30: commands failed
 [root@a2c20545d64d vector-role]#
 ```
 4. Создайте облегчённый сценарий для `molecule` с драйвером `molecule_podman`. Проверьте его на исполнимость.
+```
+# molecule init snenario tox --driver-name=molecule_podman
+
+```
+
 5. Пропишите правильную команду в `tox.ini`, чтобы запускался облегчённый сценарий.
+```
+[tox]
+minversion = 1.8
+basepython = python3.6
+envlist = py{37,39}-ansible{210,30}
+skipsdist = true
+
+[testenv]
+passenv = *
+deps =
+    -r tox-requirements.txt
+    ansible210: ansible<3.0
+    ansible30: ansible<3.1
+commands =
+    {posargs:molecule test -s tox --destroy always}
+
+```
+
 6. Запустите команду `tox`. Убедитесь, что всё отработало успешно.
 7. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
