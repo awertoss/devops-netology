@@ -35,6 +35,7 @@
 
 1. [Конфигурация VirtualBox через Vagrant](https://www.vagrantup.com/docs/providers/virtualbox/configuration.html).
 2. [Использование условий в Bash](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html).
+3. [Линукс](https://vseprolinux.ru).
 
 ------
 
