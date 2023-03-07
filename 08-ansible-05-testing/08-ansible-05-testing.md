@@ -506,7 +506,6 @@ ERROR:   py39-ansible30: commands failed
 
 #yum -y install podman
 
-# molecule init scenario tox --driver-name=podman
 -----------------------------------
 scenario:
   test_sequence:
@@ -947,12 +946,13 @@ ERROR:   py39-ansible30: commands failed
 
 </details>
 7. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
-    <p align="center">
+   После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
+ <p align="center">
   <img width="1200" src="tox0.jpg">
 </p>
-
-После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
-
+Tox [https://github.com/awertoss/vector-role/tree/1.2.0]
+ <br/>
+ Molecule [https://github.com/awertoss/vector-role/tree/1.1.0]   
 ## Необязательная часть
 
 1. Проделайте схожие манипуляции для создания роли LightHouse.
