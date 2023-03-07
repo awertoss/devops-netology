@@ -953,6 +953,8 @@ ERROR:   py39-ansible30: commands failed
 Tox [https://github.com/awertoss/vector-role/tree/1.2.0]
  <br/>
  Molecule [https://github.com/awertoss/vector-role/tree/1.1.0]   
+
+    
 ## Необязательная часть
 
 1. Проделайте схожие манипуляции для создания роли LightHouse.
