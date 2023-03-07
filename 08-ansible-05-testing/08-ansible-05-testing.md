@@ -398,7 +398,7 @@ root@promitey:~/.ansible/roles/vector-role#
 
 ### Tox
 
-1. Добавьте в директорию с vector-role файлы из [директории](./example).
+1. Добавьте в директорию с vector-role файлы из директории.
 2. Запустите `docker run --privileged=True -v <path_to_repo>:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash`, где path_to_repo — путь до корня репозитория с vector-role на вашей файловой системе.
 ```
 root@promitey:/home/srg/vector-rol/vector-role# docker run --privileged=True -v /home/srg/0805/playbook/vector-role/:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash
