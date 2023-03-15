@@ -224,6 +224,11 @@ engine, or trying out features under development. This is a rapidly changing sou
 ```
 
 **Шаг 9.** В эту collection перенесите свой module в соответствующую директорию.
+```
+mkdir my_own_namespace/yandex_cloud_elk/plugins/modules
+root@promitey:/home/srg/0806/ansible# cp lib/ansible/modules/my_own_module.py my_own_namespace/yandex_cloud_elk/plugins/modules/my_own_module.py
+
+```
 
 **Шаг 10.** Single task playbook преобразуйте в single task role и перенесите в collection. У role должны быть default всех параметров module.
 
