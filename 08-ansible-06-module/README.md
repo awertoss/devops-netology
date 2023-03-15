@@ -208,8 +208,20 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 ```
 
 **Шаг 7.** Выйдите из виртуального окружения.
+```
+(venv) root@promitey:/home/srg/0806/ansible# deactivate
+root@promitey:/home/srg/0806/ansible#
+
+```
 
 **Шаг 8.** Инициализируйте новую collection: `ansible-galaxy collection init my_own_namespace.yandex_cloud_elk`.
+```
+root@promitey:/home/srg/0806/ansible# ansible-galaxy collection init my_own_namespace.yandex_cloud_elk
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible
+engine, or trying out features under development. This is a rapidly changing source of code and can become unstable at any point.
+- Collection my_own_namespace.yandex_cloud_elk was created successfully
+
+```
 
 **Шаг 9.** В эту collection перенесите свой module в соответствующую директорию.
 
