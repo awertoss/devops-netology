@@ -239,6 +239,21 @@ engine, or trying out features under development. This is a rapidly changing sou
 root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/roles#
 
 ```
+```
+root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/roles/single_task_role/tasks/main.yml
+---
+# tasks file for single_task_role
+---
+- name: run module
+  my_own_module:
+    path: "{{ path }}"
+    content: "{{ content }}"
+  register: testout
+- name: dump test output
+  debug:
+    msg: '{{ testout }}'
+
+```
 
 **Шаг 11.** Создайте playbook для использования этой role.
 
