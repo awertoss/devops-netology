@@ -161,6 +161,13 @@ if __name__ == '__main__':
 **Шаг 3.** Заполните файл в соответствии с требованиями Ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
 
 **Шаг 4.** Проверьте module на исполняемость локально.
+```
+(venv) root@promitey:/home/srg/0806/ansible# python -m ansible.modules.my_own_module payload.json
+
+{"changed": true, "invocation": {"module_args": {"path": "/tmp/myfile.txt", "content": "Example text message"}}}
+(venv) root@promitey:/home/srg/0806/ansible#
+
+```
 
 **Шаг 5.** Напишите single task playbook и используйте module в нём.
 
