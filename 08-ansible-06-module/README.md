@@ -265,6 +265,15 @@ root@promitey:/home/srg/0806/ansible#
 ```
 
 **Шаг 11.** Создайте playbook для использования этой role.
+```
+root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/playbook/single_task_role.yml
+---
+- name: Run my_own_module
+  hosts: localhost
+  roles:
+    - single_task_roleroot@promitey:/home/srg/0806/ansible#
+
+```
 
 **Шаг 12.** Заполните всю документацию по collection, выложите в свой репозиторий, поставьте тег `1.0.0` на этот коммит.
 
