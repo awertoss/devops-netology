@@ -170,8 +170,42 @@ if __name__ == '__main__':
 ```
 
 **Шаг 5.** Напишите single task playbook и используйте module в нём.
+```
+(venv) root@promitey:/home/srg/0806/ansible# cat site.yml
+---
+- name: test my_own_module
+  hosts: localhost
+  tasks:
+  - name: run module
+    my_own_module:
+      path: '/tmp/myfile.txt'
+      content: 'NEW Example text message'
+    register: testout
+
+```
 
 **Шаг 6.** Проверьте через playbook на идемпотентность.
+```
+(venv) root@promitey:/home/srg/0806/ansible# ansible-playbook site.yml
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible
+engine, or trying out features under development. This is a rapidly changing source of code and can become unstable at any point.
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [test my_own_module] ********************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+ok: [localhost]
+
+TASK [run module] ****************************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP ***********************************************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+(venv) root@promitey:/home/srg/0806/ansible#
+
+```
 
 **Шаг 7.** Выйдите из виртуального окружения.
 
