@@ -254,6 +254,15 @@ root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/role
     msg: '{{ testout }}'
 
 ```
+```
+root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/roles/single_task_role/defaults/main.yml
+---
+# defaults file for single_task_role
+path: '/tmp/testfile.txt'
+content: 'NEW Example text message. Single Task Role'
+root@promitey:/home/srg/0806/ansible#
+
+```
 
 **Шаг 11.** Создайте playbook для использования этой role.
 
