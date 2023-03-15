@@ -232,11 +232,11 @@ root@promitey:/home/srg/0806/ansible# cp lib/ansible/modules/my_own_module.py my
 
 **Шаг 10.** Single task playbook преобразуйте в single task role и перенесите в collection. У role должны быть default всех параметров module.
 ```
-root@promitey:/home/srg/0806/ansible# ansible-galaxy role init single_task_role
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/roles# ansible-galaxy role init single_task_role
 [WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible
 engine, or trying out features under development. This is a rapidly changing source of code and can become unstable at any point.
 - Role single_task_role was created successfully
-root@promitey:/home/srg/0806/ansible#
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/roles#
 
 ```
 
