@@ -337,6 +337,8 @@ root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_
 ```
 
 **Шаг 17.** В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.
+[https://github.com/awertoss/my_own_collection]
+
 
 ## Необязательная часть
 
