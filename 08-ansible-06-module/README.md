@@ -276,6 +276,7 @@ root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/play
 ```
 
 **Шаг 12.** Заполните всю документацию по collection, выложите в свой репозиторий, поставьте тег `1.0.0` на этот коммит.
+[https://github.com/awertoss/my_own_collection/tree/1.0.0]
 
 **Шаг 13.** Создайте .tar.gz этой collection: `ansible-galaxy collection build` в корневой директории collection.
 
