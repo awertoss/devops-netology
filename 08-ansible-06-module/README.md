@@ -299,6 +299,19 @@ root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp playb
 ```
 
 **Шаг 15.** Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`.
+```
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cd one_more_time_collection/
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_time_collection# ansible-galaxy collection install my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible engine, or trying out
+features under development. This is a rapidly changing source of code and can become unstable at any point.
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'my_own_namespace.yandex_cloud_elk:1.0.0' to '/root/.ansible/collections/ansible_collections/my_own_namespace/yandex_cloud_elk'
+my_own_namespace.yandex_cloud_elk:1.0.0 was installed successfully
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_time_collection#
+
+```
 
 **Шаг 16.** Запустите playbook, убедитесь, что он работает.
 
