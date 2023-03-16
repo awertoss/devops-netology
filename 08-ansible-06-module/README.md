@@ -288,12 +288,12 @@ root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk#
 
 ```
 
-**Шаг 14.** Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
+**Шаг 14.** Создайте ещё одну директорию любого наименования, перенесите туда single task playbook (у меня файл называется site.yml) и архив c collection.
 ```
 
 root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# mkdir one_more_time_collection
 root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz  one_more_time_collection/
-root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp playbook/single_task_role.yml one_more_time_collection/
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp /home/srg/0806/ansible/site.yml one_more_time_collection/
 
 
 ```
@@ -314,6 +314,27 @@ root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_
 ```
 
 **Шаг 16.** Запустите playbook, убедитесь, что он работает.
+```
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_time_collection# ansible-playbook site.yml
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible engine, or trying out
+features under development. This is a rapidly changing source of code and can become unstable at any point.
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [test my_own_module] *************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************
+ok: [localhost]
+
+TASK [run module] *********************************************************************************************************************************************
+ok: [localhost]
+
+PLAY RECAP ****************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/one_more_time_collection#
+
+```
 
 **Шаг 17.** В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.
 
