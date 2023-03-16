@@ -289,6 +289,14 @@ root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk#
 ```
 
 **Шаг 14.** Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
+```
+
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# mkdir one_more_time_collection
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz  one_more_time_collection/
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# cp playbook/single_task_role.yml one_more_time_collection/
+
+
+```
 
 **Шаг 15.** Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`.
 
