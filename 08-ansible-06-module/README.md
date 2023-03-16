@@ -279,6 +279,14 @@ root@promitey:/home/srg/0806/ansible# cat my_own_namespace/yandex_cloud_elk/play
 [https://github.com/awertoss/my_own_collection/tree/1.0.0]
 
 **Шаг 13.** Создайте .tar.gz этой collection: `ansible-galaxy collection build` в корневой директории collection.
+```
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk# ansible-galaxy collection build
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from "devel" if you are modifying the Ansible
+engine, or trying out features under development. This is a rapidly changing source of code and can become unstable at any point.
+Created collection for my_own_namespace.yandex_cloud_elk at /home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk/my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz
+root@promitey:/home/srg/0806/ansible/my_own_namespace/yandex_cloud_elk#
+
+```
 
 **Шаг 14.** Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
 
