@@ -9,7 +9,8 @@
 ## Основная часть
 
 ```
-Взял Джиру тут https://github.com/atlassian/github-for-jira.git
+kanban = Projects -> Create project -> Kanban -> Use template -> Company-managed -> Create project
+scrum = Projects -> Create project -> Scrum -> Use template -> Company-managed -> Create project
 ```
 
 Необходимо создать собственные workflow для двух типов задач: bug и остальные типы задач. Задачи типа bug должны проходить жизненный цикл:
