@@ -55,8 +55,8 @@ Settings -> Issues -> Workflows -> Add workflow -> other
 6. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow приложите к решению задания.
 
 ---
-[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/bug.xml]
-[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/other.xml]
+[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/bug.xml] 
+<p>[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/other.xml]</p>
 
 ### Как оформить решение задания
 
