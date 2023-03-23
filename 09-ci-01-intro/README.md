@@ -26,6 +26,10 @@ scrum = Projects -> Create project -> Scrum -> Use template -> Company-managed -
 ```
 Settings -> Issues -> Workflows -> Add workflow -> bug
 ```
+<p align="center">
+  <img width="1200"  src="bug.jpg">
+</p>
+
 Остальные задачи должны проходить по упрощённому workflow:
 
 1. Open -> On develop.
@@ -37,6 +41,9 @@ Settings -> Issues -> Workflows -> Add workflow -> bug
 ```
 Settings -> Issues -> Workflows -> Add workflow -> other
 ```
+<p align="center">
+  <img width="1200"  src="other.jpg">
+</p>
 
 **Что нужно сделать**
 
@@ -48,6 +55,8 @@ Settings -> Issues -> Workflows -> Add workflow -> other
 6. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow приложите к решению задания.
 
 ---
+[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/bug.xml]
+[https://github.com/awertoss/devops-netology/blob/main/09-ci-01-intro/other.xml]
 
 ### Как оформить решение задания
 
