@@ -24,7 +24,7 @@ scrum = Projects -> Create project -> Scrum -> Use template -> Company-managed -
 7. Done -> Closed, Open.
 
 ```
-Settings -> Issues -> Workflows -> Add workflow -> bug
+Project settings -> Issues -> Workflows -> Add workflow -> bug
 ```
 Остальные задачи должны проходить по упрощённому workflow:
 
