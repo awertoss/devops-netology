@@ -23,6 +23,9 @@ scrum = Projects -> Create project -> Scrum -> Use template -> Company-managed -
 6. On test -> On fix, Done.
 7. Done -> Closed, Open.
 
+```
+Settings -> Issues -> Workflows -> Add workflow -> bug
+```
 Остальные задачи должны проходить по упрощённому workflow:
 
 1. Open -> On develop.
