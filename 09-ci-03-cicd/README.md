@@ -371,6 +371,10 @@ root@promitey:/home/srg/0903#
 
 1. Скачайте дистрибутив с [maven](https://maven.apache.org/download.cgi).
 2. Разархивируйте, сделайте так, чтобы binary был доступен через вызов в shell (или поменяйте переменную PATH, или любой другой, удобный вам способ).
+```
+root@promitey:/home/srg/0903/apache-maven-3.9.1/bin# export PATH=$(pwd):$PATH
+
+```
 3. Удалите из `apache-maven-<version>/conf/settings.xml` упоминание о правиле, отвергающем HTTP- соединение — раздел mirrors —> id: my-repository-http-unblocker.
 4. Проверьте `mvn --version`.
 5. Заберите директорию [mvn](./mvn) с pom.
