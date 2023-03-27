@@ -12,6 +12,9 @@
 8. Подключитесь под admin\admin123, поменяйте пароль, сохраните анонимный доступ.
 
 ## Знакомоство с SonarQube
+```
+ansible-playbook site.yml -i inventory/cicd/hosts.yml
+```
 
 ### Основная часть
 
