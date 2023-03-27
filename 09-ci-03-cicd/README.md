@@ -225,6 +225,11 @@ INFO: Project root configuration file: NONE
 INFO: SonarScanner 4.8.0.2856
 INFO: Java 11.0.17 Eclipse Adoptium (64-bit)
 INFO: Linux 5.15.0-56-generic amd64
+
+```
+
+5. Запустите анализатор против кода из директории [example](./example) с дополнительным ключом `-Dsonar.coverage.exclusions=fail.py`.
+```
 root@promitey:/home/srg/0903# sonar-scanner \
 >   -Dsonar.projectKey=sonar \
 >   -Dsonar.sources=. \
@@ -333,11 +338,8 @@ INFO: Total time: 38.268s
 INFO: Final Memory: 17M/60M
 INFO: ------------------------------------------------------------------------
 root@promitey:/home/srg/0903#
-
-
 ```
 
-5. Запустите анализатор против кода из директории [example](./example) с дополнительным ключом `-Dsonar.coverage.exclusions=fail.py`.
 6. Посмотрите результат в интерфейсе.
 7. Исправьте ошибки, которые он выявил, включая warnings.
 8. Запустите анализатор повторно — проверьте, что QG пройдены успешно.
