@@ -402,6 +402,9 @@ OS name: "linux", version: "5.15.0-56-generic", arch: "amd64", family: "unix"
 2. Запустите команду `mvn package` в директории с `pom.xml`, ожидайте успешного окончания.
 3. Проверьте директорию `~/.m2/repository/`, найдите ваш артефакт.
 4. В ответе пришлите исправленный файл `pom.xml`.
+<p>
+[https://github.com/awertoss/devops-netology/blob/main/09-ci-03-cicd/pom.xml]
+</p>
 
 ---
 
