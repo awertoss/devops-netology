@@ -367,6 +367,10 @@ root@promitey:/home/srg/0903#
 2. В него же загрузите такой же артефакт, но с version: 8_102.
 3. Проверьте, что все файлы загрузились успешно.
 4. В ответе пришлите файл `maven-metadata.xml` для этого артефекта.
+<p>
+[https://github.com/awertoss/devops-netology/blob/main/09-ci-03-cicd/maven-metadata.xml]  
+</p>
+
 
 ### Знакомство с Maven
 
