@@ -384,6 +384,16 @@ root@promitey:/home/srg/0903/apache-maven-3.9.1/bin# export PATH=$(pwd):$PATH
 ```
 3. Удалите из `apache-maven-<version>/conf/settings.xml` упоминание о правиле, отвергающем HTTP- соединение — раздел mirrors —> id: my-repository-http-unblocker.
 4. Проверьте `mvn --version`.
+```
+root@promitey:/home/srg/0903/apache-maven-3.9.1/bin# mvn -version
+Apache Maven 3.9.1 (2e178502fcdbffc201671fb2537d0cb4b4cc58f8)
+Maven home: /home/srg/0903/apache-maven-3.9.1
+Java version: 11.0.18, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd64
+Default locale: ru_RU, platform encoding: UTF-8
+OS name: "linux", version: "5.15.0-56-generic", arch: "amd64", family: "unix"
+
+```
+
 5. Заберите директорию [mvn](./mvn) с pom.
 
 ### Основная часть
