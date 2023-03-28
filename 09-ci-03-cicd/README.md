@@ -348,6 +348,9 @@ root@promitey:/home/srg/0903#
 <p align="center">
   <img width="1200" src="sonar.jpg">
 </p>
+<p align="center">
+  <img width="1200" src="sonar1.jpg">
+</p>
 
 ## Знакомство с Nexus
 
