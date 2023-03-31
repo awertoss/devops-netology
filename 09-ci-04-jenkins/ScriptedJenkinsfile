@@ -1,0 +1,16 @@
+agent("linux"){
+   stage("Git checkout"){
+       git credentialsId: '6808eaf8-e5cd-438d-8757-73bf421b5b47', url: 'git@github.com:awertoss/vector-role.git'
+   }
+   stage("Show prod_run"){
+       echo prod_run
+   }
+   stage("Run playbook"){
+       if (prod_run == 'True'){
+           echo " sh 'ansible-playbook site.yml -i inventory/prod.yml' "
+       }
+       else{
+           echo " sh 'ansible-playbook site.yml -i inventory/prod.yml --diff --check' "
+       }
+   }
+}
