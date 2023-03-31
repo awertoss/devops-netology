@@ -343,6 +343,18 @@ Finished: FAILURE
  </details>
  
 2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
+ <p>
+  Шаги:
+  </p>
+ 
+ ```
+ sh '''pip3 install "molecule==3.5.2" "molecule_docker"
+molecule --version
+docker pull aragast/netology:latest
+pwd
+ls -l
+molecule test -s centos'''
+ ```
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
