@@ -671,6 +671,9 @@ Finished: FAILURE
   <img width="1200" src="multibranch.jpg">
 </p>
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
+                 <p>
+                 [https://github.com/awertoss/devops-netology/blob/main/09-ci-04-jenkins/pipeline/Jenkinsfile]
+                 </p>
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True). По умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
