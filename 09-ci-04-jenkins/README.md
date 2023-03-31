@@ -664,6 +664,12 @@ Finished: FAILURE
 [https://github.com/awertoss/vector-role/blob/main/Jenkinsfile]
 </p>
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
+                <p>
+                 Тест тоже завершился с ошибкой.
+                 </p>
+                 <p align="center">
+  <img width="1200" src="multibranch.jpg">
+</p>
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True). По умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
