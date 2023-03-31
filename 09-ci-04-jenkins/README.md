@@ -699,10 +699,11 @@ Finished: FAILURE
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
 <p>
 [https://github.com/awertoss/devops-netology/blob/main/09-ci-04-jenkins/ScriptedJenkinsfile]
-                 </p>
+</p>
 <p>
-        https://github.com/awertoss/devops-netology/blob/main/09-ci-04-jenkins/Jenkinsfile   
-                 </p>
+ [https://github.com/awertoss/devops-netology/blob/main/09-ci-04-jenkins/Jenkinsfile]   
+</p>
+                 
 ## Необязательная часть
 
 1. Создать скрипт на groovy, который будет собирать все Job, завершившиеся хотя бы раз неуспешно. Добавить скрипт в репозиторий с решением и названием `AllJobFailure.groovy`.
