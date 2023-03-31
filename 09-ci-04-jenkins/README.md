@@ -659,7 +659,10 @@ ERROR: script returned exit code 1
 Finished: FAILURE
  ```
  </details>
-3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.
+3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.<
+<p>
+[https://github.com/awertoss/vector-role/blob/main/Jenkinsfile]
+</p>
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline).
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True). По умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
