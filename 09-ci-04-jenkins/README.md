@@ -112,6 +112,7 @@ srg@promitey:~/0904/infrastructure$
 <p>
 Шаги сборки:
 </p>
+
 ```
 pip3 install "molecule==3.5.2" "molecule_docker"
 molecule --version
@@ -120,12 +121,11 @@ pwd
 ls -l
 #molecule init scenario --driver-name docker
 molecule test -s centos
-
 ```
+
 <details><summary>Logs</summary>
  
 ```
-
 Started by user srg
 Running as SYSTEM
 Building remotely on agent (linux ansible) in workspace /opt/jenkins_agent/workspace/Freestyle
