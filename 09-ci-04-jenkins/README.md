@@ -111,7 +111,7 @@ srg@promitey:~/0904/infrastructure$
 1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
 <details><summary>Logs</summary>
 ```
-log
+
 Started by user srg
 Running as SYSTEM
 Building remotely on agent (linux ansible) in workspace /opt/jenkins_agent/workspace/Freestyle
@@ -325,6 +325,8 @@ Build step 'Execute shell' marked build as failure
 Finished: FAILURE
 
 ```
+ </details>
+ 
 2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`.
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
