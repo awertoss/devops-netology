@@ -110,6 +110,7 @@ srg@promitey:~/0904/infrastructure$
 
 1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
 <details><summary>Logs</summary>
+ 
 ```
 
 Started by user srg
@@ -325,6 +326,7 @@ Build step 'Execute shell' marked build as failure
 Finished: FAILURE
 
 ```
+ 
  </details>
  
 2. Сделать Declarative Pipeline Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
