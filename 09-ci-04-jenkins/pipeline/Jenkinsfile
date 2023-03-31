@@ -1,4 +1,4 @@
-agent("linux"){
+node("linux"){
     stage("Git checkout"){
         git credentialsId: '6808eaf8-e5cd-438d-8757-73bf421b5b47', url: 'git@github.com:awertoss/vector-role.git'
     }
