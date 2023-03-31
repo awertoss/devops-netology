@@ -677,9 +677,9 @@ Finished: FAILURE
 6. Внести необходимые изменения, чтобы Pipeline запускал `ansible-playbook` без флагов `--check --diff`, если не установлен параметр при запуске джобы (prod_run = True). По умолчанию параметр имеет значение False и запускает прогон с флагами `--check --diff`.
  
  ```
-      agent("linux"){
+      node("linux"){
     stage("Git checkout"){
-        git credentialsId: '6808eaf8-e5cd-438d-8757-73bf421b5b47', url: 'git@github.com:awertoss/vector-role.git'
+        git credentialsId: '5ac0095d-0185-431b-94da-09a0ad9b0e2c', url: 'git@github.com:aragastmatb/example-playbook.git'
     }
     stage("Show prod_run"){
         echo prod_run
@@ -696,6 +696,9 @@ Finished: FAILURE
 ```
                  
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
+<p>
+Проверить не удалось так как нужен ключ от githab  '5ac0095d-0185-431b-94da-09a0ad9b0e2c', url: 'git@github.com:aragastmatb/example-playbook.git'
+</p>
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
 <p>
 [https://github.com/awertoss/devops-netology/blob/main/09-ci-04-jenkins/ScriptedJenkinsfile]
