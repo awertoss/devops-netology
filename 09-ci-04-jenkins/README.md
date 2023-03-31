@@ -109,6 +109,19 @@ srg@promitey:~/0904/infrastructure$
 ## Основная часть
 
 1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
+<p>
+Шаги сборки:
+</p>
+```
+pip3 install "molecule==3.5.2" "molecule_docker"
+molecule --version
+docker pull aragast/netology:latest
+pwd
+ls -l
+#molecule init scenario --driver-name docker
+molecule test -s centos
+
+```
 <details><summary>Logs</summary>
  
 ```
