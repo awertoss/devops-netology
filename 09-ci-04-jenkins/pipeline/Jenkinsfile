@@ -1,6 +1,6 @@
 node("linux"){
     stage("Git checkout"){
-        git credentialsId: '6808eaf8-e5cd-438d-8757-73bf421b5b47', url: 'git@github.com:awertoss/vector-role.git'
+   git credentialsId: '5ac0095d-0185-431b-94da-09a0ad9b0e2c', url: 'git@github.com:aragastmatb/example-playbook.git'
     }
     stage("Sample define secret_check"){
         secret_check=true
