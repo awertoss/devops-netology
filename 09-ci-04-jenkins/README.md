@@ -696,8 +696,8 @@ Finished: FAILURE
 ```
                  
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
-<p>
-Проверить не удалось так как нужен ключ от githab  '5ac0095d-0185-431b-94da-09a0ad9b0e2c', url: 'git@github.com:aragastmatb/example-playbook.git'
+<p align="center">
+  <img width="1200" src="check.jpg">
 </p>
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
 <p>
