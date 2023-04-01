@@ -1,6 +1,6 @@
 node("linux"){
    stage("Git checkout"){
-        git credentialsId: '1829e7da-eec6-4dfc-9465-a22c4a30691b', url: 'git@github.com:aragastmatb/example-playbook.git'
+       git credentialsId: '5ac0095d-0185-431b-94da-09a0ad9b0e2c', url: 'git@github.com:aragastmatb/example-playbook.git'
    }
    stage("Show prod_run"){
        echo prod_run
