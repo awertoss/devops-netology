@@ -697,6 +697,9 @@ Finished: FAILURE
                  
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозиторий в файл `ScriptedJenkinsfile`.
 <p align="center">
+  <img width="1200" src="prod_run.jpg">
+</p>
+ <p align="center">
   <img width="1200" src="check.jpg">
 </p>
 8. Отправить ссылку на репозиторий с ролью и Declarative Pipeline и Scripted Pipeline.
