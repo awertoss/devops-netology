@@ -109,6 +109,14 @@ srg@promitey:~/0904/infrastructure$
 ## Основная часть
 
 1. Сделать Freestyle Job, который будет запускать `molecule test` из любого вашего репозитория с ролью.
+
+Были ошибки подключения к github. В мастере изменил файл known_hosts
+
+```
+su - jenkins
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+```
+
 <p>
 Шаги сборки:
 </p>
