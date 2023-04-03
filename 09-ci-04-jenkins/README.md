@@ -116,6 +116,14 @@ srg@promitey:~/0904/infrastructure$
 su - jenkins
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 ```
+Были ошибки в molecule "Unsupported parametrs".
+```
+Обновил python.
+
+[root@jenkins-master bin]# python -V
+Python 3.9.6
+
+```
 
 <p>
 Шаги сборки:
