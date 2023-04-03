@@ -130,7 +130,8 @@ Python 3.9.6
 </p>
 
 ```
-pip3 install "molecule==3.5.2" "molecule_docker"
+#pip3 install "molecule==3.5.2" "molecule_docker"
+python pip install molecule==3.5.2 molecule_docker
 molecule --version
 docker pull aragast/netology:latest
 pwd
