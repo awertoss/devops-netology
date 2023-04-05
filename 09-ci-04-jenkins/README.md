@@ -309,14 +309,14 @@ Finished: FAILURE
     stages {
         stage('Git') {
             steps{
-                git branch: 'main', credentialsId: '6808eaf8-e5cd-438d-8757-73bf421b5b47', url: 'git@github.com:awertoss/vector-role.git'
+                git branch: 'main', credentialsId: '7b188317-b12a-4e64-9c1f-933df2cedf29', url: 'git@github.com:awertoss/vector-role.git'
             }
         }
         stage('Molecule install') {
             steps{
-                sh 'pip install molecule==3.5.2'
-                sh 'pip install "ansible-lint<6.0.0"'
-                sh 'pip install molecule_docker'
+                sh 'pip3 install molecule==3.5.2'
+                sh 'pip3 install "ansible-lint<6.0.0"'
+                sh 'pip3 install molecule_docker'
             }
         }
         stage('Molecule test'){
@@ -342,178 +342,156 @@ Running on agent in /opt/jenkins_agent/workspace/Declarative Pipeline
 [Pipeline] stage
 [Pipeline] { (Git)
 [Pipeline] git
-Selected Git installation does not exist. Using Default
 The recommended git tool is: NONE
-using credential 6808eaf8-e5cd-438d-8757-73bf421b5b47
-Cloning the remote Git repository
-Cloning repository git@github.com:awertoss/vector-role.git
- > git init /opt/jenkins_agent/workspace/Declarative Pipeline # timeout=10
+using credential 7b188317-b12a-4e64-9c1f-933df2cedf29
+Fetching changes from the remote Git repository
+ > git rev-parse --resolve-git-dir /opt/jenkins_agent/workspace/Declarative Pipeline/.git # timeout=10
+ > git config remote.origin.url git@github.com:awertoss/vector-role.git # timeout=10
 Fetching upstream changes from git@github.com:awertoss/vector-role.git
  > git --version # timeout=10
  > git --version # 'git version 1.8.3.1'
 using GIT_SSH to set credentials 
 [INFO] Currently running in a labeled security context
 [INFO] Currently SELinux is 'enforcing' on the host
- > /usr/bin/chcon --type=ssh_home_t /opt/jenkins_agent/workspace/Declarative Pipeline@tmp/jenkins-gitclient-ssh6751431708866755502.key
+ > /usr/bin/chcon --type=ssh_home_t /opt/jenkins_agent/workspace/Declarative Pipeline@tmp/jenkins-gitclient-ssh16627504821266965998.key
 Verifying host key using known hosts file
  > git fetch --tags --progress git@github.com:awertoss/vector-role.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Avoid second fetch
-Checking out Revision 77f117afa2127f9c5aedda74259c0683d72e3d75 (refs/remotes/origin/main)
-Commit message: "	new file:   molecule/tox/converge.yml 	new file:   molecule/tox/molecule.yml 	new file:   molecule/tox/verify.yml 	new file:   tox-requirements.txt 	new file:   tox.ini"
-First time build. Skipping changelog.
-[Pipeline] }
- > git config remote.origin.url git@github.com:awertoss/vector-role.git # timeout=10
- > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision beff809904acf042c48489d055526fda0e2005fb (refs/remotes/origin/main)
+Commit message: "Create Jenkinsfile"
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 77f117afa2127f9c5aedda74259c0683d72e3d75 # timeout=10
+ > git checkout -f beff809904acf042c48489d055526fda0e2005fb # timeout=10
  > git branch -a -v --no-abbrev # timeout=10
- > git checkout -b main 77f117afa2127f9c5aedda74259c0683d72e3d75 # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main beff809904acf042c48489d055526fda0e2005fb # timeout=10
+ > git rev-list --no-walk beff809904acf042c48489d055526fda0e2005fb # timeout=10
+[Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Molecule install)
 [Pipeline] sh
-+ pip install molecule==3.5.2
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: molecule==3.5.2 in /home/jenkins/.local/lib/python3.6/site-packages (3.5.2)
-Requirement already satisfied: Jinja2>=2.11.3 in /usr/local/lib/python3.6/site-packages (from molecule==3.5.2) (3.0.3)
-Requirement already satisfied: pluggy<2.0,>=0.7.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (1.0.0)
-Requirement already satisfied: click-help-colors>=0.9 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (0.9.1)
-Requirement already satisfied: cerberus!=1.3.3,!=1.3.4,>=1.3.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (1.3.2)
-Requirement already satisfied: selinux in /usr/local/lib/python3.6/site-packages (from molecule==3.5.2) (0.2.1)
-Requirement already satisfied: importlib-metadata in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (4.8.3)
-Requirement already satisfied: paramiko<3,>=2.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (2.12.0)
-Requirement already satisfied: subprocess-tee>=0.3.5 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (0.3.5)
-Requirement already satisfied: cookiecutter>=1.7.3 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (1.7.3)
-Requirement already satisfied: click<9,>=8.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (8.0.4)
-Requirement already satisfied: dataclasses in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (0.8)
-Requirement already satisfied: packaging in /usr/local/lib/python3.6/site-packages (from molecule==3.5.2) (21.3)
-Requirement already satisfied: enrich>=1.2.5 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (1.2.7)
-Requirement already satisfied: PyYAML<6,>=5.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (5.4.1)
-Requirement already satisfied: rich>=9.5.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (12.6.0)
-Requirement already satisfied: ansible-compat>=0.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule==3.5.2) (1.0.0)
-Requirement already satisfied: cached-property~=1.5 in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-compat>=0.5.0->molecule==3.5.2) (1.5.2)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.6/site-packages (from cerberus!=1.3.3,!=1.3.4,>=1.3.1->molecule==3.5.2) (59.6.0)
-Requirement already satisfied: python-slugify>=4.0.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (6.1.2)
-Requirement already satisfied: requests>=2.23.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (2.27.1)
-Requirement already satisfied: poyo>=0.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (0.5.0)
-Requirement already satisfied: jinja2-time>=0.2.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (0.2.0)
-Requirement already satisfied: binaryornot>=0.4.4 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (0.4.4)
-Requirement already satisfied: six>=1.10 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (1.16.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib64/python3.6/site-packages (from Jinja2>=2.11.3->molecule==3.5.2) (2.0.1)
-Requirement already satisfied: bcrypt>=3.1.3 in /home/jenkins/.local/lib/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (4.0.1)
-Requirement already satisfied: cryptography>=2.5 in /usr/local/lib64/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (40.0.1)
-Requirement already satisfied: pynacl>=1.0.1 in /home/jenkins/.local/lib/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (1.5.0)
-Requirement already satisfied: zipp>=0.5 in /home/jenkins/.local/lib/python3.6/site-packages (from importlib-metadata->molecule==3.5.2) (3.6.0)
-Requirement already satisfied: typing-extensions>=3.6.4 in /home/jenkins/.local/lib/python3.6/site-packages (from importlib-metadata->molecule==3.5.2) (4.1.1)
-Requirement already satisfied: pygments<3.0.0,>=2.6.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->molecule==3.5.2) (2.14.0)
-Requirement already satisfied: commonmark<0.10.0,>=0.9.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->molecule==3.5.2) (0.9.1)
-Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /usr/local/lib/python3.6/site-packages (from packaging->molecule==3.5.2) (3.0.9)
-Requirement already satisfied: distro>=1.3.0 in /usr/local/lib/python3.6/site-packages (from selinux->molecule==3.5.2) (1.8.0)
-Requirement already satisfied: chardet>=3.0.2 in /home/jenkins/.local/lib/python3.6/site-packages (from binaryornot>=0.4.4->cookiecutter>=1.7.3->molecule==3.5.2) (5.0.0)
-Requirement already satisfied: cffi>=1.12 in /usr/local/lib64/python3.6/site-packages (from cryptography>=2.5->paramiko<3,>=2.5.0->molecule==3.5.2) (1.15.1)
-Requirement already satisfied: arrow in /home/jenkins/.local/lib/python3.6/site-packages (from jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.2.3)
-Requirement already satisfied: text-unidecode>=1.3 in /home/jenkins/.local/lib/python3.6/site-packages (from python-slugify>=4.0.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.3)
-Requirement already satisfied: idna<4,>=2.5 in /home/jenkins/.local/lib/python3.6/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (3.4)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /home/jenkins/.local/lib/python3.6/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (2.0.12)
-Requirement already satisfied: certifi>=2017.4.17 in /home/jenkins/.local/lib/python3.6/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (2022.12.7)
-Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/jenkins/.local/lib/python3.6/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.26.15)
-Requirement already satisfied: pycparser in /usr/local/lib/python3.6/site-packages (from cffi>=1.12->cryptography>=2.5->paramiko<3,>=2.5.0->molecule==3.5.2) (2.21)
-Requirement already satisfied: python-dateutil>=2.7.0 in /home/jenkins/.local/lib/python3.6/site-packages (from arrow->jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule==3.5.2) (2.8.2)
++ pip3 install molecule==3.5.2
+Requirement already satisfied: molecule==3.5.2 in /usr/local/lib/python3.9/site-packages (3.5.2)
+Requirement already satisfied: enrich>=1.2.5 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (1.2.7)
+Requirement already satisfied: rich>=9.5.1 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (13.3.3)
+Requirement already satisfied: click<9,>=8.0 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (8.1.3)
+Requirement already satisfied: cerberus!=1.3.3,!=1.3.4,>=1.3.1 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (1.3.2)
+Requirement already satisfied: ansible-compat>=0.5.0 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (3.0.1)
+Requirement already satisfied: click-help-colors>=0.9 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (0.9.1)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (23.0)
+Requirement already satisfied: paramiko<3,>=2.5.0 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (2.12.0)
+Requirement already satisfied: subprocess-tee>=0.3.5 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (0.4.1)
+Requirement already satisfied: cookiecutter>=1.7.3 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (2.1.1)
+Requirement already satisfied: PyYAML<6,>=5.1 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (5.4.1)
+Requirement already satisfied: selinux in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (0.3.0)
+Requirement already satisfied: Jinja2>=2.11.3 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (3.1.2)
+Requirement already satisfied: pluggy<2.0,>=0.7.1 in /usr/local/lib/python3.9/site-packages (from molecule==3.5.2) (1.0.0)
+Requirement already satisfied: jsonschema>=4.6.0 in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule==3.5.2) (4.17.3)
+Requirement already satisfied: ansible-core>=2.12 in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule==3.5.2) (2.14.4)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.9/site-packages (from cerberus!=1.3.3,!=1.3.4,>=1.3.1->molecule==3.5.2) (58.1.0)
+Requirement already satisfied: binaryornot>=0.4.4 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (0.4.4)
+Requirement already satisfied: jinja2-time>=0.2.0 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (0.2.0)
+Requirement already satisfied: requests>=2.23.0 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (2.28.2)
+Requirement already satisfied: python-slugify>=4.0.0 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule==3.5.2) (8.0.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.9/site-packages (from Jinja2>=2.11.3->molecule==3.5.2) (2.1.2)
+Requirement already satisfied: cryptography>=2.5 in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (40.0.1)
+Requirement already satisfied: bcrypt>=3.1.3 in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (4.0.1)
+Requirement already satisfied: six in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (1.16.0)
+Requirement already satisfied: pynacl>=1.0.1 in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule==3.5.2) (1.5.0)
+Requirement already satisfied: markdown-it-py<3.0.0,>=2.2.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->molecule==3.5.2) (2.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->molecule==3.5.2) (2.14.0)
+Requirement already satisfied: distro>=1.3.0 in /usr/local/lib/python3.9/site-packages (from selinux->molecule==3.5.2) (1.8.0)
+Requirement already satisfied: resolvelib<0.9.0,>=0.5.3 in /usr/local/lib/python3.9/site-packages (from ansible-core>=2.12->ansible-compat>=0.5.0->molecule==3.5.2) (0.8.1)
+Requirement already satisfied: chardet>=3.0.2 in /usr/local/lib/python3.9/site-packages (from binaryornot>=0.4.4->cookiecutter>=1.7.3->molecule==3.5.2) (5.1.0)
+Requirement already satisfied: cffi>=1.12 in /usr/local/lib/python3.9/site-packages (from cryptography>=2.5->paramiko<3,>=2.5.0->molecule==3.5.2) (1.15.1)
+Requirement already satisfied: arrow in /usr/local/lib/python3.9/site-packages (from jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.2.3)
+Requirement already satisfied: attrs>=17.4.0 in /usr/local/lib/python3.9/site-packages (from jsonschema>=4.6.0->ansible-compat>=0.5.0->molecule==3.5.2) (22.2.0)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0 in /usr/local/lib/python3.9/site-packages (from jsonschema>=4.6.0->ansible-compat>=0.5.0->molecule==3.5.2) (0.19.3)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.9/site-packages (from markdown-it-py<3.0.0,>=2.2.0->rich>=9.5.1->molecule==3.5.2) (0.1.2)
+Requirement already satisfied: text-unidecode>=1.3 in /usr/local/lib/python3.9/site-packages (from python-slugify>=4.0.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.9/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (3.1.0)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.9/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (1.26.15)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.9/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (3.4)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.9/site-packages (from requests>=2.23.0->cookiecutter>=1.7.3->molecule==3.5.2) (2022.12.7)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi>=1.12->cryptography>=2.5->paramiko<3,>=2.5.0->molecule==3.5.2) (2.21)
+Requirement already satisfied: python-dateutil>=2.7.0 in /usr/local/lib/python3.9/site-packages (from arrow->jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule==3.5.2) (2.8.2)
 [Pipeline] sh
-+ pip install 'ansible-lint<6.0.0'
-Defaulting to user installation because normal site-packages is not writeable
-Collecting ansible-lint<6.0.0
-  Downloading ansible_lint-5.4.0-py3-none-any.whl (119 kB)
-Requirement already satisfied: packaging in /usr/local/lib/python3.6/site-packages (from ansible-lint<6.0.0) (21.3)
-Requirement already satisfied: pyyaml in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-lint<6.0.0) (5.4.1)
-Requirement already satisfied: rich>=9.5.1 in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-lint<6.0.0) (12.6.0)
-Collecting wcmatch>=7.0
-  Downloading wcmatch-8.3-py3-none-any.whl (42 kB)
-Requirement already satisfied: typing-extensions in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-lint<6.0.0) (4.1.1)
-Collecting tenacity
-  Downloading tenacity-8.2.2-py3-none-any.whl (24 kB)
-Collecting ruamel.yaml<1,>=0.15.34
-  Downloading ruamel.yaml-0.17.21-py3-none-any.whl (109 kB)
-Requirement already satisfied: enrich>=1.2.6 in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-lint<6.0.0) (1.2.7)
-Requirement already satisfied: pygments<3.0.0,>=2.6.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->ansible-lint<6.0.0) (2.14.0)
-Requirement already satisfied: commonmark<0.10.0,>=0.9.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->ansible-lint<6.0.0) (0.9.1)
-Requirement already satisfied: dataclasses<0.9,>=0.7 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->ansible-lint<6.0.0) (0.8)
-Collecting ruamel.yaml.clib>=0.2.6
-  Downloading ruamel.yaml.clib-0.2.7-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (503 kB)
-Collecting bracex>=2.1.1
-  Downloading bracex-2.2.1-py3-none-any.whl (12 kB)
-Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /usr/local/lib/python3.6/site-packages (from packaging->ansible-lint<6.0.0) (3.0.9)
-Installing collected packages: ruamel.yaml.clib, bracex, wcmatch, tenacity, ruamel.yaml, ansible-lint
-Successfully installed ansible-lint-5.4.0 bracex-2.2.1 ruamel.yaml-0.17.21 ruamel.yaml.clib-0.2.7 tenacity-8.2.2 wcmatch-8.3
++ pip3 install 'ansible-lint<6.0.0'
+Requirement already satisfied: ansible-lint<6.0.0 in /usr/local/lib/python3.9/site-packages (5.4.0)
+Requirement already satisfied: ruamel.yaml<1,>=0.15.37 in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (0.17.21)
+Requirement already satisfied: tenacity in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (8.2.2)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (23.0)
+Requirement already satisfied: rich>=9.5.1 in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (13.3.3)
+Requirement already satisfied: enrich>=1.2.6 in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (1.2.7)
+Requirement already satisfied: wcmatch>=7.0 in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (8.4.1)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.9/site-packages (from ansible-lint<6.0.0) (5.4.1)
+Requirement already satisfied: markdown-it-py<3.0.0,>=2.2.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->ansible-lint<6.0.0) (2.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->ansible-lint<6.0.0) (2.14.0)
+Requirement already satisfied: ruamel.yaml.clib>=0.2.6 in /usr/local/lib/python3.9/site-packages (from ruamel.yaml<1,>=0.15.37->ansible-lint<6.0.0) (0.2.7)
+Requirement already satisfied: bracex>=2.1.1 in /usr/local/lib/python3.9/site-packages (from wcmatch>=7.0->ansible-lint<6.0.0) (2.3.post1)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.9/site-packages (from markdown-it-py<3.0.0,>=2.2.0->rich>=9.5.1->ansible-lint<6.0.0) (0.1.2)
 [Pipeline] sh
-+ pip install molecule_docker
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: molecule_docker in /home/jenkins/.local/lib/python3.6/site-packages (1.1.0)
-Requirement already satisfied: docker>=4.3.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule_docker) (5.0.3)
-Requirement already satisfied: requests in /home/jenkins/.local/lib/python3.6/site-packages (from molecule_docker) (2.27.1)
-Requirement already satisfied: selinux in /usr/local/lib/python3.6/site-packages (from molecule_docker) (0.2.1)
-Requirement already satisfied: ansible-compat>=0.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule_docker) (1.0.0)
-Requirement already satisfied: molecule>=3.4.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule_docker) (3.5.2)
-Requirement already satisfied: cached-property~=1.5 in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-compat>=0.5.0->molecule_docker) (1.5.2)
-Requirement already satisfied: PyYAML in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-compat>=0.5.0->molecule_docker) (5.4.1)
-Requirement already satisfied: subprocess-tee>=0.3.5 in /home/jenkins/.local/lib/python3.6/site-packages (from ansible-compat>=0.5.0->molecule_docker) (0.3.5)
-Requirement already satisfied: websocket-client>=0.32.0 in /home/jenkins/.local/lib/python3.6/site-packages (from docker>=4.3.1->molecule_docker) (1.3.1)
-Requirement already satisfied: paramiko<3,>=2.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (2.12.0)
-Requirement already satisfied: Jinja2>=2.11.3 in /usr/local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (3.0.3)
-Requirement already satisfied: pluggy<2.0,>=0.7.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (1.0.0)
-Requirement already satisfied: cerberus!=1.3.3,!=1.3.4,>=1.3.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (1.3.2)
-Requirement already satisfied: click-help-colors>=0.9 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (0.9.1)
-Requirement already satisfied: rich>=9.5.1 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (12.6.0)
-Requirement already satisfied: click<9,>=8.0 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (8.0.4)
-Requirement already satisfied: dataclasses in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (0.8)
-Requirement already satisfied: cookiecutter>=1.7.3 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (1.7.3)
-Requirement already satisfied: enrich>=1.2.5 in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (1.2.7)
-Requirement already satisfied: packaging in /usr/local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (21.3)
-Requirement already satisfied: importlib-metadata in /home/jenkins/.local/lib/python3.6/site-packages (from molecule>=3.4.0->molecule_docker) (4.8.3)
-Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/jenkins/.local/lib/python3.6/site-packages (from requests->molecule_docker) (1.26.15)
-Requirement already satisfied: idna<4,>=2.5 in /home/jenkins/.local/lib/python3.6/site-packages (from requests->molecule_docker) (3.4)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /home/jenkins/.local/lib/python3.6/site-packages (from requests->molecule_docker) (2.0.12)
-Requirement already satisfied: certifi>=2017.4.17 in /home/jenkins/.local/lib/python3.6/site-packages (from requests->molecule_docker) (2022.12.7)
-Requirement already satisfied: distro>=1.3.0 in /usr/local/lib/python3.6/site-packages (from selinux->molecule_docker) (1.8.0)
-Requirement already satisfied: setuptools>=39.0 in /usr/local/lib/python3.6/site-packages (from selinux->molecule_docker) (59.6.0)
-Requirement already satisfied: binaryornot>=0.4.4 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (0.4.4)
-Requirement already satisfied: python-slugify>=4.0.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (6.1.2)
-Requirement already satisfied: jinja2-time>=0.2.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (0.2.0)
-Requirement already satisfied: poyo>=0.5.0 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (0.5.0)
-Requirement already satisfied: six>=1.10 in /home/jenkins/.local/lib/python3.6/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (1.16.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib64/python3.6/site-packages (from Jinja2>=2.11.3->molecule>=3.4.0->molecule_docker) (2.0.1)
-Requirement already satisfied: cryptography>=2.5 in /usr/local/lib64/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (40.0.1)
-Requirement already satisfied: pynacl>=1.0.1 in /home/jenkins/.local/lib/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (1.5.0)
-Requirement already satisfied: bcrypt>=3.1.3 in /home/jenkins/.local/lib/python3.6/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (4.0.1)
-Requirement already satisfied: typing-extensions>=3.6.4 in /home/jenkins/.local/lib/python3.6/site-packages (from importlib-metadata->molecule>=3.4.0->molecule_docker) (4.1.1)
-Requirement already satisfied: zipp>=0.5 in /home/jenkins/.local/lib/python3.6/site-packages (from importlib-metadata->molecule>=3.4.0->molecule_docker) (3.6.0)
-Requirement already satisfied: commonmark<0.10.0,>=0.9.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->molecule>=3.4.0->molecule_docker) (0.9.1)
-Requirement already satisfied: pygments<3.0.0,>=2.6.0 in /home/jenkins/.local/lib/python3.6/site-packages (from rich>=9.5.1->molecule>=3.4.0->molecule_docker) (2.14.0)
-Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /usr/local/lib/python3.6/site-packages (from packaging->molecule>=3.4.0->molecule_docker) (3.0.9)
-Requirement already satisfied: chardet>=3.0.2 in /home/jenkins/.local/lib/python3.6/site-packages (from binaryornot>=0.4.4->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (5.0.0)
-Requirement already satisfied: cffi>=1.12 in /usr/local/lib64/python3.6/site-packages (from cryptography>=2.5->paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (1.15.1)
-Requirement already satisfied: arrow in /home/jenkins/.local/lib/python3.6/site-packages (from jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (1.2.3)
-Requirement already satisfied: text-unidecode>=1.3 in /home/jenkins/.local/lib/python3.6/site-packages (from python-slugify>=4.0.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (1.3)
-Requirement already satisfied: pycparser in /usr/local/lib/python3.6/site-packages (from cffi>=1.12->cryptography>=2.5->paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (2.21)
-Requirement already satisfied: python-dateutil>=2.7.0 in /home/jenkins/.local/lib/python3.6/site-packages (from arrow->jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (2.8.2)
++ pip3 install molecule_docker
+Requirement already satisfied: molecule_docker in /usr/local/lib/python3.9/site-packages (1.1.0)
+Requirement already satisfied: molecule>=3.4.0 in /usr/local/lib/python3.9/site-packages (from molecule_docker) (3.5.2)
+Requirement already satisfied: selinux in /usr/local/lib/python3.9/site-packages (from molecule_docker) (0.3.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.9/site-packages (from molecule_docker) (2.28.2)
+Requirement already satisfied: docker>=4.3.1 in /usr/local/lib/python3.9/site-packages (from molecule_docker) (6.0.1)
+Requirement already satisfied: ansible-compat>=0.5.0 in /usr/local/lib/python3.9/site-packages (from molecule_docker) (3.0.1)
+Requirement already satisfied: ansible-core>=2.12 in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule_docker) (2.14.4)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule_docker) (23.0)
+Requirement already satisfied: subprocess-tee>=0.4.1 in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule_docker) (0.4.1)
+Requirement already satisfied: PyYAML in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule_docker) (5.4.1)
+Requirement already satisfied: jsonschema>=4.6.0 in /usr/local/lib/python3.9/site-packages (from ansible-compat>=0.5.0->molecule_docker) (4.17.3)
+Requirement already satisfied: urllib3>=1.26.0 in /usr/local/lib/python3.9/site-packages (from docker>=4.3.1->molecule_docker) (1.26.15)
+Requirement already satisfied: websocket-client>=0.32.0 in /usr/local/lib/python3.9/site-packages (from docker>=4.3.1->molecule_docker) (1.5.1)
+Requirement already satisfied: click<9,>=8.0 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (8.1.3)
+Requirement already satisfied: Jinja2>=2.11.3 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (3.1.2)
+Requirement already satisfied: rich>=9.5.1 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (13.3.3)
+Requirement already satisfied: cerberus!=1.3.3,!=1.3.4,>=1.3.1 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (1.3.2)
+Requirement already satisfied: pluggy<2.0,>=0.7.1 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (1.0.0)
+Requirement already satisfied: click-help-colors>=0.9 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (0.9.1)
+Requirement already satisfied: cookiecutter>=1.7.3 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (2.1.1)
+Requirement already satisfied: paramiko<3,>=2.5.0 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (2.12.0)
+Requirement already satisfied: enrich>=1.2.5 in /usr/local/lib/python3.9/site-packages (from molecule>=3.4.0->molecule_docker) (1.2.7)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.9/site-packages (from requests->molecule_docker) (2022.12.7)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.9/site-packages (from requests->molecule_docker) (3.4)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.9/site-packages (from requests->molecule_docker) (3.1.0)
+Requirement already satisfied: distro>=1.3.0 in /usr/local/lib/python3.9/site-packages (from selinux->molecule_docker) (1.8.0)
+Requirement already satisfied: resolvelib<0.9.0,>=0.5.3 in /usr/local/lib/python3.9/site-packages (from ansible-core>=2.12->ansible-compat>=0.5.0->molecule_docker) (0.8.1)
+Requirement already satisfied: cryptography in /usr/local/lib/python3.9/site-packages (from ansible-core>=2.12->ansible-compat>=0.5.0->molecule_docker) (40.0.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.9/site-packages (from cerberus!=1.3.3,!=1.3.4,>=1.3.1->molecule>=3.4.0->molecule_docker) (58.1.0)
+Requirement already satisfied: binaryornot>=0.4.4 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (0.4.4)
+Requirement already satisfied: python-slugify>=4.0.0 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (8.0.1)
+Requirement already satisfied: jinja2-time>=0.2.0 in /usr/local/lib/python3.9/site-packages (from cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (0.2.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.9/site-packages (from Jinja2>=2.11.3->molecule>=3.4.0->molecule_docker) (2.1.2)
+Requirement already satisfied: attrs>=17.4.0 in /usr/local/lib/python3.9/site-packages (from jsonschema>=4.6.0->ansible-compat>=0.5.0->molecule_docker) (22.2.0)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0 in /usr/local/lib/python3.9/site-packages (from jsonschema>=4.6.0->ansible-compat>=0.5.0->molecule_docker) (0.19.3)
+Requirement already satisfied: bcrypt>=3.1.3 in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (4.0.1)
+Requirement already satisfied: pynacl>=1.0.1 in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (1.5.0)
+Requirement already satisfied: six in /usr/local/lib/python3.9/site-packages (from paramiko<3,>=2.5.0->molecule>=3.4.0->molecule_docker) (1.16.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->molecule>=3.4.0->molecule_docker) (2.14.0)
+Requirement already satisfied: markdown-it-py<3.0.0,>=2.2.0 in /usr/local/lib/python3.9/site-packages (from rich>=9.5.1->molecule>=3.4.0->molecule_docker) (2.2.0)
+Requirement already satisfied: chardet>=3.0.2 in /usr/local/lib/python3.9/site-packages (from binaryornot>=0.4.4->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (5.1.0)
+Requirement already satisfied: cffi>=1.12 in /usr/local/lib/python3.9/site-packages (from cryptography->ansible-core>=2.12->ansible-compat>=0.5.0->molecule_docker) (1.15.1)
+Requirement already satisfied: arrow in /usr/local/lib/python3.9/site-packages (from jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (1.2.3)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.9/site-packages (from markdown-it-py<3.0.0,>=2.2.0->rich>=9.5.1->molecule>=3.4.0->molecule_docker) (0.1.2)
+Requirement already satisfied: text-unidecode>=1.3 in /usr/local/lib/python3.9/site-packages (from python-slugify>=4.0.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (1.3)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi>=1.12->cryptography->ansible-core>=2.12->ansible-compat>=0.5.0->molecule_docker) (2.21)
+Requirement already satisfied: python-dateutil>=2.7.0 in /usr/local/lib/python3.9/site-packages (from arrow->jinja2-time>=0.2.0->cookiecutter>=1.7.3->molecule>=3.4.0->molecule_docker) (2.8.2)
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Molecule test)
 [Pipeline] sh
 + molecule test -s centos
-/home/jenkins/.local/lib/python3.6/site-packages/requests/__init__.py:104: RequestsDependencyWarning: urllib3 (1.26.15) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!
-  RequestsDependencyWarning)
-/usr/local/lib/python3.6/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
-  from cryptography.exceptions import InvalidSignature
 INFO     centos scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     Performing prerun...
-INFO     Set ANSIBLE_LIBRARY=/home/jenkins/.cache/ansible-compat/668096/modules:/home/jenkins/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
-INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/jenkins/.cache/ansible-compat/668096/collections:/home/jenkins/.ansible/collections:/usr/share/ansible/collections
-INFO     Set ANSIBLE_ROLES_PATH=/home/jenkins/.cache/ansible-compat/668096/roles:/home/jenkins/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Set ANSIBLE_LIBRARY=/home/jenkins/.cache/ansible-compat/b2b225/modules:/home/jenkins/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/jenkins/.cache/ansible-compat/b2b225/collections:/home/jenkins/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/home/jenkins/.cache/ansible-compat/b2b225/roles:/home/jenkins/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
 INFO     Running centos > dependency
-INFO     Running ansible-galaxy collection install -v --force community.docker:>=1.9.1
+INFO     Running from /opt/jenkins_agent/workspace/Declarative Pipeline : ansible-galaxy collection install -vvv community.docker:>=1.9.1
 WARNING  Skipping, missing the requirements file.
 WARNING  Skipping, missing the requirements file.
 INFO     Running centos > lint
@@ -522,88 +500,119 @@ INFO     Running centos > cleanup
 WARNING  Skipping, cleanup playbook not configured.
 INFO     Running centos > destroy
 INFO     Sanity checks: 'docker'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/docker/transport/unixconn.py", line 30, in connect
+    sock.connect(self.unix_socket)
+FileNotFoundError: [Errno 2] No such file or directory
 
-PLAY [Destroy] *****************************************************************
+During handling of the above exception, another exception occurred:
 
-TASK [Destroy molecule instance(s)] ********************************************
-/usr/local/lib/python3.6/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
-  from cryptography.exceptions import InvalidSignature
-changed: [localhost] => (item=instance)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.9/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.9/http/client.py", line 1285, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1331, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/docker/transport/unixconn.py", line 30, in connect
+    sock.connect(self.unix_socket)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
 
-TASK [Wait for instance(s) deletion to complete] *******************************
-FAILED - RETRYING: Wait for instance(s) deletion to complete (300 retries left).
-ok: [localhost] => (item=instance)
+During handling of the above exception, another exception occurred:
 
-TASK [Delete docker networks(s)] ***********************************************
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/docker/api/client.py", line 214, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+  File "/usr/local/lib/python3.9/site-packages/docker/api/daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+  File "/usr/local/lib/python3.9/site-packages/docker/utils/decorators.py", line 46, in inner
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/docker/api/client.py", line 237, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 600, in get
+    return self.request("GET", url, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 547, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
 
-PLAY RECAP *********************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+During handling of the above exception, another exception occurred:
 
-INFO     Running centos > syntax
-
-playbook: /opt/jenkins_agent/workspace/Declarative Pipeline/molecule/centos/converge.yml
-/usr/local/lib/python3.6/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
-  from cryptography.exceptions import InvalidSignature
-INFO     Running centos > create
-
-PLAY [Create] ******************************************************************
-
-TASK [Log into a Docker registry] **********************************************
-/usr/local/lib/python3.6/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
-  from cryptography.exceptions import InvalidSignature
-skipping: [localhost] => (item=None)
-skipping: [localhost]
-
-TASK [Check presence of custom Dockerfiles] ************************************
-ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'instance', 'pre_build_image': True})
-
-TASK [Create Dockerfiles from image names] *************************************
-skipping: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'instance', 'pre_build_image': True})
-
-TASK [Discover local Docker images] ********************************************
-ok: [localhost] => (item={'changed': False, 'skipped': True, 'skip_reason': 'Conditional result was False', 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})
-
-TASK [Build an Ansible compatible image (new)] *********************************
-skipping: [localhost] => (item=molecule_local/docker.io/pycontribs/centos:7)
-
-TASK [Create docker network(s)] ************************************************
-
-TASK [Determine the CMD directives] ********************************************
-ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'instance', 'pre_build_image': True})
-
-TASK [Create molecule instance(s)] *********************************************
-changed: [localhost] => (item=instance)
-
-TASK [Wait for instance(s) creation to complete] *******************************
-FAILED - RETRYING: Wait for instance(s) creation to complete (300 retries left).
-failed: [localhost] (item={'started': 1, 'finished': 0, 'ansible_job_id': '892069927415.10316', 'results_file': '/home/jenkins/.ansible_async/892069927415.10316', 'changed': True, 'failed': False, 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'instance', 'pre_build_image': True}, 'ansible_loop_var': 'item'}) => {"ansible_job_id": "892069927415.10316", "ansible_loop_var": "item", "attempts": 2, "changed": false, "finished": 1, "item": {"ansible_job_id": "892069927415.10316", "ansible_loop_var": "item", "changed": true, "failed": false, "finished": 0, "item": {"image": "docker.io/pycontribs/centos:7", "name": "instance", "pre_build_image": true}, "results_file": "/home/jenkins/.ansible_async/892069927415.10316", "started": 1}, "msg": "Unsupported parameters for (community.docker.docker_container) module: command_handling Supported parameters include: api_version, auto_remove, blkio_weight, ca_cert, cap_drop, capabilities, cgroup_parent, cleanup, client_cert, client_key, command, comparisons, container_default_behavior, cpu_period, cpu_quota, cpu_shares, cpus, cpuset_cpus, cpuset_mems, debug, default_host_ip, detach, device_read_bps, device_read_iops, device_requests, device_write_bps, device_write_iops, devices, dns_opts, dns_search_domains, dns_servers, docker_host, domainname, entrypoint, env, env_file, etc_hosts, exposed_ports, force_kill, groups, healthcheck, hostname, ignore_image, image, init, interactive, ipc_mode, keep_volumes, kernel_memory, kill_signal, labels, links, log_driver, log_options, mac_address, memory, memory_reservation, memory_swap, memory_swappiness, mounts, name, network_mode, networks, networks_cli_compatible, oom_killer, oom_score_adj, output_logs, paused, pid_mode, pids_limit, privileged, published_ports, pull, purge_networks, read_only, recreate, removal_wait_timeout, restart, restart_policy, restart_retries, runtime, security_opts, shm_size, ssl_version, state, stop_signal, stop_timeout, sysctls, timeout, tls, tls_hostname, tmpfs, tty, ulimits, user, userns_mode, uts, validate_certs, volume_driver, volumes, volumes_from, working_dir", "stderr": "/home/jenkins/.local/lib/python3.6/site-packages/requests/__init__.py:104: RequestsDependencyWarning: urllib3 (1.26.15) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!\n  RequestsDependencyWarning)\n/home/jenkins/.local/lib/python3.6/site-packages/paramiko/transport.py:33: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.\n  from cryptography.hazmat.backends import default_backend\n", "stderr_lines": ["/home/jenkins/.local/lib/python3.6/site-packages/requests/__init__.py:104: RequestsDependencyWarning: urllib3 (1.26.15) or chardet (5.0.0)/charset_normalizer (2.0.12) doesn't match a supported version!", "  RequestsDependencyWarning)", "/home/jenkins/.local/lib/python3.6/site-packages/paramiko/transport.py:33: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.", "  from cryptography.hazmat.backends import default_backend"]}
-
-PLAY RECAP *********************************************************************
-localhost                  : ok=4    changed=1    unreachable=0    failed=1    skipped=4    rescued=0    ignored=0
-
-CRITICAL Ansible return code was 2, command was: ['ansible-playbook', '--inventory', '/home/jenkins/.cache/molecule/Declarative Pipeline/centos/inventory', '--skip-tags', 'molecule-notest,notest', '/home/jenkins/.local/lib/python3.6/site-packages/molecule_docker/playbooks/create.yml']
-WARNING  An error occurred during the test sequence action: 'create'. Cleaning up.
-INFO     Running centos > cleanup
-WARNING  Skipping, cleanup playbook not configured.
-INFO     Running centos > destroy
-
-PLAY [Destroy] *****************************************************************
-
-TASK [Destroy molecule instance(s)] ********************************************
-/usr/local/lib/python3.6/site-packages/ansible/parsing/vault/__init__.py:44: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
-  from cryptography.exceptions import InvalidSignature
-changed: [localhost] => (item=instance)
-
-TASK [Wait for instance(s) deletion to complete] *******************************
-FAILED - RETRYING: Wait for instance(s) deletion to complete (300 retries left).
-ok: [localhost] => (item=instance)
-
-TASK [Delete docker networks(s)] ***********************************************
-
-PLAY RECAP *********************************************************************
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
-
-INFO     Pruning extra files from scenario ephemeral directory
+Traceback (most recent call last):
+  File "/usr/local/bin/molecule", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/local/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/molecule/command/test.py", line 159, in test
+    base.execute_cmdline_scenarios(scenario_name, args, command_args, ansible_args)
+  File "/usr/local/lib/python3.9/site-packages/molecule/command/base.py", line 118, in execute_cmdline_scenarios
+    execute_scenario(scenario)
+  File "/usr/local/lib/python3.9/site-packages/molecule/command/base.py", line 160, in execute_scenario
+    execute_subcommand(scenario.config, action)
+  File "/usr/local/lib/python3.9/site-packages/molecule/command/base.py", line 149, in execute_subcommand
+    return command(config).execute()
+  File "/usr/local/lib/python3.9/site-packages/molecule/logger.py", line 188, in wrapper
+    rt = func(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/molecule/command/destroy.py", line 107, in execute
+    self._config.provisioner.destroy()
+  File "/usr/local/lib/python3.9/site-packages/molecule/provisioner/ansible.py", line 705, in destroy
+    pb.execute()
+  File "/usr/local/lib/python3.9/site-packages/molecule/provisioner/ansible_playbook.py", line 110, in execute
+    self._config.driver.sanity_checks()
+  File "/usr/local/lib/python3.9/site-packages/molecule_docker/driver.py", line 236, in sanity_checks
+    docker_client = docker.from_env()
+  File "/usr/local/lib/python3.9/site-packages/docker/client.py", line 96, in from_env
+    return cls(
+  File "/usr/local/lib/python3.9/site-packages/docker/client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/docker/api/client.py", line 197, in __init__
+    self._version = self._retrieve_server_version()
+  File "/usr/local/lib/python3.9/site-packages/docker/api/client.py", line 221, in _retrieve_server_version
+    raise DockerException(
+docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
