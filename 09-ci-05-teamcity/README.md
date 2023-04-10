@@ -111,6 +111,9 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
   <img width="1200" src="nexus-1.jpg">
 </p>
 8. Мигрируйте `build configuration` в репозиторий.
+<p align="center">
+  <img width="1200" src="teamcity-4.jpg">
+</p>
 9. Создайте отдельную ветку `feature/add_reply` в репозитории.
 10. Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`.
 11. Дополните тест для нового метода на поиск слова `hunter` в новой реплике.
