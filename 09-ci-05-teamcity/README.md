@@ -243,6 +243,9 @@ To https://github.com/awertoss/example-teamcity.git
   <img width="1200" src="teamcity-8.jpg">
 </p>
 18. Проверьте, что конфигурация в репозитории содержит все настройки конфигурации из teamcity.
+<p align="center">
+  <img width="1200" src="teamcity-9.jpg">
+</p>
 19. В ответе пришлите ссылку на репозиторий.
 <p>
 [https://github.com/awertoss/example-teamcity.git]
