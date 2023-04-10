@@ -114,7 +114,7 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
 <p align="center">
   <img width="1200" src="teamcity-4.jpg">
 </p>
-9. Создайте отдельную ветку `feature/add_reply` в репозитории.
+9. Создайте отдельную ветку `feature/add_reply` в репозитории.</br>
 10. Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`.
 ```
 Итоговый файл:
