@@ -155,6 +155,46 @@ public class HelloPlayer{
 ```
 
 11. Дополните тест для нового метода на поиск слова `hunter` в новой реплике.
+
+```
+Создал новый файл WelcomerTest.java
+
+
+package plaindoll;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class WelcomerTest {
+
+        private Welcomer welcomer = new Welcomer();
+
+        @Test
+        public void welcomerSaysWelcome() {
+                assertThat(welcomer.sayWelcome(), containsString("Welcome"));
+        }
+        @Test
+        public void welcomerSaysFarewell() {
+                assertThat(welcomer.sayFarewell(), containsString("Farewell"));
+        }
+        @Test
+        public void welcomerSaysHunter() {
+                assertThat(welcomer.sayWelcome(), containsString("hunter"));
+                assertThat(welcomer.sayFarewell(), containsString("hunter"));
+                assertThat(welcomer.sayHunter(), containsString("hunter"));
+        }
+        @Test
+        public void welcomerSaysSilver(){
+                assertThat(welcomer.sayNeedGold(), containsString("gold"));
+        }
+        @Test
+        public void welcomerSaysSomething(){
+                assertThat(welcomer.saySome(), containsString("something"));
+        }
+
+```
 12. Сделайте push всех изменений в новую ветку репозитория.
 13. Убедитесь, что сборка самостоятельно запустилась, тесты прошли успешно.
 14. Внесите изменения из произвольной ветки `feature/add_reply` в `master` через `Merge`.
