@@ -103,6 +103,9 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
   <img width="1200" src="teamcity-3.jpg">
 </p>
 6. В pom.xml необходимо поменять ссылки на репозиторий и nexus.
+<p>
+[https://github.com/awertoss/example-teamcity/blob/master/pom.xml]
+</p>
 7. Запустите сборку по master, убедитесь, что всё прошло успешно и артефакт появился в nexus.
 8. Мигрируйте `build configuration` в репозиторий.
 9. Создайте отдельную ветку `feature/add_reply` в репозитории.
