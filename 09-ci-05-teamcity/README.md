@@ -116,6 +116,30 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
 </p>
 9. Создайте отдельную ветку `feature/add_reply` в репозитории.
 10. Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`.
+```
+Итоговый файл:
+package plaindoll;
+
+public class Welcomer{
+	public String sayWelcome() {
+		return "Welcome home, good hunter. What is it your desire?";
+	}
+	public String sayFarewell() {
+		return "Farewell, good hunter. May you find your worth in waking world.";
+	}
+	public String sayNeedGold(){
+		return "Not enough gold";
+	}
+	public String saySome(){
+		return "something in the way";
+	}
+
+        public String sayHunter(){
+                return "Return of the hunter";
+        }
+}
+```
+
 11. Дополните тест для нового метода на поиск слова `hunter` в новой реплике.
 12. Сделайте push всех изменений в новую ветку репозитория.
 13. Убедитесь, что сборка самостоятельно запустилась, тесты прошли успешно.
