@@ -107,6 +107,9 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
 [https://github.com/awertoss/example-teamcity/blob/master/pom.xml]
 </p>
 7. Запустите сборку по master, убедитесь, что всё прошло успешно и артефакт появился в nexus.
+<p align="center">
+  <img width="1200" src="nexus-1.jpg">
+</p>
 8. Мигрируйте `build configuration` в репозиторий.
 9. Создайте отдельную ветку `feature/add_reply` в репозитории.
 10. Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`.
