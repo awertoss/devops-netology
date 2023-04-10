@@ -99,6 +99,9 @@ nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    s
   <img width="1200" src="teamcity-2.jpg">
 </p>
 5. Для deploy будет необходимо загрузить [settings.xml](./teamcity/settings.xml) в набор конфигураций maven у teamcity, предварительно записав туда креды для подключения к nexus.
+<p align="center">
+  <img width="1200" src="teamcity-3.jpg">
+</p>
 6. В pom.xml необходимо поменять ссылки на репозиторий и nexus.
 7. Запустите сборку по master, убедитесь, что всё прошло успешно и артефакт появился в nexus.
 8. Мигрируйте `build configuration` в репозиторий.
