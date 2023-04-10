@@ -8,6 +8,83 @@
 4. Авторизуйте агент.
 5. Сделайте fork [репозитория](https://github.com/aragastmatb/example-teamcity).
 6. Создайте VM (2CPU4RAM) и запустите [playbook](./infrastructure).
+```
+root@promitey:/home/srg/0905/infrastructure# ansible-playbook site.yml -i inventory/cicd/hosts.yml
+
+PLAY [Get Nexus installed] ******************************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************************************
+The authenticity of host '158.160.3.251 (158.160.3.251)' can't be established.
+ED25519 key fingerprint is SHA256:UR0d5261UQ0oYVmisLI+iXCYEWQ67sD+hhTkNzXRljA.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+ok: [nexus-01]
+
+TASK [Create Nexus group] *******************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Create Nexus user] ********************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Install JDK] **************************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Create Nexus directories] *************************************************************************************************************************************
+changed: [nexus-01] => (item=/home/nexus/log)
+changed: [nexus-01] => (item=/home/nexus/sonatype-work/nexus3)
+changed: [nexus-01] => (item=/home/nexus/sonatype-work/nexus3/etc)
+changed: [nexus-01] => (item=/home/nexus/pkg)
+changed: [nexus-01] => (item=/home/nexus/tmp)
+
+TASK [Download Nexus] ***********************************************************************************************************************************************
+[WARNING]: Module remote_tmp /home/nexus/.ansible/tmp did not exist and was created with a mode of 0700, this may cause issues when running as another user. To
+avoid this, create the remote_tmp dir with the correct permissions manually
+changed: [nexus-01]
+
+TASK [Unpack Nexus] *************************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Link to Nexus Directory] **************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Add NEXUS_HOME for Nexus user] ********************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Add run_as_user to Nexus.rc] **********************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Raise nofile limit for Nexus user] ****************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Create Nexus service for SystemD] *****************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Ensure Nexus service is enabled for SystemD] ******************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Create Nexus vmoptions] ***************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Create Nexus properties] **************************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Lower Nexus disk space threshold] *****************************************************************************************************************************
+skipping: [nexus-01]
+
+TASK [Start Nexus service if enabled] *******************************************************************************************************************************
+changed: [nexus-01]
+
+TASK [Ensure Nexus service is restarted] ****************************************************************************************************************************
+skipping: [nexus-01]
+
+TASK [Wait for Nexus port if started] *******************************************************************************************************************************
+ok: [nexus-01]
+
+PLAY RECAP **********************************************************************************************************************************************************
+nexus-01                   : ok=17   changed=15   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+
+```
 
 ## Основная часть
 
