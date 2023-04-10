@@ -141,6 +141,19 @@ public class Welcomer{
 }
 ```
 
+```
+package plaindoll;
+
+public class HelloPlayer{
+	public static void main(String[] args) {
+		Welcomer welcomer = new Welcomer();
+		System.out.println(welcomer.sayWelcome());
+		System.out.println(welcomer.sayFarewell());
+		System.out.println(welcomer.sayHunter());
+	}
+}
+```
+
 11. Дополните тест для нового метода на поиск слова `hunter` в новой реплике.
 12. Сделайте push всех изменений в новую ветку репозитория.
 13. Убедитесь, что сборка самостоятельно запустилась, тесты прошли успешно.
