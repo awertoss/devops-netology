@@ -214,7 +214,20 @@ Merge made by the 'ort' strategy.
  src/main/java/plaindoll/WelcomerTest.java | 1 +
  3 files changed, 6 insertions(+)
  create mode 100644 src/main/java/plaindoll/WelcomerTest.java
-root@promitey:/home/srg/0905/teamcity/example-teamcity/example-teamcity#
+
+root@promitey:/home/srg/0905/teamcity/example-teamcity/example-teamcity# git push -f origin master
+Username for 'https://github.com': awertoss
+Password for 'https://awertoss@github.com':
+Enumerating objects: 18, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (8/8), 962 bytes | 962.00 KiB/s, done.
+Total 8 (delta 3), reused 6 (delta 2), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/awertoss/example-teamcity.git
+ + a17fd56...345ed68 master -> master (forced update)
+
 
 ```
 15. Убедитесь, что нет собранного артефакта в сборке по ветке `master`.
