@@ -201,6 +201,22 @@ public class WelcomerTest {
   <img width="1200" src="teamcity-5.jpg">
 </p>
 14. Внесите изменения из произвольной ветки `feature/add_reply` в `master` через `Merge`.
+
+```
+root@promitey:/home/srg/0905/teamcity/example-teamcity/example-teamcity# git checkout master
+Already on 'master'
+Your branch is ahead of 'origin/master' by 5 commits.
+  (use "git push" to publish your local commits)
+root@promitey:/home/srg/0905/teamcity/example-teamcity/example-teamcity# git merge remotes/origin/feature/add_reply
+Merge made by the 'ort' strategy.
+ src/main/java/plaindoll/HelloPlayer.java  | 1 +
+ src/main/java/plaindoll/Welcomer.java     | 4 ++++
+ src/main/java/plaindoll/WelcomerTest.java | 1 +
+ 3 files changed, 6 insertions(+)
+ create mode 100644 src/main/java/plaindoll/WelcomerTest.java
+root@promitey:/home/srg/0905/teamcity/example-teamcity/example-teamcity#
+
+```
 15. Убедитесь, что нет собранного артефакта в сборке по ветке `master`.
 16. Настройте конфигурацию так, чтобы она собирала `.jar` в артефакты сборки.
 17. Проведите повторную сборку мастера, убедитесь, что сбора прошла успешно и артефакты собраны.
