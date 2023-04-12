@@ -1,20 +1,27 @@
 stages:
   - build
   - deploy
-image: docker:20.10.5
-services:
-    - docker:20.10.5-dind
-builder:
+
+build:
   stage: build
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://localhost:2375/
+  image: cr.yandex/yc/metadata-token-docker-helper:0.2
+  services:
+    - docker:19.03.1-dind
   script:
-    - docker build . -t some_local_build:latest .
-  except:
-    - main
-deployer:
+    - docker build . -t cr.yandex/cr.yandex/crpo97it9bl2gi7h2et9/hello:gitlab-$CI_COMMIT_SHORT_SHA
+    - docker push cr.yandex/cr.yandex/crpo97it9bl2gi7h2et9/hello:gitlab-$CI_COMMIT_SHORT_SHA
+
+deploy:
+  image: gcr.io/cloud-builders/kubectl:latest
   stage: deploy
   script:
-    - docker build -t $CI_REGISTRY/aragast/netology-11/python-api:latest .
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CLI_REGISTRY
-    - docker push $CI_REGISTRU/aragast/netology-11/python-api:latest
-  only:
-    - main
+    - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
+    - kubectl config set-credentials admin --token="$KUBE_TOKEN"
+    - kubectl config set-context default --cluster=k8s --user=admin
+    - kubectl config use-context default
+    - sed -i "s/__VERSION__/gitlab-$CI_COMMIT_SHORT_SHA/" k8s.yaml
+    - kubectl apply -f k8s.yaml
