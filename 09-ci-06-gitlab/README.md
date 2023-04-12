@@ -56,6 +56,8 @@
 - Dockerfile; 
 - лог успешного выполнения пайплайна;
 - решённый Issue.
+
+
 [https://github.com/awertoss/devops-netology/blob/main/09-ci-06-gitlab/Dockerfile]
 </br>
 [https://github.com/awertoss/devops-netology/blob/main/09-ci-06-gitlab/gitlab-ci.yml]
