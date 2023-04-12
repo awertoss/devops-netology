@@ -1,0 +1,20 @@
+stages:
+  - build
+  - deploy
+image: docker:20.10.5
+services:
+    - docker:20.10.5-dind
+builder:
+  stage: build
+  script:
+    - docker build . -t some_local_build:latest .
+  except:
+    - main
+deployer:
+  stage: deploy
+  script:
+    - docker build -t $CI_REGISTRY/aragast/netology-11/python-api:latest .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CLI_REGISTRY
+    - docker push $CI_REGISTRU/aragast/netology-11/python-api:latest
+  only:
+    - main
