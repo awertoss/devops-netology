@@ -17,6 +17,13 @@
 
 В решении приведите скриншоты тестовых событий из каналов нотификаций.
 
+```
+Развернул весь стек из github 
+https://github.com/Einsteinish/Docker-Compose-Prometheus-and-Grafana.git
+
+
+```
+
 ## Обязательные задания
 
 ### Задание 1
