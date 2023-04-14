@@ -149,6 +149,46 @@ P.S.: если при запуске некоторые контейнеры б�
 
 Факультативно можете изучить какие метрики собирает telegraf после выполнения данного задания.
 
+```
+Узнаю владельца сокета, чтобы добавить его в файл docker-compose.yml
+
+root@promitey:/home/srg/13/sandbox# stat -c '%g' /var/run/docker.sock
+119
+
+
+
+Изменил docker-compose.yml
+telegraf:
+    # Full tag list: https://hub.docker.com/r/library/telegraf/tags/
+    build:
+      context: ./images/telegraf/
+      dockerfile: ./${TYPE}/Dockerfile
+      args:
+        TELEGRAF_TAG: ${TELEGRAF_TAG}
+    image: "telegraf"
+    privileged: true
+    user: telegraf:998
+    environment:
+      HOSTNAME: "telegraf-getting-started"
+    # Telegraf requires network access to InfluxDB
+    links:
+      - influxdb
+    volumes:
+      # Mount for telegraf configuration
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:Z
+      # Mount for Docker API access
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+    depends_on:
+      - influxdb
+    ports:
+      - "8092:8092/udp"
+      - "8094:8094"
+      - "8125:8125/udp"
+
+
+```
+
+
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
 
 1. Вы устроились на работу в стартап. На данный момент у вас нет возможности развернуть полноценную систему 
