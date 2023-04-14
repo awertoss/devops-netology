@@ -70,12 +70,7 @@
 
 ```
 
-    
-    node_filesystem_free_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} / 
-    node_filesystem_size_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} * 100
-    node_filesystem_free_bytes{job="nodeexporter",fstype!~"ramfs|tmpfs|vfat"} / 1073741824
-
-
+node_memory_MemFree_bytes / (1024 * 1024)
 ```
 
 Для решения этого задания приведите promql-запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.
