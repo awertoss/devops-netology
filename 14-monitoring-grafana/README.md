@@ -70,8 +70,11 @@
 
 ```
 
-    node_filesystem_free_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} / node_filesystem_size_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} * 100
+    
+    node_filesystem_free_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} / 
+    node_filesystem_size_bytes{job="nodeexporter",fstype!~"vfat|tmpfs|ramfs"} * 100
     node_filesystem_free_bytes{job="nodeexporter",fstype!~"ramfs|tmpfs|vfat"} / 1073741824
+
 
 ```
 
