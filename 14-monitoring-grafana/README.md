@@ -23,7 +23,9 @@ https://github.com/Einsteinish/Docker-Compose-Prometheus-and-Grafana.git
 
 
 ```
-
+<p align="center">
+  <img width="1200" src="grafana-1.jpg">
+</p>
 ## Обязательные задания
 
 ### Задание 1
