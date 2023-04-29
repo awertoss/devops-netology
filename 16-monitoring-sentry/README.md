@@ -31,7 +31,7 @@ Free Cloud account имеет ограничения:
 4. В качестве решения задание предоставьте скриншот `Stack trace` из этого события и список событий проекта после нажатия `Resolved`.
 
 <p align="center">
-  <img width="1200" src="sentry1.jpg">
+  <img width="1200" src="sentry2.jpg">
 </p>
 ## Задание 3
 
