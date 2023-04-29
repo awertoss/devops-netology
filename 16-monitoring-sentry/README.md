@@ -34,6 +34,10 @@ Free Cloud account имеет ограничения:
   <img width="1200" src="sentry2.jpg">
 </p>
 
+<p align="center">
+  <img width="1200" src="sentry4.jpg">
+</p>
+
 ## Задание 3
 
 1. Перейдите в создание правил алёртинга.
