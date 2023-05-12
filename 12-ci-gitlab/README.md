@@ -50,6 +50,12 @@
 
 ## Итог
 
+```
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+clusterrolebinding.rbac.authorization.k8s.io/default-admin created
+root@cl14olqo5m1pdms451vk-iqar:/home/srg#
+
+```
 В качестве ответа пришлите подробные скриншоты по каждому пункту задания:
 
 - файл gitlab-ci.yml;
