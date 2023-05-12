@@ -60,9 +60,9 @@
   <img width="1200" src="git-lab-1.jpg">
 </p>
 
-[https://github.com/awertoss/devops-netology/blob/main/09-ci-06-gitlab/Dockerfile]
+[https://github.com/awertoss/devops-netology/blob/main/12-ci-gitlab/Dockerfile]
 </br>
-[https://github.com/awertoss/devops-netology/blob/main/09-ci-06-gitlab/gitlab-ci.yml]
+[https://github.com/awertoss/devops-netology/blob/main/12-ci-gitlab/gitlab-ci.yml]
 ### Важно 
 После выполнения задания выключите и удалите все задействованные ресурсы в Yandex Cloud.
 
