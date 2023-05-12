@@ -71,9 +71,11 @@ root@cl14olqo5m1pdms451vk-iqar:/home/srg#
 [https://github.com/awertoss/devops-netology/blob/main/12-ci-gitlab/gitlab-ci.yml]
 
 <p align="center">
+  <img width="1200" src="runner-3.jpg">
+</p>
+<p align="center">
   <img width="1200" src="runner-2.jpg">
 </p>
-
 <p align="center">
   <img width="1200" src="runner.jpg">
 </p>
