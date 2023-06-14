@@ -18,6 +18,16 @@
 
 Обоснуйте свой выбор.
 
+| Name      | Containers |   Service Discovery    |  Horizontal Scaling | Autoscaling | Resource separation | Configs |
+| :---:     |  :---:  |     :---:        | :---:  |      :---:  | :--: |        :---:  |
+| kubernetes | + | internal DNS | + | + | + | secrets |
+| redhat openshift | + | internal DNS | + | + | + | secrets |
+| hashicorp nomad | + | native or consul | + | + | + | Vault |
+| vmware tanzu | + |  internal DNS | + | + | + | secrets |
+| docker swarm | + |  internal DNS | + | + | + | secrets |
+| apache mesos | + |  internal DNS | + | + | + | secrets |
+
+
 ## Задача 2: Распределённый кеш * (необязательная)
 
 Разработчикам вашей компании понадобился распределённый кеш для организации хранения временной информации по сессиям пользователей.
