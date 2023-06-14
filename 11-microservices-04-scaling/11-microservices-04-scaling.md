@@ -18,7 +18,7 @@
 
 Обоснуйте свой выбор.
 
-Варианты, которые можно выбрать для решения для задачи.
+Варианты, которые можно выбрать для решения задачи.
 
 | Name      | Containers |   Service Discovery    |  Horizontal Scaling | Autoscaling | Resource separation | Configs |
 | :---:     |  :---:  |     :---:        | :---:  |      :---:  | :--: |        :---:  |
