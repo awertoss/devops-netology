@@ -65,6 +65,19 @@
 2. Установить dashboard.
 3. Сгенерировать сертификат для подключения к внешнему ip-адресу.
 
+```
+apt install snapd,
+snap install microk8s --classic
+usermod -a -G microk8s $USER`
+chown -f -R $USER ~/.kube`
+root@promitey:~# microk8s status
+microk8s is running
+high-availability: no
+  datastore master nodes: 127.0.0.1:19001
+  datastore standby nodes: none
+
+microk8s enable dashboard
+```
 ------
 
 ### Задание 2. Установка и настройка локального kubectl
