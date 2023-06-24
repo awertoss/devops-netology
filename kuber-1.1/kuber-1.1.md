@@ -77,6 +77,13 @@ high-availability: no
   datastore standby nodes: none
 
 microk8s enable dashboard
+
+mcedit /var/snap/microk8s/current/certs/csr.conf.template
+
+microk8s refresh-certs --cert front-proxy-client.crt`
+
+
+
 ```
 ------
 
