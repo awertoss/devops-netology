@@ -78,7 +78,8 @@ high-availability: no
   datastore master nodes: 127.0.0.1:19001
   datastore standby nodes: none
 
-microk8s enable dashboard
+microk8s kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
 
 mcedit /var/snap/microk8s/current/certs/csr.conf.template
 
