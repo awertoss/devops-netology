@@ -40,7 +40,7 @@
     # Add
     # IP.4 = 123.45.67.89
     ```
-    - обновить сертификаты `sudo microk8s refresh-certs --cert front-proxy-client.crt`.
+    - обновить сертификаты `sudo microk8s refresh-certs --cert front-proxy-client.crt.
 
 4. Установка kubectl:
     - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl;
@@ -80,7 +80,7 @@ microk8s enable dashboard
 
 mcedit /var/snap/microk8s/current/certs/csr.conf.template
 
-microk8s refresh-certs --cert front-proxy-client.crt`
+microk8s refresh-certs --cert front-proxy-client.crt
 
 
 
@@ -92,6 +92,10 @@ microk8s refresh-certs --cert front-proxy-client.crt`
 2. Настроить локально подключение к кластеру.
 3. Подключиться к дашборду с помощью port-forward.
 
+```
+microk8s kubectl create deployment nginx --image=nginx
+
+```
 ------
 
 ### Правила приёма работы
