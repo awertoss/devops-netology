@@ -109,16 +109,15 @@ mkdir .kube
 cd .kube
 microk8s config > config
 
-
-
-
-
 ```
 
 <p align="center">
   <img width="1200" src="kub1.jpg">
 </p>
 
+<p align="center">
+  <img width="1200" src="kub2.jpg">
+</p>
 ------
 
 ### Правила приёма работы
