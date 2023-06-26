@@ -83,10 +83,14 @@ microk8s kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard
 
 mcedit /var/snap/microk8s/current/certs/csr.conf.template
 
-microk8s kubectl create deployment nginx --image=nginx
 
 microk8s enable dns
 microk8s enable hostpath-storage
+
+microk8s kubectl create deployment nginx --image=nginx
+
+microk8s kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+
 microk8s stop
 microk8s start
 
@@ -100,9 +104,13 @@ microk8s start
 3. Подключиться к дашборду с помощью port-forward.
 
 ```
-microk8s kubectl create deployment nginx --image=nginx
+cd $HOME
+mkdir .kube
+cd .kube
+microk8s config > config
 
-microk8s kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+
+
 
 
 ```
