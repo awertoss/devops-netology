@@ -95,6 +95,9 @@ microk8s refresh-certs --cert front-proxy-client.crt
 ```
 microk8s kubectl create deployment nginx --image=nginx
 
+microk8s kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+
+
 ```
 ------
 
