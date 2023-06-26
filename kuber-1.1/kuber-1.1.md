@@ -92,11 +92,6 @@ microk8s start
 
 ```
 
-<p align="center">
-  <img width="1200" src="kub1.jpg">
-</p>
-
-
 ------
 
 ### Задание 2. Установка и настройка локального kubectl
@@ -111,6 +106,11 @@ microk8s kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
 
 
 ```
+
+<p align="center">
+  <img width="1200" src="kub1.jpg">
+</p>
+
 ------
 
 ### Правила приёма работы
