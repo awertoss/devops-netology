@@ -93,7 +93,7 @@ microk8s start
 ```
 
 <p align="center">
-  <img width="1200" src="kube1.jpg">
+  <img width="1200" src="kub1.jpg">
 </p>
 
 
