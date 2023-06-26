@@ -90,9 +90,13 @@ microk8s enable hostpath-storage
 microk8s stop
 microk8s start
 
-
-
 ```
+
+<p align="center">
+  <img width="1200" src="kube1.jpg">
+</p>
+
+
 ------
 
 ### Задание 2. Установка и настройка локального kubectl
