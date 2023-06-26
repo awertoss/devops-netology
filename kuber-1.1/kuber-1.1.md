@@ -66,10 +66,12 @@
 3. Сгенерировать сертификат для подключения к внешнему ip-адресу.
 
 ```
-apt install snapd,
+apt install snapd
 snap install microk8s --classic
+
 usermod -a -G microk8s $USER`
 chown -f -R $USER ~/.kube`
+
 root@promitey:~# microk8s status
 microk8s is running
 high-availability: no
@@ -80,7 +82,12 @@ microk8s enable dashboard
 
 mcedit /var/snap/microk8s/current/certs/csr.conf.template
 
-microk8s refresh-certs --cert front-proxy-client.crt
+microk8s kubectl create deployment nginx --image=nginx
+
+microk8s enable dns
+microk8s enable hostpath-storage
+microk8s stop
+microk8s start
 
 
 
