@@ -27,6 +27,43 @@
 2. Использовать image - gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
 3. Подключиться локально к Pod с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
+```
+root@promitey:~/kuber2# kubectl apply -f hello-word.yaml
+deployment.apps/hello-world created
+root@promitey:~/kuber2#
+
+root@promitey:~/kuber2# cat hello-word.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+        ports:
+        - containerPort: 80
+
+root@promitey:~/kuber2# microk8s kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+hello-world-f5cf79db7-4qtmz   0/1     Pending   0          77s
+hello-world-f5cf79db7-8fzfl   0/1     Pending   0          77s
+
+
+
+```
+
 ------
 
 ### Задание 2. Создать Service и подключить его к Pod
