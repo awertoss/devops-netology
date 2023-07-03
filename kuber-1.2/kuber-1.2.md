@@ -32,33 +32,22 @@ root@promitey:~/kuber2# kubectl apply -f hello-word.yaml
 deployment.apps/hello-world created
 root@promitey:~/kuber2#
 
-root@promitey:~/kuber2# cat hello-word.yaml
-apiVersion: apps/v1
-kind: Deployment
+cat hello-word.yaml
+apiVersion: v1
+kind: Pod
 metadata:
-  name: hello-world
-  labels:
-    app: hello-world
+  name: hello-word
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-world
-  template:
-    metadata:
-      labels:
-        app: hello-world
-    spec:
-      containers:
-      - name: hello-world
-        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
-        ports:
-        - containerPort: 80
+  containers:
+  - name: hello-word
+    image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+    ports:
+    - containerPort: 80
 
 root@promitey:~/kuber2# microk8s kubectl get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-hello-world-f5cf79db7-4qtmz   0/1     Pending   0          77s
-hello-world-f5cf79db7-8fzfl   0/1     Pending   0          77s
+NAME         READY   STATUS    RESTARTS   AGE
+hello-word   0/1     Pending   0          14s
+
 
 
 
