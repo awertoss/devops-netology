@@ -63,7 +63,9 @@ hello-world-f5cf79db7-8fzfl   0/1     Pending   0          77s
 
 
 ```
-
+<p align="center">
+  <img width="1200" src="k8s-1.jpg">
+</p>
 ------
 
 ### Задание 2. Создать Service и подключить его к Pod
