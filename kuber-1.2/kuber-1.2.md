@@ -228,12 +228,29 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: netology-web
+  labels:
+    app.kubernetes.io/name: proxy
 spec:
   containers:
   - name: netology-web
     image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
     ports:
     - containerPort: 80
+      name: http-web
+--
+root@promitey:~/kuber2# cat netology-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: netology-svc
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http-web
+
 
 
 root@promitey:~/kuber2# kubectl apply -f netology-web.yaml
