@@ -29,7 +29,7 @@
 touch deployment.yaml
 chmod +x deployment.yaml
 ```
-Конфиг: [deployment1.yaml](/deployment1.yaml)
+Конфиг: [deployment1.yaml](deployment1.yaml)
 
 ```
 root@promitey:~/kuber3# microk8s kubectl apply -f deployment1.yaml
