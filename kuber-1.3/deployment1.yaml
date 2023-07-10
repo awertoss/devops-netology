@@ -1,36 +1,33 @@
-]
-  namespace: default
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    app: main
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: multitool
+      app: main
   template:
     metadata:
       labels:
-        app: multitool
+        app: main
     spec:
       containers:
-        - image: wbitt/network-multitool
-          imagePullPolicy: IfNotPresent
-          name: network-multitool
-          resources:
-            limits:
-              cpu: 200m
-              memory: 512Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
+      - name: nginx
+        image: nginx:1.19.1
+        ports:
+        - containerPort: 80
 ---
 
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: service-nginx
+  name: multitool
+  labels:
+    app: multitool
+  namespace: default
 spec:
-  ports:
-    - name: web
-      port: 80
+  replicas: 1
   selector:
-    app: main
-
