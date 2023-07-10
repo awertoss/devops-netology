@@ -39,8 +39,9 @@ service/service-nginx created
 
 root@promitey:~/kuber3# microk8s kubectl get deployment
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-multitool    0/1     1            0           2m1s
-deployment   0/2     2            0           2m1s
+multitool    0/1     1            0           98m
+deployment   0/1     1            0           98m
+
 
 
 ```
