@@ -49,12 +49,41 @@ deployment   0/1     1            0           98m
 2. После запуска увеличить количество реплик работающего приложения до 2.
 
 ```
+Изменил replicas: 2.
+root@promitey:~/kuber3# microk8s kubectl apply -f deployment.yaml
+deployment.apps/deployment configured
+deployment.apps/multitool unchanged
+service/service-nginx unchanged
 
 
 ```
 
 3. Продемонстрировать количество подов до и после масштабирования.
+
+```
+До
+root@promitey:~/kuber3# microk8s kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+multitool-7b7cbff84c-j2qhs    0/1     Pending             0          111m
+deployment-7955d8f4b5-qzlzr   0/1     Pending             0          111m
+
+После
+root@promitey:~/kuber3# microk8s kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+multitool-7b7cbff84c-j2qhs    0/1     Pending             0          113m
+deployment-7955d8f4b5-qzlzr   0/1     Pending             0          113m
+deployment-7955d8f4b5-7lcrn   0/1     Pending             0          9s
+
+```
+
 4. Создать Service, который обеспечит доступ до реплик приложений из п.1.
+
+```
+root@promitey:~/kuber3# microk8s kubectl get svc
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes      ClusterIP   10.152.183.1     <none>        443/TCP   14d
+service-nginx   ClusterIP   10.152.183.26    <none>        80/TCP    114m
+```
 5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
 
 ------
