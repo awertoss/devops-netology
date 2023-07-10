@@ -25,7 +25,30 @@
 ### Задание 1. Создать Deployment и обеспечить доступ к репликам приложения из другого Pod
 
 1. Создать Deployment приложения, состоящего из двух контейнеров — nginx и multitool. Решить возникшую ошибку.
+```
+touch deployment.yaml
+chmod +x deployment.yaml
+
+root@promitey:~/kuber3# microk8s kubectl apply -f deployment.yaml
+deployment.apps/deployment created
+deployment.apps/multitool created
+service/service-nginx created
+
+root@promitey:~/kuber3# microk8s kubectl get deployment
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+multitool    0/1     1            0           2m1s
+deployment   0/2     2            0           2m1s
+
+
+```
+   
 2. После запуска увеличить количество реплик работающего приложения до 2.
+
+```
+
+
+```
+
 3. Продемонстрировать количество подов до и после масштабирования.
 4. Создать Service, который обеспечит доступ до реплик приложений из п.1.
 5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
