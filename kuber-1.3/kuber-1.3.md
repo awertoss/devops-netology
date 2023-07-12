@@ -32,15 +32,14 @@ chmod +x deployment1.yaml
 Конфиг: [deployment1.yaml](deployment1.yaml)
 
 ```
-root@promitey:~/kuber3# microk8s kubectl apply -f deployment1.yaml
+root@promitey:~/kuber3# kubectl apply -f deployment1.yaml
 deployment.apps/deployment created
-deployment.apps/multitool created
-service/service-nginx created
+
 
 root@promitey:~/kuber3# microk8s kubectl get deployment
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-multitool    0/1     1            0           98m
-deployment   0/1     1            0           98m
+deployment   0/1     1            0           5m21s
+
 
 
 
