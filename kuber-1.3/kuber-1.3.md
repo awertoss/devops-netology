@@ -87,7 +87,7 @@ service-nginx   ClusterIP   10.152.183.26    <none>        80/TCP    114m
 5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
 
 ```
-microk8s kubectl exec multitool-5c8cbc9b6c-798wn -- curl 10.152.183.26
+microk8s kubectl exec multitool-7b7cbff84c-glld6 n -- curl 10.152.183.26
 
 ```
 
