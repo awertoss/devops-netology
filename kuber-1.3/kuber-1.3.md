@@ -26,8 +26,8 @@
 
 1. Создать Deployment приложения, состоящего из двух контейнеров — nginx и multitool. Решить возникшую ошибку.
 ```
-touch deployment.yaml
-chmod +x deployment.yaml
+touch deployment1.yaml
+chmod +x deployment1.yaml
 ```
 Конфиг: [deployment1.yaml](deployment1.yaml)
 
