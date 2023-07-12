@@ -19,17 +19,16 @@ spec:
         image: nginx:1.19.1
         ports:
         - containerPort: 80
-       containers:
-        - image: wbitt/network-multitool
-          imagePullPolicy: IfNotPresent
-          name: network-multitool
-          resources:
+      - image: wbitt/network-multitool
+        name: multitool
+        resources:
             limits:
               cpu: 200m
               memory: 512Mi
             requests:
               cpu: 100m
               memory: 256Mi
+
 
 
 
