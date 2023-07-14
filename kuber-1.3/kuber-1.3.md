@@ -75,18 +75,20 @@ chmod +x service.yaml
 
 Конфиг: [service.yaml](service.yaml)
 
-kubectl apply -f service.yaml
+microk8s kubectl apply -f service.yaml
+service/nginx-svc created
 
 root@promitey:~/kuber3# microk8s kubectl get svc
-NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-kubernetes      ClusterIP   10.152.183.1     <none>        443/TCP   14d
-service-nginx   ClusterIP   10.152.183.26    <none>        80/TCP    114m
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   2d18h
+nginx-svc    ClusterIP   10.152.183.238   <none>        80/TCP    28s
+
 ```
 5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
 
 ```
 
-root@promitey:~/kuber3# kubectl run multitool --image=wbitt/network-multitool
+root@promitey:~/kuber3# microk8s kubectl run multitool --image=wbitt/network-multitool
 pod/multitool created
 
 microk8s kubectl exec multitool-7b7cbff84c-glld6 n -- curl 10.152.183.26
