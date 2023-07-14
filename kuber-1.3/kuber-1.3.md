@@ -91,7 +91,36 @@ nginx-svc    ClusterIP   10.152.183.238   <none>        80/TCP    28s
 root@promitey:~/kuber3# microk8s kubectl run multitool --image=wbitt/network-multitool
 pod/multitool created
 
-microk8s kubectl exec multitool-7b7cbff84c-glld6 n -- curl 10.152.183.26
+ microk8s kubectl exec multitool -- curl 10.152.183.238
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   612  100   612    0     0  12134      0 --:--:-- --:--:-- --:--:-- 12489
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
 
 ```
 
