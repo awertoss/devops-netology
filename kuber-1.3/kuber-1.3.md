@@ -56,22 +56,27 @@ deployment.apps/deployment configured
 ```
 До
 root@promitey:~/kuber3# microk8s kubectl get pods
-NAME                          READY   STATUS             RESTARTS      AGE
-deployment-587d4cfb94-gc9wt   1/2     CrashLoopBackOff   3 (28s ago)   86s
-
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-7b5655b98b-52xv2   2/2     Running   0          5m42s
 
 После
 root@promitey:~/kuber3# microk8s kubectl get pods
-NAME                          READY   STATUS              RESTARTS   AGE
-multitool-7b7cbff84c-j2qhs    0/1     Pending             0          113m
-deployment-7955d8f4b5-qzlzr   0/1     Pending             0          113m
-deployment-7955d8f4b5-7lcrn   0/1     Pending             0          9s
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-7b5655b98b-52xv2   2/2     Running   0          13m
+deployment-7b5655b98b-p8c57   2/2     Running   0          13s
 
 ```
 
 4. Создать Service, который обеспечит доступ до реплик приложений из п.1.
 
 ```
+touch service.yaml
+chmod +x service.yaml
+
+Конфиг: [service.yaml](service.yaml)
+
+kubectl apply -f service.yaml
+
 root@promitey:~/kuber3# microk8s kubectl get svc
 NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 kubernetes      ClusterIP   10.152.183.1     <none>        443/TCP   14d
