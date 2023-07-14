@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: deployment
   labels:
-    app: main
+    app: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: main
+      app: nginx
   template:
     metadata:
       labels:
-        app: main
+        app: nginx
     spec:
       containers:
       - name: nginx
-        image: nginx:1.19.1
+        image: nginx:1.14.2
         ports:
         - containerPort: 80
       - image: wbitt/network-multitool
@@ -28,7 +28,8 @@ spec:
             requests:
               cpu: 100m
               memory: 256Mi
-
+        ports:
+        - containerPort: 8080
 
 
 
