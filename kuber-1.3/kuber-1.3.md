@@ -72,9 +72,11 @@ deployment-7b5655b98b-p8c57   2/2     Running   0          13s
 ```
 touch service.yaml
 chmod +x service.yaml
+```
 
 Конфиг: [service.yaml](service.yaml)
 
+```
 microk8s kubectl apply -f service.yaml
 service/nginx-svc created
 
