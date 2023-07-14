@@ -136,9 +136,17 @@ chmod +x deployment2.yaml
 
 Конфиг: [deployment2.yaml](deployment2.yaml)
 
-kubectl apply -f deployment2.yaml
+microk8s kubectl apply -f deployment2.yaml
+pod/myapp-pod created
+
 ```
 2. Убедиться, что nginx не стартует. В качестве Init-контейнера взять busybox.
+
+```
+microk8s kubectl logs myapp-pod
+Defaulted container "myapp-container" out of: myapp-container, init-myservice (init)
+
+```
 3. Создать и запустить Service. Убедиться, что Init запустился.
 
 ```
@@ -147,9 +155,24 @@ chmod +x service2.yaml
 
 Конфиг: [service2.yaml](service2.yaml)
 
-kubectl apply -f service2.yaml
+microk8s kubectl apply -f service2.yaml
+service/nginx-svc2 created
+
 ```
 4. Продемонстрировать состояние пода до и после запуска сервиса.
+
+```
+До
+microk8s kubectl get pods
+NAME                          READY   STATUS     RESTARTS   AGE
+myapp-pod                     0/1     Init:0/1   0          85s
+
+После
+ microk8s kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+myapp-pod                     1/1     Running   0          2m46s
+
+```
 
 ------
 
