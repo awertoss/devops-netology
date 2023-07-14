@@ -48,9 +48,6 @@ deployment   1/1     1            1           18h
 Изменил replicas: 2.
 root@promitey:~/kuber3# microk8s kubectl apply -f deployment1.yaml
 deployment.apps/deployment configured
-deployment.apps/multitool unchanged
-service/service-nginx unchanged
-
 
 ```
 
@@ -59,9 +56,9 @@ service/service-nginx unchanged
 ```
 До
 root@promitey:~/kuber3# microk8s kubectl get pods
-NAME                          READY   STATUS              RESTARTS   AGE
-multitool-7b7cbff84c-j2qhs    0/1     Pending             0          111m
-deployment-7955d8f4b5-qzlzr   0/1     Pending             0          111m
+NAME                          READY   STATUS             RESTARTS      AGE
+deployment-587d4cfb94-gc9wt   1/2     CrashLoopBackOff   3 (28s ago)   86s
+
 
 После
 root@promitey:~/kuber3# microk8s kubectl get pods
