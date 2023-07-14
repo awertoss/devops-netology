@@ -129,8 +129,26 @@ Commercial support is available at
 ### Задание 2. Создать Deployment и обеспечить старт основного контейнера при выполнении условий
 
 1. Создать Deployment приложения nginx и обеспечить старт контейнера только после того, как будет запущен сервис этого приложения.
+
+```
+touch deployment2.yaml
+chmod +x deployment2.yaml
+
+Конфиг: [deployment2.yaml](deployment2.yaml)
+
+kubectl apply -f deployment2.yaml
+```
 2. Убедиться, что nginx не стартует. В качестве Init-контейнера взять busybox.
 3. Создать и запустить Service. Убедиться, что Init запустился.
+
+```
+touch service2.yaml
+chmod +x service2.yaml
+
+Конфиг: [service2.yaml](service2.yaml)
+
+kubectl apply -f service2.yaml
+```
 4. Продемонстрировать состояние пода до и после запуска сервиса.
 
 ------
