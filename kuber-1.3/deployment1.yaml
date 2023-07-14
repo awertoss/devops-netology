@@ -19,8 +19,15 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
-      - image: wbitt/network-multitool
-        name: multitool
+      - name: multitool
+        image: wbitt/network-multitool
+        imagePullPolicy: IfNotPresent
+        env:.
+        - name: HTTP_PORT
+          value: "1180"
+        ports:
+        - containerPort: 1180
+          name: http-port
         resources:
             limits:
               cpu: 200m
@@ -28,8 +35,7 @@ spec:
             requests:
               cpu: 100m
               memory: 256Mi
-        ports:
-        - containerPort: 8080
+
 
 
 
