@@ -133,9 +133,11 @@ Commercial support is available at
 ```
 touch deployment2.yaml
 chmod +x deployment2.yaml
+```
 
 Конфиг: [deployment2.yaml](deployment2.yaml)
 
+```
 microk8s kubectl apply -f deployment2.yaml
 pod/myapp-pod created
 
@@ -152,9 +154,11 @@ Defaulted container "myapp-container" out of: myapp-container, init-myservice (i
 ```
 touch service2.yaml
 chmod +x service2.yaml
+```
 
 Конфиг: [service2.yaml](service2.yaml)
 
+```
 microk8s kubectl apply -f service2.yaml
 service/nginx-svc2 created
 
