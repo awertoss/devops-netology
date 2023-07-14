@@ -36,12 +36,9 @@ root@promitey:~/kuber3# kubectl apply -f deployment1.yaml
 deployment.apps/deployment created
 
 
-root@promitey:~/kuber3# microk8s kubectl get deployment
+root@promitey:~/kuber3# microk8s kubectl get deployments
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-deployment   0/1     1            0           5m21s
-
-
-
+deployment   1/1     1            1           18h
 
 ```
    
@@ -49,7 +46,7 @@ deployment   0/1     1            0           5m21s
 
 ```
 Изменил replicas: 2.
-root@promitey:~/kuber3# microk8s kubectl apply -f deployment.yaml
+root@promitey:~/kuber3# microk8s kubectl apply -f deployment1.yaml
 deployment.apps/deployment configured
 deployment.apps/multitool unchanged
 service/service-nginx unchanged
