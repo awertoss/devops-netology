@@ -28,11 +28,37 @@
 
 Конфиг: [deployment1.yaml](deployment1.yaml)
 
+```
+microk8s kubectl apply -f deployment1.yaml
+deployment.apps/deployment created
+
+ microk8s kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment   3/3     3            3           33s
+
+```
+
 2. Создать Service, который обеспечит доступ внутри кластера до контейнеров приложения из п.1 по порту 9001 — nginx 80, по 9002 — multitool 8080.
 
 Конфиг: [service.yaml](service.yaml)
 
+```
+microk8s kubectl apply -f service.yaml
+service/nginx-svc created
+
+microk8s kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP             6d15h
+nginx-svc    ClusterIP   10.152.183.143   <none>        9001/TCP,9002/TCP   44s
+
+```
+
 3. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложения из п.1 по разным портам в разные контейнеры.
+
+```
+microk8s kubectl run multitool --image=wbitt/network-multitool
+```
+
 4. Продемонстрировать доступ с помощью `curl` по доменному имени сервиса.
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
 
