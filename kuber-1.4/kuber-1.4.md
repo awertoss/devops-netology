@@ -122,16 +122,37 @@ Commercial support is available at
 Cмотреть выше.
 ```
 
-```
-```
-
 ------
 
 ### Задание 2. Создать Service и обеспечить доступ к приложениям снаружи кластера
 
 1. Создать отдельный Service приложения из Задания 1 с возможностью доступа снаружи кластера к nginx, используя тип NodePort.
+
+Конфиг: [service2.yaml](service2.yaml)
+
+```
+microk8s kubectl apply -f service2.yaml
+service/nginx-svc2 created
+
+microk8s kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP                         6d15h
+nginx-svc    ClusterIP   10.152.183.143   <none>        9001/TCP,9002/TCP               17m
+nginx-svc2   NodePort    10.152.183.240   <none>        9001:30001/TCP,9002:30002/TCP   63s
+
+
+```
 2. Продемонстрировать доступ с помощью браузера или `curl` с локального компьютера.
+
+<p align="center">
+  <img width="1200" src="welcome.jpg">
+</p>
+
 3. Предоставить манифест и Service в решении, а также скриншоты или вывод команды п.2.
+
+```
+Смотреть выше.
+```
 
 ------
 
