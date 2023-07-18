@@ -57,12 +57,70 @@ nginx-svc    ClusterIP   10.152.183.143   <none>        9001/TCP,9002/TCP   44s
 
 ```
 microk8s kubectl run multitool --image=wbitt/network-multitool
+pod/multitool created
+
+microk8s kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+deployment-db87957b8-slxkx   2/2     Running   0          4m6s
+deployment-db87957b8-z9qph   2/2     Running   0          4m6s
+deployment-db87957b8-tkffz   2/2     Running   0          4m6s
+multitool                    1/1     Running   0          61s
+
+ microk8s kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP             6d15h
+nginx-svc    ClusterIP   10.152.183.143   <none>        9001/TCP,9002/TCP   5m8s
+
+microk8s kubectl exec multitool -- curl 10.152.183.143:9002
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   144  100   144    0     0  65873      0 --:--:-- --:--:-- --:--:--  140k
+WBITT Network MultiTool (with NGINX) - deployment-db87957b8-slxkx - 10.1.45.101 - HTTP: 8080 , HTTPS: 443 . (Formerly praqma/network-multitool)
+
+
 ```
 
 4. Продемонстрировать доступ с помощью `curl` по доменному имени сервиса.
-5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
+
+```
+microk8s kubectl exec multitool -- curl nginx-svc:9001
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   612  100   612    0     0  50135      0 --:--:-- --:--:-- --:--:-- 55636
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
 
 
+```
+
+5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4
+
+```
+Cмотреть выше.
+```
 
 ```
 ```
