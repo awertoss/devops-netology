@@ -30,11 +30,12 @@
 Конфиг: [frontend.yaml](frontend.yaml)
 ```
 microk8s kubectl apply -f frontend.yaml
-deployment.apps/frontent created
+deployment.apps/frontend created
 
-microk8s kubectl get deployments
+microk8s kubectl get deployment
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-frontent   3/3     3            3           52s
+frontend   3/3     3            3           2m54s
+
 
 
 ```
@@ -47,8 +48,9 @@ deployment.apps/backend created
 
 microk8s kubectl get deployments
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-frontent   3/3     3            3           102s
-backend    1/1     1            1           27s
+frontend   3/3     3            3           3m30s
+backend    1/1     1            1           14s
+
 
 
 ```
@@ -65,13 +67,23 @@ microk8s kubectl apply -f service-backend.yaml
 service/svc-back created
 
 microk8s kubectl get svc
-NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   10.152.183.1    <none>        443/TCP   7d15h
-svc-front    ClusterIP   10.152.183.94   <none>        80/TCP    9s
-svc-back     ClusterIP   10.152.183.31   <none>        80/TCP    3s
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   7d15h
+svc-front    ClusterIP   10.152.183.179   <none>        80/TCP    18s
+svc-back     ClusterIP   10.152.183.45    <none>        80/TCP    10s
+
 
 ```
 4. Продемонстрировать, что приложения видят друг друга с помощью Service.
+
+```
+microk8s kubectl exec backend-866d8d9754-6mv6m   -- curl svc-back
+WBITT Network MultiTool (with NGINX) - backend-866d8d9754-6mv6m - 10.1.45.107 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   140  100   140    0     0  16550      0 --:--:-- --:--:-- --:--:-- 17500
+
+```
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
 
 ------
