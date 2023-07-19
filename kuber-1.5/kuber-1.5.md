@@ -34,8 +34,7 @@ deployment.apps/frontend created
 
 microk8s kubectl get deployment
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-frontend   3/3     3            3           2m54s
-
+frontend   3/3     3            3           7s
 
 
 ```
@@ -48,8 +47,9 @@ deployment.apps/backend created
 
 microk8s kubectl get deployments
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-frontend   3/3     3            3           3m30s
-backend    1/1     1            1           14s
+frontend   3/3     3            3           62s
+backend    1/1     1            1           25s
+
 
 
 
@@ -68,24 +68,71 @@ service/svc-back created
 
 microk8s kubectl get svc
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   7d15h
-svc-front    ClusterIP   10.152.183.179   <none>        80/TCP    18s
-svc-back     ClusterIP   10.152.183.45    <none>        80/TCP    10s
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   7d17h
+svc-front    ClusterIP   10.152.183.75    <none>        80/TCP    16s
+svc-back     ClusterIP   10.152.183.208   <none>        80/TCP    7s
+
 
 
 ```
 4. Продемонстрировать, что приложения видят друг друга с помощью Service.
 
 ```
-microk8s kubectl exec backend-866d8d9754-6mv6m   -- curl svc-back
-WBITT Network MultiTool (with NGINX) - backend-866d8d9754-6mv6m - 10.1.45.107 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
+ microk8s kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   7d17h
+svc-front    ClusterIP   10.152.183.75    <none>        80/TCP    40s
+svc-back     ClusterIP   10.152.183.208   <none>        80/TCP    31s
+root@ubuntutest:~/kuber5# microk8s kubectl get pods
+NAME                        READY   STATUS    RESTARTS   AGE
+frontend-5d865b9b74-qz4w4   1/1     Running   0          2m15s
+frontend-5d865b9b74-fcq4b   1/1     Running   0          2m14s
+frontend-5d865b9b74-mqf5p   1/1     Running   0          2m14s
+backend-866d8d9754-jx5pt    1/1     Running   0          98s
+
+microk8s kubectl exec frontend-5d865b9b74-qz4w4 -- curl svc-front
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100   140  100   140    0     0  16550      0 --:--:-- --:--:-- --:--:-- 17500
+100   612  100   612    0     0    99k      0 --:--<!DOCTYPE html>:--:--     0
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+
+  microk8s kubectl exec backend-866d8d9754-jx5pt -- curl svc-back
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   139  100   139    0     0  43478      0 --:--:-- --:--:-- --:--:-- 69500
+WBITT Network MultiTool (with NGINX) - backend-866d8d9754-jx5pt - 10.1.45.65 - HTTP: 80 , HTTPS: 443 . (Formerly praqma/network-multitool)
+
 
 ```
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
 
+```
+Смотреть выше.
+```
 ------
 
 ### Задание 2. Создать Ingress и обеспечить доступ к приложениям снаружи кластера
