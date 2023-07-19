@@ -29,17 +29,34 @@
 
 Конфиг: [frontend.yaml](frontend.yaml)
 ```
+microk8s kubectl apply -f frontend.yaml
+deployment.apps/frontent created
+
+microk8s kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+frontent   3/3     3            3           52s
+
+
 ```
 2. Создать Deployment приложения _backend_ из образа multitool.
 
 Конфиг: [backend.yaml](backend.yaml)
 ```
+microk8s kubectl apply -f backend.yaml
+deployment.apps/backend created
+
+microk8s kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+frontent   3/3     3            3           102s
+backend    1/1     1            1           27s
+
+
 ```
 3. Добавить Service, которые обеспечат доступ к обоим приложениям внутри кластера.
 
 Конфиг: [service-backend.yaml](service-backend.yaml)
 
-Конфиг: [service-frontent.yaml](service-frontent.yaml)
+Конфиг: [service-frontent.yaml](service-frontend.yaml)
 
 ```
 ```
