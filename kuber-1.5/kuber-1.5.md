@@ -138,9 +138,64 @@ WBITT Network MultiTool (with NGINX) - backend-866d8d9754-jx5pt - 10.1.45.65 - H
 ### Задание 2. Создать Ingress и обеспечить доступ к приложениям снаружи кластера
 
 1. Включить Ingress-controller в MicroK8S.
+
+```
+# microk8s enable ingress
+Infer repository core for addon ingress
+Enabling Ingress
+ingressclass.networking.k8s.io/public created
+ingressclass.networking.k8s.io/nginx created
+namespace/ingress created
+serviceaccount/nginx-ingress-microk8s-serviceaccount created
+clusterrole.rbac.authorization.k8s.io/nginx-ingress-microk8s-clusterrole created
+role.rbac.authorization.k8s.io/nginx-ingress-microk8s-role created
+clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+rolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+configmap/nginx-load-balancer-microk8s-conf created
+configmap/nginx-ingress-tcp-microk8s-conf created
+configmap/nginx-ingress-udp-microk8s-conf created
+daemonset.apps/nginx-ingress-microk8s-controller created
+Ingress is enabled
+
+```
 2. Создать Ingress, обеспечивающий доступ снаружи по IP-адресу кластера MicroK8S так, чтобы при запросе только по адресу открывался _frontend_ а при добавлении /api - _backend_.
+
+Конфиг: [ingress.yaml](ingress.yaml)
+
+```
+microk8s kubectl apply -f ingress.yaml
+ingress.networking.k8s.io/ingress created
+
+microk8s kubectl describe ingress
+Name:             ingress
+Labels:           <none>
+Namespace:        default
+Address:
+Ingress Class:    public
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *
+              /      svc-front:80 (10.1.45.66:80,10.1.45.76:80,10.1.45.78:80)
+              /api   svc-back:80 (10.1.45.65:80)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+Events:
+  Type    Reason  Age   From                      Message
+  ----    ------  ----  ----                      -------
+  Normal  Sync    25s   nginx-ingress-controller  Scheduled for sync
+
+```
 3. Продемонстрировать доступ с помощью браузера или `curl` с локального компьютера.
+ 
+
+
+
 4. Предоставить манифесты и скриншоты или вывод команды п.2.
+
+```
+Смотреть выше.
+```
 
 ------
 
