@@ -56,9 +56,20 @@ backend    1/1     1            1           27s
 
 Конфиг: [service-backend.yaml](service-backend.yaml)
 
-Конфиг: [service-frontent.yaml](service-frontend.yaml)
+Конфиг: [service-frontend.yaml](service-frontend.yaml)
 
 ```
+microk8s kubectl apply -f service-frontend.yaml
+service/svc-front created
+microk8s kubectl apply -f service-backend.yaml
+service/svc-back created
+
+microk8s kubectl get svc
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.152.183.1    <none>        443/TCP   7d15h
+svc-front    ClusterIP   10.152.183.94   <none>        80/TCP    9s
+svc-back     ClusterIP   10.152.183.31   <none>        80/TCP    3s
+
 ```
 4. Продемонстрировать, что приложения видят друг друга с помощью Service.
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
