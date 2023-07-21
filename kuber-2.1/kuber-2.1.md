@@ -39,6 +39,32 @@
 ```
 mkdir /my
 
+microk8s kubectl apply -f deployment1.yaml
+deployment.apps/deployment created
+
+microk8s kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment   1/1     1            1           11s
+
+microk8s kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-7bd9c887c4-5jjsh   2/2     Running   0          55s
+
+Проверка.
+microk8s kubectl exec deployment-7bd9c887c4-5jjsh -c multitool  -- tail -n 10 /my/output.txt
+Fri Jul 21 06:34:34 UTC 2023
+Every 5.0s: date                                            2023-07-21 06:34:39
+
+Fri Jul 21 06:34:39 UTC 2023
+Every 5.0s: date                                            2023-07-21 06:34:44
+
+Fri Jul 21 06:34:44 UTC 2023
+Every 5.0s: date                                            2023-07-21 06:34:49
+
+Fri Jul 21 06:34:49 UTC 2023
+
+
+
 ```
 ------
 
