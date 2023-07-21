@@ -79,6 +79,15 @@ Fri Jul 21 06:34:49 UTC 2023
 3. Продемонстрировать возможность чтения файла изнутри пода.
 4. Предоставить манифесты Deployment, а также скриншоты или вывод команды из п. 2.
 
+Конфиг: [deployment2.yaml](deployment2.yaml)
+
+```
+microk8s kubectl apply -f deployment2.yaml
+daemonset.apps/daemonset created
+
+
+```
+
 ------
 
 ### Правила приёма работы
