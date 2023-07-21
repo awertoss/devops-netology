@@ -64,6 +64,11 @@ Every 5.0s: date                                            2023-07-21 06:34:49
 Fri Jul 21 06:34:49 UTC 2023
 
 
+microk8s kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-7bd9c887c4-5jjsh   2/2     Running   0          27m
+daemonset-qgsxc               1/1     Running   0          14m
+
 
 ```
 ------
@@ -85,6 +90,24 @@ Fri Jul 21 06:34:49 UTC 2023
 microk8s kubectl apply -f deployment2.yaml
 daemonset.apps/daemonset created
 
+microk8s kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-7bd9c887c4-5jjsh   2/2     Running   0          40m
+daemonset-n6bv7               1/1     Running   0          3m14s
+
+Проверка.
+root@ubuntutest:~/kuber21# microk8s kubectl exec daemonset-n6bv7 -it -- sh
+/ # tail -n 10 /var/log/syslog
+Jul 21 07:12:46 ubuntutest systemd[1]: run-containerd-runc-k8s.io-cc365ff569b92e5885153a5cef7338bcdb020af40877ff3399ed5fd08fa2a88e-runc.jjPeW0.mount: Deactivated successfully.
+Jul 21 07:13:39 ubuntutest microk8s.daemon-containerd[948]: time="2023-07-21T07:13:39.693972368Z" level=info msg="Container exec \"78084531a76d55b9858fea8c535a207a2c6e2b68a42812c41b9bb80530a9ff94\" stdin closed"
+Jul 21 07:13:39 ubuntutest systemd[1]: snap.microk8s.microk8s.f75ed491-c517-4606-9d43-327bd1e81b8c.scope: Deactivated successfully.
+Jul 21 07:13:44 ubuntutest systemd[1]: Started snap.microk8s.microk8s.ae592550-0201-40e2-bf86-7f6006b77897.scope.
+Jul 21 07:13:44 ubuntutest systemd[1]: snap.microk8s.microk8s.ae592550-0201-40e2-bf86-7f6006b77897.scope: Deactivated successfully.
+Jul 21 07:13:56 ubuntutest systemd[1]: run-containerd-runc-k8s.io-cc365ff569b92e5885153a5cef7338bcdb020af40877ff3399ed5fd08fa2a88e-runc.mhbiLx.mount: Deactivated successfully.
+Jul 21 07:14:01 ubuntutest systemd[1]: run-containerd-runc-k8s.io-2185c0a78636765196054f89e28bb1efcb4ee49337acaf3a94a77027a772d7b7-runc.NL0UGu.mount: Deactivated successfully.
+Jul 21 07:14:10 ubuntutest systemd[1]: Started snap.microk8s.microk8s.dff99e93-a955-4d27-b4c0-f614a6e1c42d.scope.
+Jul 21 07:14:11 ubuntutest systemd[1]: run-containerd-runc-k8s.io-cc365ff569b92e5885153a5cef7338bcdb020af40877ff3399ed5fd08fa2a88e-runc.A1H9dw.mount: Deactivated successfully.
+Jul 21 07:14:16 ubuntutest systemd[1]: run-containerd-runc-k8s.io-cc365ff569b92e5885153a5cef7338bcdb020af40877ff3399ed5fd08fa2a88e-runc.RkwZal.mount: Deactivated successfully.
 
 ```
 
