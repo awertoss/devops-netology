@@ -63,13 +63,6 @@ Every 5.0s: date                                            2023-07-21 06:34:49
 
 Fri Jul 21 06:34:49 UTC 2023
 
-
-microk8s kubectl get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-deployment-7bd9c887c4-5jjsh   2/2     Running   0          27m
-daemonset-qgsxc               1/1     Running   0          14m
-
-
 ```
 ------
 
