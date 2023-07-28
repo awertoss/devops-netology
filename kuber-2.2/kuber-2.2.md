@@ -34,12 +34,106 @@
 Конфиг: [deployment1.yaml](deployment1.yaml)
 ```
 microk8s kubectl apply -f deployment1.yaml
+deployment.apps/deployment created
 ```
 2. Создать PV и PVC для подключения папки на локальной ноде, которая будет использована в поде.
-3. Продемонстрировать, что multitool может читать файл, в который busybox пишет каждые пять секунд в общей директории. 
+
+Конфиг: [pvc.yaml](pvc.yaml)
+Конфиг: [pv.yaml](pv.yaml)
+
+```
+microk8s kubectl apply -f pv.yaml
+persistentvolume/pv created
+
+microk8s kubectl apply -f pvc.yaml
+persistentvolumeclaim/pvc created
+
+microk8s kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment   1/1     1            1           2m54s
+
+
+microk8s kubectl get pv
+NAME   CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM         STORAGECLASS   REASON   AGE
+pv     1Gi        RWO            Delete           Bound    default/pvc                           84s
+
+microk8s kubectl get pvc
+NAME   STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc    Bound    pv       1Gi        RWO                           100s
+
+```
+
+3. Продемонстрировать, что multitool может читать файл, в который busybox пишет каждые пять секунд в общей директории.
+
+```
+ microk8s kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+deployment-c57b49d9d-4pss8   2/2     Running   0          4m4s
+
+
+microk8s kubectl exec deployment-c57b49d9d-4pss8 -c multitool  -- tail -n 10 /my/output.txt
+Fri Jul 28 08:02:21 UTC 2023
+Every 5.0s: date                                            2023-07-28 08:02:26
+
+Fri Jul 28 08:02:26 UTC 2023
+Every 5.0s: date                                            2023-07-28 08:02:31
+
+Fri Jul 28 08:02:31 UTC 2023
+Every 5.0s: date                                            2023-07-28 08:02:36
+
+Fri Jul 28 08:02:36 UTC 2023
+
+
+
+``` 
 4. Удалить Deployment и PVC. Продемонстрировать, что после этого произошло с PV. Пояснить, почему.
+
+```
+microk8s kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment   1/1     1            1           5m24s
+
+
+microk8s kubectl delete deployments deployment
+deployment.apps "deployment" deleted
+
+microk8s kubectl get pvc
+NAME   STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc    Bound    pv       1Gi        RWO                           3m48s
+
+
+microk8s kubectl delete pvc pvc
+persistentvolumeclaim "pvc" deleted
+
+kubectl get pv
+NAME   CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM         STORAGECLASS   REASON   AGE
+pv     1Gi        RWO            Delete           Failed   default/pvc                           4m50s
+
+В конфиге pv, есть строчка persistentVolumeReclaimPolicy: Delete.
+После удаления pvc, удаляется pv. Если этой строчки не было, то pv бы не удалялся.
+
+```
 5. Продемонстрировать, что файл сохранился на локальном диске ноды. Удалить PV.  Продемонстрировать что произошло с файлом после удаления PV. Пояснить, почему.
-5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+
+```
+
+ls /my/pv/output.txt
+/my/pv/output.txt
+
+microk8s kubectl delete pv pv
+persistentvolume "pv" deleted
+
+ls /my/pv/output.txt
+/my/pv/output.txt
+
+
+```
+
+6. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+
+```
+Смотреть выше.
+```
 
 ------
 
