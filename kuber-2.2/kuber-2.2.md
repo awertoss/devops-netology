@@ -154,12 +154,18 @@ ls /my/pv/output.txt
 Конфиг: [deployment2.yaml](deployment2.yaml)
 
 Конфиг: [pvc2.yaml](pvc2.yaml)
+
+Конфиг: [sc-nfs.yaml](sc-nfs.yaml)
 ```
 microk8s kubectl apply -f deployment2.yaml
 daemonset.apps/multitool created
 
 microk8s kubectl apply -f pvc2.yaml
 persistentvolumeclaim/pvc created
+
+
+microk8s kubectl apply -f - < sc-nfs.yaml
+storageclass.storage.k8s.io/nfs-csi created
 
 ```
 3. Продемонстрировать возможность чтения и записи файла изнутри пода. 
