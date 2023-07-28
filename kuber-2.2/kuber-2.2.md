@@ -153,7 +153,14 @@ ls /my/pv/output.txt
 
 Конфиг: [deployment2.yaml](deployment2.yaml)
 
+Конфиг: [pvc2.yaml](pvc2.yaml)
 ```
+microk8s kubectl apply -f deployment2.yaml
+daemonset.apps/multitool created
+
+microk8s kubectl apply -f pvc2.yaml
+persistentvolumeclaim/pvc created
+
 ```
 3. Продемонстрировать возможность чтения и записи файла изнутри пода. 
 4. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
