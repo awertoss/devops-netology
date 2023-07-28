@@ -153,7 +153,7 @@ ls /my/pv/output.txt
 
 Конфиг: [deployment2.yaml](deployment2.yaml)
 
-Конфиг: [pvc2.yaml](pvc2.yaml)
+Конфиг: [pvc-nfs.yaml](pvc-nfs.yaml)
 
 Конфиг: [sc-nfs.yaml](sc-nfs.yaml)
 ```
