@@ -158,7 +158,8 @@ ls /my/pv/output.txt
 Конфиг: [sc-nfs.yaml](sc-nfs.yaml)
 ```
 microk8s kubectl apply -f deployment2.yaml
-daemonset.apps/multitool created
+deployment.apps/multitool created
+
 
 microk8s kubectl apply -f pvc2.yaml
 persistentvolumeclaim/pvc created
