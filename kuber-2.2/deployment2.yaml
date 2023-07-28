@@ -1,4 +1,3 @@
-]
 apiVersion : apps/v1
 kind: Deployment
 metadata:
@@ -44,4 +43,3 @@ spec:
       - name: volume2
         persistentVolumeClaim:
           claimName: my-pvc
-
