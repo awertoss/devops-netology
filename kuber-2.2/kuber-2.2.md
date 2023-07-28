@@ -160,13 +160,15 @@ ls /my/pv/output.txt
 microk8s kubectl apply -f deployment2.yaml
 deployment.apps/multitool created
 
-
-microk8s kubectl apply -f pvc2.yaml
-persistentvolumeclaim/pvc created
-
-
 microk8s kubectl apply -f - < sc-nfs.yaml
 storageclass.storage.k8s.io/nfs-csi created
+
+microk8s kubectl apply -f - < pvc-nfs.yaml
+persistentvolumeclaim/my-pvc created
+
+
+
+
 
 ```
 3. Продемонстрировать возможность чтения и записи файла изнутри пода. 
