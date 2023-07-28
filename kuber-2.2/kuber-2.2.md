@@ -166,13 +166,64 @@ storageclass.storage.k8s.io/nfs-csi created
 microk8s kubectl apply -f - < pvc-nfs.yaml
 persistentvolumeclaim/my-pvc created
 
+microk8s kubectl describe pvc my-pvc
+Name:          my-pvc
+Namespace:     default
+StorageClass:  nfs-csi
+Status:        Bound
+Volume:        pvc-aae5d498-e93d-4f88-b442-dbd33e4fde7f
+Labels:        <none>
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: nfs.csi.k8s.io
+               volume.kubernetes.io/storage-provisioner: nfs.csi.k8s.io
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      1Gi
+Access Modes:  RWO
+VolumeMode:    Filesystem
+Used By:       <none>
+Events:
+  Type     Reason              Age                   From                                                            Message
+  ----     ------              ----                  ----                                                            -------
+  Warning  ProvisioningFailed  108s (x7 over 2m51s)  nfs.csi.k8s.io_ubuntutest_e49bf63b-989e-4996-8955-3b9f9b75ce36  failed to provision volume with StorageClass "nfs-csi": rpc error: code = Internal desc = failed to mount nfs server: rpc error: code = Internal desc = mount failed: exit status 32
+Mounting command: mount
+Mounting arguments: -t nfs -o hard,nfsvers=4.1 10.100.0.195:/srv/nfs /tmp/pvc-aae5d498-e93d-4f88-b442-dbd33e4fde7f
+Output: mount.nfs: access denied by server while mounting 10.100.0.195:/srv/nfs
+  Normal  ExternalProvisioning   49s (x11 over 2m51s)  persistentvolume-controller                                     waiting for a volume to be created, either by external provisioner "nfs.csi.k8s.io" or manually created by system administrator
+  Normal  Provisioning           44s (x8 over 2m51s)   nfs.csi.k8s.io_ubuntutest_e49bf63b-989e-4996-8955-3b9f9b75ce36  External provisioner is provisioning volume for claim "default/my-pvc"
+  Normal  ProvisioningSucceeded  43s                   nfs.csi.k8s.io_ubuntutest_e49bf63b-989e-4996-8955-3b9f9b75ce36  Successfully provisioned volume pvc-aae5d498-e93d-4f88-b442-dbd33e4fde7f
 
+
+```
+3. Продемонстрировать возможность чтения и записи файла изнутри пода.
+
+```
+microk8s kubectl get pods
+NAME                        READY   STATUS    RESTARTS   AGE
+multitool-75f7ccd67-w8dn4   2/2     Running   0          2m3s
+
+root@ubuntutest:~/kuber22# microk8s kubectl exec multitool-75f7ccd67-w8dn4 -c multitool  -- tail -n 10 /my/output.txt
+Fri Jul 28 13:29:22 UTC 2023
+Every 5.0s: date                                            2023-07-28 13:29:27
+
+Fri Jul 28 13:29:27 UTC 2023
+Every 5.0s: date                                            2023-07-28 13:29:32
+
+Fri Jul 28 13:29:32 UTC 2023
+Every 5.0s: date                                            2023-07-28 13:29:37
+
+Fri Jul 28 13:29:37 UTC 2023
 
 
 
 ```
-3. Продемонстрировать возможность чтения и записи файла изнутри пода. 
+
+ 
 4. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+
+```
+Смотреть выше.
+```
 
 ------
 
