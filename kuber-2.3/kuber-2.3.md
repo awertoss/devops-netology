@@ -53,6 +53,14 @@ deployment-658b977cb-8spnb   2/2     Running       0          3m18s
 
 Конфиг: [service.yaml](service.yaml)
 ```
+microk8s kubectl apply -f service.yaml
+service/servicename created
+
+clearmicrok8s kubectl get svc
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes    ClusterIP   10.152.183.1    <none>        443/TCP        22d
+servicename   NodePort    10.152.183.37   <none>        80:32000/TCP   4m
+
 ```
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
