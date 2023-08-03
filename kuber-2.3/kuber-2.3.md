@@ -28,9 +28,32 @@
 
 Конфиг: [deployment1.yaml](deployment1.yaml)
 
+```
+microk8s kubectl apply -f deployment1.yaml
+deployment.apps/deployment created
+```
+
 2. Решить возникшую проблему с помощью ConfigMap.
+
+Конфиг: [configmap.yaml](configmap.yaml)
+
+```
+microk8s kubectl apply -f configmap.yaml
+configmap/indexname created
+
+```
 3. Продемонстрировать, что pod стартовал и оба конейнера работают.
+
+```
+microk8s kubectl get pods
+NAME                         READY   STATUS        RESTARTS   AGE
+deployment-658b977cb-8spnb   2/2     Running       0          3m18s
+```
 4. Сделать простую веб-страницу и подключить её к Nginx с помощью ConfigMap. Подключить Service и показать вывод curl или в браузере.
+
+Конфиг: [service.yaml](service.yaml)
+```
+```
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
 ------
