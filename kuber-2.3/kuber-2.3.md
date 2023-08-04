@@ -46,8 +46,9 @@ configmap/indexname created
 
 ```
 microk8s kubectl get pods
-NAME                         READY   STATUS        RESTARTS   AGE
-deployment-658b977cb-8spnb   2/2     Running       0          3m18s
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-5cd95d6d79-5xxt7   2/2     Running   0          3m36s
+
 ```
 4. Сделать простую веб-страницу и подключить её к Nginx с помощью ConfigMap. Подключить Service и показать вывод curl или в браузере.
 
@@ -56,13 +57,25 @@ deployment-658b977cb-8spnb   2/2     Running       0          3m18s
 microk8s kubectl apply -f service.yaml
 service/servicename created
 
-clearmicrok8s kubectl get svc
-NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-kubernetes    ClusterIP   10.152.183.1    <none>        443/TCP        22d
-servicename   NodePort    10.152.183.37   <none>        80:32000/TCP   4m
+microk8s kubectl get svc
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes    ClusterIP   10.152.183.1     <none>        443/TCP        23d
+servicename   NodePort    10.152.183.224   <none>        80:30000/TCP   8m11s
+
+curl 10.100.0.195:30000
+<html>
+<h1>Hello</h1>
+</br>
+<h1>I know how it works. </h1>
+</html>
+
 
 ```
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
+
+```
+Смотреть выше.
+```
 
 ------
 
