@@ -18,14 +18,13 @@ spec:
         - name: busybox
           image: busybox
           command: ['sh', '-c', 'while true; do watch -n 5 date >> /my/output.txt; sleep 5; done']
-          volumeMounts:
-          - mountPath: /my
-            name: volume
         - name: multitool
           image: wbitt/network-multitool
           volumeMounts:
-          - mountPath: /my
+          - mountPath: /usr/share/nginx/html/
             name: volume
+          ports:
+          - containerPort: 80
           resources:
             requests:
               cpu: "1m"
