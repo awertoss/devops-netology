@@ -112,6 +112,12 @@ secret/secret-tlsname created
 microk8s kubectl apply -f ingress.yaml
 ingress.networking.k8s.io/ingressname created
 
+cat /etc/hosts
+127.0.0.1 localhost
+127.0.1.1 ubuntutest
+10.100.0.195 mysite.com
+
+
 
 ```
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
