@@ -117,6 +117,12 @@ cat /etc/hosts
 127.0.1.1 ubuntutest
 10.100.0.195 mysite.com
 
+curl -k https://mysite.com
+<html>
+<h1>Hello</h1>
+</br>
+<h1>I know how it works. </h1>
+</html>
 
 
 ```
