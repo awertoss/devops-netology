@@ -35,11 +35,12 @@ deployment.apps/deployment created
 
 2. Решить возникшую проблему с помощью ConfigMap.
 
-Конфиг: [configmap.yaml](configmap.yaml)
+Конфиг: [configmap1.yaml](configmap1.yaml)
 
 ```
-microk8s kubectl apply -f configmap.yaml
+microk8s kubectl apply -f configmap1.yaml
 configmap/indexname created
+
 
 ```
 3. Продемонстрировать, что pod стартовал и оба конейнера работают.
