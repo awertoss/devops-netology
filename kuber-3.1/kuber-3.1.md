@@ -26,12 +26,12 @@
 Количество нод - 5.
 ```
 
-| Ресурс   | Column 2 | Column 3 | Column 1 | Column 2 | Column 3 | Column 2 | Column 3 |
-|----------|----------|----------|----------|----------|----------|----------|----------|
-| Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
-| Row 2    | Cell 5   | Cell 6   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
-| Row 3    | Cell 8   | Cell 9   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
-| Row 3    | Cell 8   | Cell 9   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
+| Ресурс   | ОЗУ на одну копию | ПЗУ на одну копию | Процессор | Копии | Всего ОЗУ | Всего ПЗУ | Процессор |
+|----------|-------------------|-------------------|-----------|-------|-----------|-----------|-----------|
+| Row 1    | Cell 2            | Cell 3            | Row 1     | Cell 2| Cell 3    | Row 1     | Cell 2    |
+| Row 2    | Cell 5            | Cell 6            | Row 1     | Cell 2| Cell 3    | Row 1     | Cell 2    |
+| Row 3    | Cell 8            | Cell 9            | Row 1     | Cell 2| Cell 3    | Row 1     | Cell 2    |
+| Row 3    | Cell 8            | Cell 9            | Row 1     | Cell 2| Cell 3    | Row 1     | Cell 2    |
 
 ----
 
