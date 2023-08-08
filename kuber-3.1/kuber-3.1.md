@@ -26,7 +26,7 @@
 Количество нод - 5.
 ```
 
-| Ресурс | Column 2 | Column 3 | Column 1 | Column 2 | Column 3 | Column 2 | Column 3 |
+| Ресурс   | Column 2 | Column 3 | Column 1 | Column 2 | Column 3 | Column 2 | Column 3 |
 |----------|----------|----------|----------|----------|----------|----------|----------|
 | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
 | Row 2    | Cell 5   | Cell 6   | Row 1    | Cell 2   | Cell 3   | Row 1    | Cell 2   |
