@@ -294,7 +294,11 @@ git clone https://github.com/kubernetes-sigs/kubespray
 
 
 Установка зависимостей
+apt install python3-pip
 
+pip3 install -r requirements.txt
+
+declare -a IPS=(10.1.2.22 10.1.2.24 10.1.2.26 10.1.2.29 10.1.2.18)
 
 ```
 ## Дополнительные задания (со звёздочкой)
