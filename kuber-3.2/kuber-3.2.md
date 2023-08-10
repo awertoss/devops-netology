@@ -265,7 +265,31 @@ placement_policy: {}
 ```
 Репозиторий
 Подключаемся к виртуальной машине
+ssh yc-user@84.201.148.2
+The authenticity of host '84.201.148.2 (84.201.148.2)' can't be established.
+ED25519 key fingerprint is SHA256:dOcDQa5fVAJKq8QMar3xu9cjGZYdlOex07PO8h2/wts.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '84.201.148.2' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-155-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+
+
+
+
 Копируем репозиторий.
+apt install git
 git clone https://github.com/kubernetes-sigs/kubespray
 
 
