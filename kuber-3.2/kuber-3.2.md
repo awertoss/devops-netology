@@ -29,6 +29,16 @@
 Вначале скопирую репозиторий.
 git clone https://github.com/kubernetes-sigs/kubespray
 
+Далее установим yc.
+
+curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+Downloading yc 0.108.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  100M  100  100M    0     0  10.2M      0  0:00:09  0:00:09 --:--:-- 10.4M
+Yandex Cloud CLI 0.108.1 linux/amd64
+
+
 
 ```
 
