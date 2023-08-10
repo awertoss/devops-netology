@@ -70,12 +70,11 @@ v4_cidr_blocks:
 Запусти bash скрипт создания виртуальных машин.
 bash createvm.bash
 
+```
 <p align="center">
   <img width="1200" src="createvm1.jpg">
 </p>
 
-
-```
 
 ## Дополнительные задания (со звёздочкой)
 
