@@ -26,9 +26,6 @@
 ```
 Буду устанавливать k8s c помощью Kubespray — набор ansible-ролей для установки и конфигурации Kubernetes.
 
-Вначале скопирую репозиторий.
-git clone https://github.com/kubernetes-sigs/kubespray
-
 Далее установим yc.
 
 curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
@@ -265,7 +262,17 @@ placement_policy: {}
   <img width="1200" src="createvm1.jpg">
 </p>
 
+```
+Репозиторий
+Подключаемся к виртуальной машине
+Копируем репозиторий.
+git clone https://github.com/kubernetes-sigs/kubespray
 
+
+Установка зависимостей
+
+
+```
 ## Дополнительные задания (со звёздочкой)
 
 **Настоятельно рекомендуем выполнять все задания под звёздочкой.** Их выполнение поможет глубже разобраться в материале.   
