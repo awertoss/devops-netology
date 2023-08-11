@@ -296,8 +296,81 @@ git clone https://github.com/kubernetes-sigs/kubespray
 Установка зависимостей
 apt install python3-pip
 
-pip3 install -r requirements.txt
+python3.10 -m pip --version
+pip 23.2.1 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
 
+root@masterk8s:/home/yc-user/kubespray# pip install -r requirements.txt
+Collecting ansible==7.6.0 (from -r requirements.txt (line 1))
+  Obtaining dependency information for ansible==7.6.0 from https://files.pythonhosted.org/packages/9a/54/ceba345e4f42ea9d4b8c6f24a51c5edd382ead93acd8f170ce5150e4885d/ansible-7.6.0-py3-none-any.whl.metadata
+  Downloading ansible-7.6.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting ansible-core==2.14.6 (from -r requirements.txt (line 2))
+  Obtaining dependency information for ansible-core==2.14.6 from https://files.pythonhosted.org/packages/88/ea/8a53180f8ca275543eab6a8f032bbe4e91f622c985cb9dd8a3ebb0c305ec/ansible_core-2.14.6-py3-none-any.whl.metadata
+  Downloading ansible_core-2.14.6-py3-none-any.whl.metadata (7.4 kB)
+Collecting cryptography==41.0.1 (from -r requirements.txt (line 3))
+  Obtaining dependency information for cryptography==41.0.1 from https://files.pythonhosted.org/packages/49/35/80c346e1a9509210defa857a05e9b7931093719aab25665d4d54f9b3ba83/cryptography-41.0.1-cp37-abi3-manylinux_2_28_x86_64.whl.metadata
+  Downloading cryptography-41.0.1-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (5.2 kB)
+Collecting jinja2==3.1.2 (from -r requirements.txt (line 4))
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 1.3 MB/s eta 0:00:00
+Collecting jmespath==1.0.1 (from -r requirements.txt (line 5))
+  Downloading jmespath-1.0.1-py3-none-any.whl (20 kB)
+Collecting MarkupSafe==2.1.3 (from -r requirements.txt (line 6))
+  Obtaining dependency information for MarkupSafe==2.1.3 from https://files.pythonhosted.org/packages/12/b3/d9ed2c0971e1435b8a62354b18d3060b66c8cb1d368399ec0b9baa7c0ee5/MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+  Downloading MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+Collecting netaddr==0.8.0 (from -r requirements.txt (line 7))
+  Downloading netaddr-0.8.0-py2.py3-none-any.whl (1.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 11.7 MB/s eta 0:00:00
+Collecting pbr==5.11.1 (from -r requirements.txt (line 8))
+  Downloading pbr-5.11.1-py2.py3-none-any.whl (112 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 112.7/112.7 kB 20.6 MB/s eta 0:00:00
+Collecting ruamel.yaml==0.17.31 (from -r requirements.txt (line 9))
+  Obtaining dependency information for ruamel.yaml==0.17.31 from https://files.pythonhosted.org/packages/9c/9c/e69fc06169ac6e757c66004885e0dfcc6c2b5c1a331a5dc70b890b6b4bf8/ruamel.yaml-0.17.31-py3-none-any.whl.metadata
+  Downloading ruamel.yaml-0.17.31-py3-none-any.whl.metadata (17 kB)
+Collecting ruamel.yaml.clib==0.2.7 (from -r requirements.txt (line 10))
+  Downloading ruamel.yaml.clib-0.2.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (485 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 485.6/485.6 kB 35.5 MB/s eta 0:00:00
+Requirement already satisfied: PyYAML>=5.1 in /usr/lib/python3/dist-packages (from ansible-core==2.14.6->-r requirements.txt (line 2)) (5.4.1)
+Collecting packaging (from ansible-core==2.14.6->-r requirements.txt (line 2))
+  Downloading packaging-23.1-py3-none-any.whl (48 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.9/48.9 kB 6.9 MB/s eta 0:00:00
+Collecting resolvelib<0.9.0,>=0.5.3 (from ansible-core==2.14.6->-r requirements.txt (line 2))
+  Downloading resolvelib-0.8.1-py2.py3-none-any.whl (16 kB)
+Collecting cffi>=1.12 (from cryptography==41.0.1->-r requirements.txt (line 3))
+  Downloading cffi-1.15.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (441 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 441.8/441.8 kB 44.1 MB/s eta 0:00:00
+Collecting pycparser (from cffi>=1.12->cryptography==41.0.1->-r requirements.txt (line 3))
+  Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.7/118.7 kB 11.8 MB/s eta 0:00:00
+Downloading ansible-7.6.0-py3-none-any.whl (43.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.8/43.8 MB 4.9 MB/s eta 0:00:00
+Downloading ansible_core-2.14.6-py3-none-any.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 25.1 MB/s eta 0:00:00
+Downloading cryptography-41.0.1-cp37-abi3-manylinux_2_28_x86_64.whl (4.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 18.3 MB/s eta 0:00:00
+Downloading MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Downloading ruamel.yaml-0.17.31-py3-none-any.whl (112 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 112.1/112.1 kB 8.3 MB/s eta 0:00:00
+DEPRECATION: distro-info 1.1build1 has a non-standard version number. pip 23.3 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of distro-info or contact the author to suggest that they release a version with a conforming version number. Discussion can be found at https://github.com/pypa/pip/issues/12063
+Installing collected packages: resolvelib, netaddr, ruamel.yaml.clib, pycparser, pbr, packaging, MarkupSafe, jmespath, ruamel.yaml, jinja2, cffi, cryptography, ansible-core, ansible
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 2.0.1
+    Uninstalling MarkupSafe-2.0.1:
+      Successfully uninstalled MarkupSafe-2.0.1
+  Attempting uninstall: jinja2
+    Found existing installation: Jinja2 3.0.3
+    Uninstalling Jinja2-3.0.3:
+      Successfully uninstalled Jinja2-3.0.3
+  Attempting uninstall: cryptography
+    Found existing installation: cryptography 3.4.8
+    Uninstalling cryptography-3.4.8:
+      Successfully uninstalled cryptography-3.4.8
+Successfully installed MarkupSafe-2.1.3 ansible-7.6.0 ansible-core-2.14.6 cffi-1.15.1 cryptography-41.0.1 jinja2-3.1.2 jmespath-1.0.1 netaddr-0.8.0 packaging-23.1 pbr-5.11.1 pycparser-2.21 resolvelib-0.8.1 ruamel.yaml-0.17.31 ruamel.yaml.clib-0.2.7
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+```
+Подготовка файлa host.yaml
+
+```
 declare -a IPS=(10.1.2.22 10.1.2.24 10.1.2.26 10.1.2.29 10.1.2.18)
 
 ```
