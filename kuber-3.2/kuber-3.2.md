@@ -371,8 +371,10 @@ WARNING: Running pip as the 'root' user can result in broken permissions and con
 Подготовка файлa host.yaml
 
 ```
-declare -a IPS=(10.1.2.22 10.1.2.24 10.1.2.26 10.1.2.29 10.1.2.18)
+cp -rfp inventory/sample inventory/mycluster
+declare -a IPS=(10.1.2.32 10.1.2.19 10.1.2.5 10.1.2.25 10.1.2.26)
 
+CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 ```
 ## Дополнительные задания (со звёздочкой)
 
