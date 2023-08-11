@@ -375,6 +375,140 @@ cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(10.1.2.32 10.1.2.19 10.1.2.5 10.1.2.25 10.1.2.26)
 
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
+DEBUG: Adding group all
+DEBUG: Adding group kube_control_plane
+DEBUG: Adding group kube_node
+DEBUG: Adding group etcd
+DEBUG: Adding group k8s_cluster
+DEBUG: Adding group calico_rr
+DEBUG: adding host node1 to group all
+DEBUG: adding host node2 to group all
+DEBUG: adding host node3 to group all
+DEBUG: adding host node4 to group all
+DEBUG: adding host node5 to group all
+DEBUG: adding host node1 to group etcd
+DEBUG: adding host node2 to group etcd
+DEBUG: adding host node3 to group etcd
+DEBUG: adding host node1 to group kube_control_plane
+DEBUG: adding host node2 to group kube_control_plane
+DEBUG: adding host node1 to group kube_node
+DEBUG: adding host node2 to group kube_node
+DEBUG: adding host node3 to group kube_node
+DEBUG: adding host node4 to group kube_node
+DEBUG: adding host node5 to group kube_node
+
+Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
+cat kubespray/inventory/mycluster/hosts.yaml
+all:
+  hosts:
+    masterk8s:
+      ansible_host: 10.1.2.5
+      ip: 10.1.2.5
+      access_ip: 10.1.2.5
+      ansible_user: yc-user
+    node2:
+      ansible_host: 10.1.2.32
+      ip: 10.1.2.32
+      access_ip: 10.1.2.32
+      ansible_user: yc-user
+    node3:
+      ansible_host: 10.1.2.19
+      ip: 10.1.2.19
+      access_ip: 10.1.2.19
+      ansible_user: yc-user
+    node4:
+      ansible_host: 10.1.2.25
+      ip: 10.1.2.25
+      access_ip: 10.1.2.25
+      ansible_user: yc-user
+    node5:
+      ansible_host: 10.1.2.26
+      ip: 10.1.2.26
+      access_ip: 10.1.2.26
+      ansible_user: yc-user
+  children:
+    kube_control_plane:
+      hosts:
+        masterk8s:
+    kube_node:
+      hosts:
+        node2:
+        node3:
+        node4:
+        node5:
+    etcd:
+      hosts:
+        masterk8s:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+
+
+```
+
+Добавим PRIVATE KEY на master чтобы ansible имел возможность подключаться к worker
+
+```
+cat  .ssh/id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEAol2GT4lV1KpYtL+QFnJYUohVTK5FY4Jt/FkHiDWXhKufWL6Eulsm
+e8ZEJghzdwn7ZSrrdZYIAFPYhc+6Att8p6T1ZRSJ02axqiynaJPEoBVZxeZp+LzlM43iRj
+HhS5ChWuE+rAtAc+8TIYCl7BtZgW8Xy4VeO8Li2fEvGmYU20Mii8S6gwH1YDOfEG5Iyi6b
+jnM4W49jvfBO/dK9loqvXeeLlP1/NVdiGURHNjzRn27FNAO51ln0JT67xPxJfwqQhDI1ty
+pbDPPcfzaK6coAU93m3y4TTIMpbzV4uUB1da34vmipD4fNrLOPYDbhhlNbm/ukXwg4aM06
+V7G/V4Gpgdwb67QIhJAQ1qgh8RJKw5AxohQQW1C0cvBYva1Qupt9FrPUPa+NrRkpH/2Lt9
+jqsHNFmxfePBZlg+XJBkN2gFesL70UU+vGVFUVz2GWXV/ewudVZvYFPX2FANdMdLVPx0NX
+HxfMdrwmB85KKJf6Zu13xq9bqui0Mw7ExwukDB6rAAAFiDJkYfoyZGH6AAAAB3NzaC1yc2
+EAAAGBAKJdhk+JVdSqWLS/kBZyWFKIVUyuRWOCbfxZB4g1l4Srn1i+hLpbJnvGRCYIc3cJ
++2Uq63WWCABT2IXPugLbfKek9WUUidNmsaosp2iTxKAVWcXmafi85TON4kYx4U
+...
+```
+
+Запуск playbook
+
+```
+ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
+
+Очень долгий playbook оказался.
+
+NO MORE HOSTS LEFT ****************************************************************************************************************************************************************************
+
+PLAY RECAP ************************************************************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node1                      : ok=599  changed=109  unreachable=0    failed=1    skipped=739  rescued=0    ignored=3
+node2                      : ok=562  changed=107  unreachable=0    failed=1    skipped=627  rescued=0    ignored=3
+node3                      : ok=508  changed=99   unreachable=0    failed=0    skipped=568  rescued=0    ignored=2
+node4                      : ok=448  changed=78   unreachable=0    failed=0    skipped=536  rescued=0    ignored=1
+node5                      : ok=448  changed=78   unreachable=0    failed=0    skipped=536  rescued=0    ignored=1
+
+Friday 11 August 2023  08:12:34 +0000 (0:00:01.766)       0:24:37.732 *********
+===============================================================================
+download : Download_file | Download item ---------------------------------------------------------------------------------------------------------------------------------------------- 83.78s
+download : Download_file | Download item ---------------------------------------------------------------------------------------------------------------------------------------------- 48.32s
+container-engine/crictl : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------- 44.95s
+container-engine/runc : Download_file | Download item --------------------------------------------------------------------------------------------------------------------------------- 44.95s
+container-engine/containerd : Download_file | Download item --------------------------------------------------------------------------------------------------------------------------- 44.88s
+container-engine/nerdctl : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------ 44.63s
+container-engine/crictl : Extract_file | Unpacking archive ---------------------------------------------------------------------------------------------------------------------------- 31.23s
+container-engine/nerdctl : Extract_file | Unpacking archive --------------------------------------------------------------------------------------------------------------------------- 30.24s
+container-engine/runc : Download_file | Validate mirrors ------------------------------------------------------------------------------------------------------------------------------ 23.68s
+kubernetes/preinstall : Update package management cache (APT) ------------------------------------------------------------------------------------------------------------------------- 23.29s
+container-engine/containerd : Download_file | Validate mirrors ------------------------------------------------------------------------------------------------------------------------ 23.13s
+container-engine/crictl : Download_file | Validate mirrors ---------------------------------------------------------------------------------------------------------------------------- 23.04s
+download : Download_container | Download image if required ---------------------------------------------------------------------------------------------------------------------------- 22.98s
+container-engine/nerdctl : Download_file | Validate mirrors --------------------------------------------------------------------------------------------------------------------------- 22.67s
+download : Download_container | Download image if required ---------------------------------------------------------------------------------------------------------------------------- 20.60s
+kubernetes/preinstall : Install packages requirements --------------------------------------------------------------------------------------------------------------------------------- 16.77s
+download : Download_container | Download image if required ---------------------------------------------------------------------------------------------------------------------------- 16.17s
+download : Download | Download files / images ----------------------------------------------------------------------------------------------------------------------------------------- 15.50s
+kubernetes/node : Install | Copy kubelet binary from download dir --------------------------------------------------------------------------------------------------------------------- 15.48s
+container-engine/runc : Download_file | Create dest directory on node ----------------------------------------------------------------------------------------------------------------- 14.86s
+
+
+
 ```
 ## Дополнительные задания (со звёздочкой)
 
