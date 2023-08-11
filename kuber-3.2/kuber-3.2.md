@@ -294,12 +294,13 @@ git clone https://github.com/kubernetes-sigs/kubespray
 
 
 Установка зависимостей
-apt install python3-pip
+apt install python3-pip не работает
+curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
 python3.10 -m pip --version
 pip 23.2.1 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
 
-root@masterk8s:/home/yc-user/kubespray# pip install -r requirements.txt
+pip install -r requirements.txt
 Collecting ansible==7.6.0 (from -r requirements.txt (line 1))
   Obtaining dependency information for ansible==7.6.0 from https://files.pythonhosted.org/packages/9a/54/ceba345e4f42ea9d4b8c6f24a51c5edd382ead93acd8f170ce5150e4885d/ansible-7.6.0-py3-none-any.whl.metadata
   Downloading ansible-7.6.0-py3-none-any.whl.metadata (7.9 kB)
@@ -474,38 +475,38 @@ ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
 
 Очень долгий playbook оказался.
 
-NO MORE HOSTS LEFT ****************************************************************************************************************************************************************************
-
-PLAY RECAP ************************************************************************************************************************************************************************************
+PLAY RECAP **************************************************************************************************************************************************************************
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-masterk8s                  : ok=560  changed=23   unreachable=0    failed=1    skipped=733  rescued=0    ignored=2
-node2                      : ok=426  changed=6    unreachable=0    failed=0    skipped=538  rescued=0    ignored=1
-node3                      : ok=426  changed=5    unreachable=0    failed=0    skipped=537  rescued=0    ignored=1
-node4                      : ok=426  changed=5    unreachable=0    failed=0    skipped=537  rescued=0    ignored=1
-node5                      : ok=426  changed=5    unreachable=0    failed=0    skipped=537  rescued=0    ignored=1
+masterk8s                  : ok=739  changed=146  unreachable=0    failed=0    skipped=1266 rescued=0    ignored=8
+worker1                    : ok=512  changed=91   unreachable=0    failed=0    skipped=777  rescued=0    ignored=1
+worker2                    : ok=512  changed=91   unreachable=0    failed=0    skipped=776  rescued=0    ignored=1
+worker3                    : ok=512  changed=91   unreachable=0    failed=0    skipped=776  rescued=0    ignored=1
+worker4                    : ok=512  changed=91   unreachable=0    failed=0    skipped=776  rescued=0    ignored=1
 
-Friday 11 August 2023  09:40:57 +0000 (0:00:00.529)       0:17:45.841 *********
+Friday 11 August 2023  13:58:30 +0000 (0:00:00.330)       0:32:34.652 *********
 ===============================================================================
-container-engine/runc : Download_file | Download item --------------------------------------------------------------------------------------------------------------------------------- 43.69s
-container-engine/crictl : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------- 42.90s
-container-engine/containerd : Download_file | Download item --------------------------------------------------------------------------------------------------------------------------- 41.39s
-container-engine/nerdctl : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------ 41.23s
-kubernetes/preinstall : Update package management cache (APT) ------------------------------------------------------------------------------------------------------------------------- 31.53s
-container-engine/crictl : Extract_file | Unpacking archive ---------------------------------------------------------------------------------------------------------------------------- 30.33s
-container-engine/nerdctl : Extract_file | Unpacking archive --------------------------------------------------------------------------------------------------------------------------- 29.17s
-container-engine/runc : Download_file | Validate mirrors ------------------------------------------------------------------------------------------------------------------------------ 22.62s
-container-engine/crictl : Download_file | Validate mirrors ---------------------------------------------------------------------------------------------------------------------------- 22.48s
-container-engine/containerd : Download_file | Validate mirrors ------------------------------------------------------------------------------------------------------------------------ 21.93s
-container-engine/nerdctl : Download_file | Validate mirrors --------------------------------------------------------------------------------------------------------------------------- 21.82s
-container-engine/crictl : Download_file | Create dest directory on node --------------------------------------------------------------------------------------------------------------- 14.82s
-container-engine/nerdctl : Download_file | Create dest directory on node -------------------------------------------------------------------------------------------------------------- 14.72s
-container-engine/runc : Download_file | Create dest directory on node ----------------------------------------------------------------------------------------------------------------- 14.39s
-download : Download | Download files / images ----------------------------------------------------------------------------------------------------------------------------------------- 14.27s
-container-engine/containerd : Download_file | Create dest directory on node ----------------------------------------------------------------------------------------------------------- 14.07s
-container-engine/containerd : Containerd | Unpack containerd archive ------------------------------------------------------------------------------------------------------------------ 12.98s
-download : Download | Download files / images ------------------------------------------------------------------------------------------------------------------------------------------ 9.94s
-download : Download | Download files / images ------------------------------------------------------------------------------------------------------------------------------------------ 9.86s
-download : Download | Download files / images ----------------------------------------------------------
+download : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------------ 80.16s
+container-engine/nerdctl : Download_file | Download item -------------------------------------------------------------------------------------------------------------------- 51.18s
+container-engine/containerd : Download_file | Download item ----------------------------------------------------------------------------------------------------------------- 46.25s
+container-engine/crictl : Download_file | Download item --------------------------------------------------------------------------------------------------------------------- 45.11s
+container-engine/runc : Download_file | Download item ----------------------------------------------------------------------------------------------------------------------- 45.01s
+network_plugin/calico : Wait for calico kubeconfig to be created ------------------------------------------------------------------------------------------------------------ 43.73s
+download : Download_container | Download image if required ------------------------------------------------------------------------------------------------------------------ 38.87s
+download : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------------ 35.50s
+container-engine/crictl : Extract_file | Unpacking archive ------------------------------------------------------------------------------------------------------------------ 31.60s
+container-engine/nerdctl : Extract_file | Unpacking archive ----------------------------------------------------------------------------------------------------------------- 31.42s
+download : Download_container | Download image if required ------------------------------------------------------------------------------------------------------------------ 27.84s
+download : Download_container | Download image if required ------------------------------------------------------------------------------------------------------------------ 27.41s
+download : Download_file | Download item ------------------------------------------------------------------------------------------------------------------------------------ 27.20s
+kubernetes/control-plane : Kubeadm | Initialize first master ---------------------------------------------------------------------------------------------------------------- 26.82s
+container-engine/containerd : Download_file | Validate mirrors -------------------------------------------------------------------------------------------------------------- 24.32s
+container-engine/runc : Download_file | Validate mirrors -------------------------------------------------------------------------------------------------------------------- 23.64s
+container-engine/crictl : Download_file | Validate mirrors ------------------------------------------------------------------------------------------------------------------ 23.45s
+container-engine/nerdctl : Download_file | Validate mirrors ----------------------------------------------------------------------------------------------------------------- 23.37s
+kubernetes/kubeadm : Join to cluster ---------------------------------------------------------------------------------------------------------------------------------------- 22.59s
+kubernetes/preinstall : Update package management cache (APT) --------------------------------------------------------------------------------------------------------------- 21.78s
+
+
 
 
 
