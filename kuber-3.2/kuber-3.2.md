@@ -76,28 +76,33 @@ bash createvm.bash
 ```
 Репозиторий
 Подключаемся к виртуальной машине
-ssh yc-user@84.201.148.2
-The authenticity of host '84.201.148.2 (84.201.148.2)' can't be established.
-ED25519 key fingerprint is SHA256:dOcDQa5fVAJKq8QMar3xu9cjGZYdlOex07PO8h2/wts.
-This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added '84.201.148.2' (ED25519) to the list of known hosts.
-Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-155-generic x86_64)
+ssh yc-user@84.201.149.57
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.15.0-76-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/advantage
 
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
+  System information as of Fri Aug 11 03:29:52 PM UTC 2023
 
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-
+  System load:  1.150390625        Processes:             175
+  Usage of /:   36.9% of 19.59GB   Users logged in:       1
+  Memory usage: 48%                IPv4 address for eth0: 10.1.2.16
+  Swap usage:   0%
 
 
+Expanded Security Maintenance for Applications is not enabled.
+
+48 updates can be applied immediately.
+35 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+Last login: Fri Aug 11 13:26:28 2023 from 10.1.2.16
+yc-user@masterk8s:~$
 
 Копируем репозиторий.
 apt install git
