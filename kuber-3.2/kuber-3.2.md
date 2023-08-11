@@ -373,7 +373,7 @@ WARNING: Running pip as the 'root' user can result in broken permissions and con
 
 ```
 cp -rfp inventory/sample inventory/mycluster
-declare -a IPS=(10.1.2.32 10.1.2.19 10.1.2.5 10.1.2.25 10.1.2.26)
+declare -a IPS=(10.1.2.16 10.1.2.30 10.1.2.32 10.1.2.22 10.1.2.34)
 
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 DEBUG: Adding group all
@@ -403,29 +403,29 @@ cat kubespray/inventory/mycluster/hosts.yaml
 all:
   hosts:
     masterk8s:
-      ansible_host: 10.1.2.5
-      ip: 10.1.2.5
-      access_ip: 10.1.2.5
+      ansible_host: 10.1.2.16
+      ip: 10.1.2.16
+      access_ip: 10.1.2.16
       ansible_user: yc-user
-    node2:
+    worker1:
+      ansible_host: 10.1.2.30
+      ip: 10.1.2.30
+      access_ip: 10.1.2.30
+      ansible_user: yc-user
+    worker2:
       ansible_host: 10.1.2.32
       ip: 10.1.2.32
       access_ip: 10.1.2.32
       ansible_user: yc-user
-    node3:
-      ansible_host: 10.1.2.19
-      ip: 10.1.2.19
-      access_ip: 10.1.2.19
+    worker3:
+      ansible_host: 10.1.2.22
+      ip: 10.1.2.22
+      access_ip: 10.1.2.22
       ansible_user: yc-user
-    node4:
-      ansible_host: 10.1.2.25
-      ip: 10.1.2.25
-      access_ip: 10.1.2.25
-      ansible_user: yc-user
-    node5:
-      ansible_host: 10.1.2.26
-      ip: 10.1.2.26
-      access_ip: 10.1.2.26
+    worker4:
+      ansible_host: 10.1.2.34
+      ip: 10.1.2.34
+      access_ip: 10.1.2.34
       ansible_user: yc-user
   children:
     kube_control_plane:
@@ -433,10 +433,10 @@ all:
         masterk8s:
     kube_node:
       hosts:
-        node2:
-        node3:
-        node4:
-        node5:
+        worker1:
+        worker2:
+        worker3:
+        worker4:
     etcd:
       hosts:
         masterk8s:
@@ -445,6 +445,9 @@ all:
         kube_control_plane:
         kube_node:
     calico_rr:
+      hosts: {}
+
+
 
 
 ```
@@ -505,10 +508,20 @@ container-engine/crictl : Download_file | Validate mirrors ---------------------
 container-engine/nerdctl : Download_file | Validate mirrors ----------------------------------------------------------------------------------------------------------------- 23.37s
 kubernetes/kubeadm : Join to cluster ---------------------------------------------------------------------------------------------------------------------------------------- 22.59s
 kubernetes/preinstall : Update package management cache (APT) --------------------------------------------------------------------------------------------------------------- 21.78s
+```
+
+Готово.Проверка.
 
 
-
-
+```
+exit
+yc-user@masterk8s:~/kubespray$ kubectl get nodes
+NAME        STATUS   ROLES           AGE   VERSION
+masterk8s   Ready    control-plane   84m   v1.26.7
+worker1     Ready    <none>          83m   v1.26.7
+worker2     Ready    <none>          83m   v1.26.7
+worker3     Ready    <none>          83m   v1.26.7
+worker4     Ready    <none>          83m   v1.26.7
 
 ```
 ## Дополнительные задания (со звёздочкой)
