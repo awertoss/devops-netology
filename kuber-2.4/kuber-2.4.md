@@ -39,6 +39,45 @@ Unable to load CA certificate
 
 ```
 2. Настройте конфигурационный файл kubectl для подключения.
+
+```
+Настраиваем конфигурационный файл. Добавляем юзера, добавляем контекст и проверяем конфигурацию.
+root@promitey:/home/srg/kuber24# kubectl config set-credentials awertoss --client-certificate=cert/awertoss.crt --client-key=cert/awertoss.key
+
+kubectl config set-context awertoss-context --cluster=microk8s-cluster --user=awertoss
+Context "awertoss-context" created.
+
+Смотрим конфиг.
+kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://10.100.1.189:16443
+  name: microk8s-cluster
+contexts:
+- context:
+    cluster: microk8s-cluster
+    user: awertoss
+  name: awertoss-context
+- context:
+    cluster: microk8s-cluster
+    user: admin
+  name: microk8s
+current-context: microk8s
+kind: Config
+preferences: {}
+users:
+- name: admin
+  user:
+    token: REDACTED
+- name: awertoss
+  user:
+    client-certificate: /home/srg/kuber24/cert/awertoss.crt
+    client-key: /home/srg/kuber24/cert/awertoss.key
+
+
+```
 3. Создайте роли и все необходимые настройки для пользователя.
 4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (`kubectl logs pod <pod_id>`, `kubectl describe pod <pod_id>`).
 5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
