@@ -25,6 +25,19 @@
 ### Задание 1. Создайте конфигурацию для подключения пользователя
 
 1. Создайте и подпишите SSL-сертификат для подключения к кластеру.
+
+```
+root@promitey:/home/srg/kuber24# openssl genrsa -out awertoss.key 2048
+root@promitey:/home/srg/kuber24# openssl req -new -key awertoss.key -out awertoss.csr -subj "/CN=awertoss/O=group1"
+root@promitey:/home/srg/kuber24# openssl x509 -req -in awertoss.csr -CA /var/snap/microk8s/4595/certs/ca.crt -CAkey /var/snap/microk8s/4595/certs/ca.key -CAcreateserial -out awertoss.crt -days 500
+Certificate request self-signature ok
+subject=CN = awertoss, O = group1
+Could not open file or uri for loading CA certificate from /var/snap/microk8s/4595/certs/ca.crt
+4067EBAD807F0000:error:16000069:STORE routines:ossl_store_get0_loader_int:unregistered scheme:../crypto/store/store_register.c:237:scheme=file
+4067EBAD807F0000:error:80000002:system library:file_open:No such file or directory:../providers/implementations/storemgmt/file_store.c:267:calling stat(/var/snap/microk8s/4595/certs/ca.crt)
+Unable to load CA certificate
+
+```
 2. Настройте конфигурационный файл kubectl для подключения.
 3. Создайте роли и все необходимые настройки для пользователя.
 4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (`kubectl logs pod <pod_id>`, `kubectl describe pod <pod_id>`).
