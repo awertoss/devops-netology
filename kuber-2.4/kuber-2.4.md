@@ -79,7 +79,47 @@ users:
 
 ```
 3. Создайте роли и все необходимые настройки для пользователя.
+```
+ kubectl apply -f role_binding.yaml
+rolebinding.rbac.authorization.k8s.io/pod-reader created
+
+kubectl apply -f role.yaml
+role.rbac.authorization.k8s.io/pod-desc-logs created
+```
+
 4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (`kubectl logs pod <pod_id>`, `kubectl describe pod <pod_id>`).
+
+```
+Добавляем в роль verbs: где ["watch", "list"]
+
+ kubectl get role pod-desc-logs -o yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"name":"pod-desc-logs","namespace":"default"},"rules":[{"apiGroups":[""],"resources":["pods","pods/log"],"verbs":["watch","list","get"]}]}
+  creationTimestamp: "2023-08-14T06:17:18Z"
+  name: pod-desc-logs
+  namespace: default
+  resourceVersion: "5233519"
+  uid: 0298e69a-700d-405d-a009-f58d0ea6d873
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/log
+  verbs:
+  - watch
+  - list
+  - get
+
+
+
+``` 
+
+
 5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
 
 ------
