@@ -24,6 +24,34 @@
 4. Создать политики, чтобы обеспечить доступ frontend -> backend -> cache. Другие виды подключений должны быть запрещены.
 5. Продемонстрировать, что трафик разрешён и запрещён.
 
+#### Решение
+
+Создаем namespace
+
+```
+microk8s kubectl create namespace app
+namespace/app created
+```
+
+Создаем deployment и сервисы к ним.
+
+```
+ microk8s kubectl apply -f frontend.yaml
+deployment.apps/frontend created
+
+microk8s kubectl apply -f backend.yaml
+deployment.apps/backend created
+
+ microk8s kubectl apply -f svc-frontend.yaml
+service/frontend created
+
+microk8s kubectl apply -f svc-backend.yaml
+service/backend created
+
+
+
+```
+
 ### Правила приёма работы
 
 1. Домашняя работа оформляется в своём Git-репозитории в файле README.md. Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
