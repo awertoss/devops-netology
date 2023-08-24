@@ -48,6 +48,11 @@ service/frontend created
 microk8s kubectl apply -f svc-backend.yaml
 service/backend created
 
+microk8s kubectl apply -f cache.yaml
+deployment.apps/cache created
+
+ microk8s kubectl apply -f svc-cache.yaml
+service/cache created
 
 
 ```
