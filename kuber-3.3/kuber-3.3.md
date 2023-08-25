@@ -35,6 +35,17 @@ namespace/app created
 
 Создаем deployment и сервисы к ним.
 
+Конфиг: [frontend.yaml](frontend.yaml)
+
+Конфиг: [backend.yaml](backend.yaml)
+
+Конфиг: [cache.yaml](cache.yaml)
+
+Конфиг: [svc-frontend.yaml](svc-frontend.yaml)
+
+Конфиг: [svc-backend.yaml](svc-backend.yaml)
+
+Конфиг: [svc-cache.yaml](svc-cache.yaml)
 ```
  microk8s kubectl apply -f frontend.yaml
 deployment.apps/frontend created
@@ -71,6 +82,14 @@ backend-5c496f8f74-dl98f   1/1     Running   0          4m54s   10.1.45.68   ubu
 ```
 
 Создаем сетевые политики.
+
+Конфиг: [np-zapret.yaml](np-zapret.yaml)
+
+Конфиг: [np-frontend.yaml](np-frontend.yaml)
+
+Конфиг: [np-backend.yaml](np-backend.yaml)
+
+Конфиг: [np-cache.yaml](np-cache.yaml)
 
 ```
 Вначале делаем полный запрет.
