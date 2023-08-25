@@ -73,6 +73,62 @@ backend-5c496f8f74-dl98f   1/1     Running   0          4m54s   10.1.45.68   ubu
 Создаем сетевые политики.
 
 ```
+Вначале делаем полный запрет.
+
+microk8s kubectl apply -f np-zapret.yaml
+networkpolicy.networking.k8s.io/default-deny-ingress created
+
+Проверка запрета.
+microk8s kubectl get pod -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
+cache-5cd6c7468-2bm25      1/1     Running   0          22m   10.1.45.69   ubuntutest   <none>           <none>
+frontend-7ddf66cbb-gxtpx   1/1     Running   0          23m   10.1.45.67   ubuntutest   <none>           <none>
+backend-5c496f8f74-dl98f   1/1     Running   0          23m   10.1.45.68   ubuntutest   <none>           <none>
+
+microk8s kubectl exec frontend-7ddf66cbb-gxtpx -- curl cache
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:02:10 --:--:--     0
+curl: (28) Failed to connect to cache port 80 after 130418 ms: Operation timed out
+command terminated with exit code 28
+
+Разрешающие правила
+
+microk8s kubectl apply -f np-frontend.yaml
+networkpolicy.networking.k8s.io/frontend created
+microk8s kubectl apply -f np-cache.yaml
+networkpolicy.networking.k8s.io/cache created
+root@ubuntutest:/home/srg/kuber33# microk8s kubectl apply -f np-backend.yaml
+networkpolicy.networking.k8s.io/backend created
+
+Проверка.
+ microk8s kubectl exec frontend-7ddf66cbb-gxtpx -- curl --max-time 10 backend
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Praqma Network MultiTool (with NGINX) - backend-5c496f8f74-dl98f - 10.1.45.68
+100    78  100    78    0     0   3746      0 --:--:-- --:--:-- --:--:--  3900
+
+microk8s kubectl exec backend-5c496f8f74-dl98f -- curl --max-time 10 cache
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    75  100    75    0     0   1399      0 --:--:-- --:--:-- --:--:--  1415
+Praqma Network MultiTool (with NGINX) - cache-5cd6c7468-2bm25 - 10.1.45.69
+
+microk8s kubectl exec cache-5cd6c7468-2bm25 -- curl --max-time 10 backend
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0
+curl: (28) Connection timed out after 10000 milliseconds
+command terminated with exit code 28
+
+microk8s kubectl exec cache-5cd6c7468-2bm25 -- curl --max-time 10 frontend
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0
+curl: (28) Connection timed out after 10001 milliseconds
+command terminated with exit code 28
+
+
 
 ```
 
