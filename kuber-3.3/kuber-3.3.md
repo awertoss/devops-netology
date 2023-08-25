@@ -54,6 +54,25 @@ deployment.apps/cache created
  microk8s kubectl apply -f svc-cache.yaml
 service/cache created
 
+ microk8s kubectl get -n app deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+cache      1/1     1            1           2m34s
+frontend   1/1     1            1           3m34s
+backend    1/1     1            1           3m2s
+
+microk8s kubectl config set-context --current --namespace=app
+Context "microk8s" modified.
+
+microk8s kubectl get pod -o wide
+NAME                       READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
+cache-5cd6c7468-2bm25      1/1     Running   0          4m25s   10.1.45.69   ubuntutest   <none>           <none>
+frontend-7ddf66cbb-gxtpx   1/1     Running   0          5m25s   10.1.45.67   ubuntutest   <none>           <none>
+backend-5c496f8f74-dl98f   1/1     Running   0          4m54s   10.1.45.68   ubuntutest   <none>           <none>
+```
+
+Создаем сетевые политики.
+
+```
 
 ```
 
