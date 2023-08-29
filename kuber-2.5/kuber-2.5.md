@@ -243,7 +243,7 @@ kubectl get pod -n app2
 ```
 
 <p align="center">
-  <img width="1200" src="helm31.jpg">
+  <img width="1200" src="helm3.jpg">
 </p>
 
 ### Правила приёма работы
