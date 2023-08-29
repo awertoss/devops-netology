@@ -223,6 +223,28 @@ release "demo1" uninstalled
 
 helm install demo2 --namespace app1 --create-namespace --wait --set replicaCount=2 01-simple
 ```
+<p align="center">
+  <img width="1200" src="helm1.jpg">
+</p>
+
+```
+helm install demo2 --namespace app2 --create-namespace --wait --set replicaCount=1 01-simple
+```
+
+
+<p align="center">
+  <img width="1200" src="helm2.jpg">
+</p>
+
+```
+kubectl get pod -n app1
+
+kubectl get pod -n app2
+```
+
+<p align="center">
+  <img width="1200" src="helm31.jpg">
+</p>
 
 ### Правила приёма работы
 
