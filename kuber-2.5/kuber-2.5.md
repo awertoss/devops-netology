@@ -162,7 +162,11 @@ spec:
 
 
 Пробуем установить.
-helm install demo1 01-simple
+
+ microk8s kubectl config view --raw > ~/.kube/config  - копируем конфиг.
+
+
+helm install demo1 01-simple - установка.
 WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
 WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
 NAME: demo1
@@ -179,8 +183,45 @@ Deployed version 1.19.0.
 
 ---------------------------------------------------------
 
+helm list
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+demo1   app             1               2023-08-29 05:06:09.514005123 +0000 UTC deployed        hard-0.1.2      1.19.0
 
 
+Запустим несколько версий приложения.
+
+helm upgrade demo1 --set replicaCount=3 01-simple
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
+Release "demo1" has been upgraded. Happy Helming!
+NAME: demo1
+LAST DEPLOYED: Tue Aug 29 05:14:56 2023
+NAMESPACE: app
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+---------------------------------------------------------
+
+Content of NOTES.txt appears after deploy.
+Deployed version 1.19.0.
+
+---------------------------------------------------------
+
+kubectl get pod
+NAME                    READY   STATUS    RESTARTS   AGE
+demo-6b8889fc7f-ljj6m   1/1     Running   0          9m34s
+demo-6b8889fc7f-75gkm   1/1     Running   0          47s
+demo-6b8889fc7f-nzjmj   1/1     Running   0          48s
+
+Удалим helm demo1, затем создадим новый в namespace.
+
+helm uninstall demo1
+release "demo1" uninstalled
+
+helm install demo2 --namespace app1 --create-namespace --wait --set replicaCount=2 01-simple
 ```
 
 ### Правила приёма работы
