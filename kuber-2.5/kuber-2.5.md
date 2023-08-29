@@ -27,6 +27,81 @@
 2. Каждый компонент приложения деплоится отдельным deployment’ом или statefulset’ом.
 3. В переменных чарта измените образ приложения для изменения версии.
 
+```
+helm version
+version.BuildInfo{Version:"v3.12.3", GitCommit:"3a31588ad33fe3b89af5a2a54ee1d25b                    fe6eaa5e", GitTreeState:"clean", GoVersion:"go1.20.7"}
+
+Возьму файлы из гита для деплоя.
+git clone https://github.com/aak74/kubernetes-for-beginners.git
+
+cd kubernetes-for-beginners/40-helm/01-templating/charts/
+
+Создаю шаблон
+
+helm template 01-simple
+---
+# Source: hard/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app: demo
+---
+# Source: hard/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: hard
+          image: "nginx:1.16.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+
+В файле Chart.yaml меняем номер версии приложения.
+
+cat 01-simple/Chart.yaml
+apiVersion: v2
+name: hard
+description: A minimal chart for demo
+
+type: application
+
+version: 0.1.2
+appVersion: "1.19.0"
+
+
+```
 ------
 ### Задание 2. Запустить две версии в разных неймспейсах
 
