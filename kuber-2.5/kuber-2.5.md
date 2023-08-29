@@ -109,6 +109,80 @@ appVersion: "1.19.0"
 2. Одну версию в namespace=app1, вторую версию в том же неймспейсе, третью версию в namespace=app2.
 3. Продемонстрируйте результат.
 
+```
+Проверка.
+helm template 01-simple
+---
+# Source: hard/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app: demo
+---
+# Source: hard/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: hard
+          image: "nginx:1.19.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+
+Пробуем установить.
+helm install demo1 01-simple
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
+NAME: demo1
+LAST DEPLOYED: Tue Aug 29 05:06:09 2023
+NAMESPACE: app
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+---------------------------------------------------------
+
+Content of NOTES.txt appears after deploy.
+Deployed version 1.19.0.
+
+---------------------------------------------------------
+
+
+
+```
+
 ### Правила приёма работы
 
 1. Домашняя работа оформляется в своём Git репозитории в файле README.md. Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
