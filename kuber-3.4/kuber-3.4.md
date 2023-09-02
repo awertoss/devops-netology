@@ -34,6 +34,10 @@
 
 1. Создать deployment приложения с контейнерами nginx и multitool. Версию nginx взять 1.19. Количество реплик — 5.
 
+Конфиг: [deployment.yaml](deployment.yaml)
+
+Конфиг: [svc.yaml](svc.yaml)
+
 ```
 microk8s kubectl apply -f deployment.yaml
 deployment.apps/deployment created
@@ -142,7 +146,6 @@ Events:
 ```
 
 3. Попытаться обновить nginx до версии 1.28, приложение должно оставаться доступным.
-
 
 
 ```
