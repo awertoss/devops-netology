@@ -18,7 +18,19 @@ kubectl apply -f https://raw.githubusercontent.com/netology-code/kuber-homeworks
 3. Исправить проблему, описать, что сделано.
 4. Продемонстрировать, что проблема решена.
 
+```
+Пробуем запустить приложение
 
+kubectl apply -f https://raw.githubusercontent.com/netology-code/kuber-homeworks/main/3.5/files/task.yaml
+Error from server (NotFound): error when creating "https://raw.githubusercontent.com/netology-code/kuber-homeworks/main/3.5/files/task.yaml": namespaces "web" not found
+Error from server (NotFound): error when creating "https://raw.githubusercontent.com/netology-code/kuber-homeworks/main/3.5/files/task.yaml": namespaces "data" not found
+Error from server (NotFound): error when creating "https://raw.githubusercontent.com/netology-code/kuber-homeworks/main/3.5/files/task.yaml": namespaces "data" not found
+                               
+
+Оболочка shell ругается, что не хватает namespaces.
+
+
+```
 ### Правила приёма работы
 
 1. Домашняя работа оформляется в своём Git-репозитории в файле README.md. Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
