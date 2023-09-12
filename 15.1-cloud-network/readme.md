@@ -9,6 +9,7 @@
 
 Конфиг: [deployment.yaml](deployment.yaml)
 ```
+Зададим переменные.
 
 export YC_CLOUD_ID='ajs******o56t473ks2sc '
 export YC_FOLDER_ID='b1gd02**********6h57v2h14'
