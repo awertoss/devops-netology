@@ -7,6 +7,30 @@
 3. Все задания нужно выполнить с помощью Terraform. Результатом выполненного домашнего задания будет код в репозитории. 
 4. Перед началом работы настройте доступ к облачным ресурсам из Terraform, используя материалы прошлых лекций и домашнее задание по теме «Облачные провайдеры и синтаксис Terraform». Заранее выберите регион (в случае AWS) и зону.
 
+Конфиг: [deployment.yaml](deployment.yaml)
+```
+
+export YC_CLOUD_ID='ajs******o56t473ks2sc '
+export YC_FOLDER_ID='b1gd02**********6h57v2h14'
+export YC_TOKEN=$(yc iam create-token)
+export YC_ZONE=ru-central1-b
+export TF_VAR_ssh_key=$(cat  /home/srg/.ssh/id_rsa.pub)
+terraform init
+terraform apply
+
+
+yc compute instances list --folder-id $YC_FOLDER_ID
++----------------------+-------------+---------------+---------+----------------+----------------+
+|          ID          |    NAME     |    ZONE ID    | STATUS  |  EXTERNAL IP   |  INTERNAL IP   |
++----------------------+-------------+---------------+---------+----------------+----------------+
+| epd7ohqvdeek26lf39kn | private-bot | ru-central1-b | RUNNING |                | 192.168.20.3   |
+| epdh5brniadbtckuovaa | gateway     | ru-central1-b | RUNNING | 130.193.43.59  | 192.168.10.254 |
+| epdp6smlt341r43gc02j | public-bot  | ru-central1-b | RUNNING | 158.160.77.113 | 192.168.10.31  |
++----------------------+-------------+---------------+---------+----------------+----------------+
+
+
+```
+
 ---
 ### Задание 1. Yandex Cloud 
 
