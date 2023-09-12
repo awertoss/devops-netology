@@ -19,14 +19,80 @@ terraform init
 terraform apply
 
 
-yc compute instances list --folder-id $YC_FOLDER_ID
-+----------------------+-------------+---------------+---------+----------------+----------------+
-|          ID          |    NAME     |    ZONE ID    | STATUS  |  EXTERNAL IP   |  INTERNAL IP   |
-+----------------------+-------------+---------------+---------+----------------+----------------+
-| epd7ohqvdeek26lf39kn | private-bot | ru-central1-b | RUNNING |                | 192.168.20.3   |
-| epdh5brniadbtckuovaa | gateway     | ru-central1-b | RUNNING | 130.193.43.59  | 192.168.10.254 |
-| epdp6smlt341r43gc02j | public-bot  | ru-central1-b | RUNNING | 158.160.77.113 | 192.168.10.31  |
-+----------------------+-------------+---------------+---------+----------------+----------------+
+srg@ubuntutest:~/15.1$ yc compute instances list --folder-id $YC_FOLDER_ID
++----------------------+-------------+---------------+---------+---------------+----------------+
+|          ID          |    NAME     |    ZONE ID    | STATUS  |  EXTERNAL IP  |  INTERNAL IP   |
++----------------------+-------------+---------------+---------+---------------+----------------+
+| epd22r8m9lcclfc7rlds | public-bot  | ru-central1-b | RUNNING | 51.250.101.4  | 192.168.10.13  |
+| epdih7as64f6su2ao4d8 | private-bot | ru-central1-b | RUNNING |               | 192.168.20.32  |
+| epdvd919j4dd4348d08b | gateway     | ru-central1-b | RUNNING | 158.160.25.54 | 192.168.10.254 |
++----------------------+-------------+---------------+---------+---------------+----------------+
+
+Подключаемся к ВМ.
+
+ssh ubuntu@158.160.25.54
+The authenticity of host '158.160.25.54 (158.160.25.54)' can't be established.
+ED25519 key fingerprint is SHA256:d3knk2SJxyzGjkPgrqxbCvjc9ZxDm1vz1UmIGjL5sfc.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '158.160.25.54' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-29-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+#################################################################
+This instance runs Yandex.Cloud Marketplace product
+Please wait while we configure your product...
+Documentation for Yandex Cloud Marketplace images available at https://cloud.yandex.ru/docs
+#################################################################
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@epdvd919j4dd4348d08b:~$ wget -qO- eth0.me
+158.160.25.54
+
+--------------------------------------
+
+srg@ubuntutest:~/15.1$ ssh ubuntu@51.250.101.4
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-53-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue Sep 12 12:42:42 PM UTC 2023
+
+  System load:  0.06396484375     Processes:             134
+  Usage of /:   84.9% of 4.84GB   Users logged in:       0
+  Memory usage: 9%                IPv4 address for eth0: 192.168.10.13
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Sep 12 12:39:02 2023 from 95.79.111.95
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@epd22r8m9lcclfc7rlds:~$ wget -qO- eth0.me
+51.250.101.4
+
 
 
 ```
