@@ -280,9 +280,13 @@ root@ubuntuserver:/home/srg/terraform/152#
   <img width="1200" src="terraform/vm.jpg">
 </p>
  <p align="center">
-  <img width="1200" src="terraform/vm.jpg">
+  <img width="1200" src="terraform/showkartinka.jpg">
 </p>
 3. Подключить группу к сетевому балансировщику:
+
+ <p align="center">
+  <img width="1200" src="terraform/balancer.jpg">
+</p>
 
  - Создать сетевой балансировщик.
  - Проверить работоспособность, удалив одну или несколько ВМ.
