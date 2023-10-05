@@ -18,7 +18,12 @@
  - Положить в бакет файл с картинкой.
  - Сделать файл доступным из интернета.
 
-Конфиг: [terraform](terraform)
+Конфиг: [bucket](terraform/bucket.tr)
+
+<p align="center">
+  <img width="1200" src="terraform/bucket1.jpg">
+</p>
+
 
 ```
 terraform init
