@@ -290,11 +290,15 @@ root@ubuntuserver:/home/srg/terraform/152#
  <p align="center">
   <img width="1200" src="terraform/balancer.jpg">
 </p>
-
+<p>
+ Удаляю ВМ руками.
+</p>
  <p align="center">
   <img width="1200" src="terraform/delvm.jpg">
 </p>
-
+<p>
+Затем, спустя время.
+</p>
  <p align="center">
   <img width="1200" src="terraform/vosvm.jpg">
 </p>
