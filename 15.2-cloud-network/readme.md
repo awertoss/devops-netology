@@ -18,7 +18,7 @@
  - Положить в бакет файл с картинкой.
  - Сделать файл доступным из интернета.
 
-Конфиг: [bucket](terraform/bucket.tr)
+Конфиг: [bucket](terraform/bucket.tf)
 
 <p align="center">
   <img width="1200" src="terraform/bucket1.jpg">
@@ -92,7 +92,7 @@ Terraform will perform the following actions:
                     #!/bin/bash
                     apt install httpd -y
                     cd /var/www/html
-                    echo '<html><img src="http://awertoss-netology-bucket.storage.yandexcloud.net/test_pic.jpg"/></html>' > index.html
+                    echo '<html><img src="http://awertoss-netology-bucket.storage.yandexcloud.net/kartinka.jpg"/></html>' > index.html
                     service httpd start
                 EOT
             }
@@ -273,7 +273,15 @@ root@ubuntuserver:/home/srg/terraform/152#
  - Для создания стартовой веб-страницы рекомендуется использовать раздел `user_data` в [meta_data](https://cloud.yandex.ru/docs/compute/concepts/vm-metadata).
  - Разместить в стартовой веб-странице шаблонной ВМ ссылку на картинку из бакета.
  - Настроить проверку состояния ВМ.
- 
+
+Конфиг: [instance-group](terraform/instance-group.tf)
+
+<p align="center">
+  <img width="1200" src="terraform/vm.jpg">
+</p>
+ <p align="center">
+  <img width="1200" src="terraform/vm.jpg">
+</p>
 3. Подключить группу к сетевому балансировщику:
 
  - Создать сетевой балансировщик.
@@ -285,6 +293,9 @@ root@ubuntuserver:/home/srg/terraform/152#
 - [Compute instance group](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/compute_instance_group).
 - [Network Load Balancer](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/lb_network_load_balancer).
 - [Группа ВМ с сетевым балансировщиком](https://cloud.yandex.ru/docs/compute/operations/instance-groups/create-with-balancer).
+
+
+Конфиг: [terraform](terraform)
 
 ---
 ## Задание 2*. AWS (задание со звёздочкой)
