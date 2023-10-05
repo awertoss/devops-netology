@@ -291,6 +291,14 @@ root@ubuntuserver:/home/srg/terraform/152#
   <img width="1200" src="terraform/balancer.jpg">
 </p>
 
+ <p align="center">
+  <img width="1200" src="terraform/delvm.jpg">
+</p>
+
+ <p align="center">
+  <img width="1200" src="terraform/vosvm.jpg">
+</p>
+
 4. (дополнительно)* Создать Application Load Balancer с использованием Instance group и проверкой состояния.
 
 Полезные документы:
