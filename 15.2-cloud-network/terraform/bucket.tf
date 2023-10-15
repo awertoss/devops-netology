@@ -1,4 +1,4 @@
-]
+
 // Create SA
 resource "yandex_iam_service_account" "sa-bucket" {
     name      = "sa-for-bucket"
