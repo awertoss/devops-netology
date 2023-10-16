@@ -55,6 +55,31 @@ kubectl apply -f manifests/
 deployment.apps/pma created
 service/pma-service created
 
+Смотрим балансировщик
+
+root@ubuntuserver:# kubectl describe service pma-service
+Name:                     pma-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=pma
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.173.76
+IPs:                      10.96.173.76
+LoadBalancer Ingress:     158.160.24.14
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  31529/TCP
+Endpoints:                10.112.130.3:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:
+  Type    Reason                Age    From                Message
+  ----    ------                ----   ----                -------
+  Normal  EnsuringLoadBalancer  6m46s  service-controller  Ensuring load balancer
+  Normal  EnsuredLoadBalancer   6m41s  service-controller  Ensured load balancer
 
 ```
 Полезные документы:
