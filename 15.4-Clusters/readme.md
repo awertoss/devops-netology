@@ -32,7 +32,7 @@
 Конфиг: [terraform](terraform/)
 
 <p align="center">
-  <img width="1200" src="terraform/bucket1.jpg">
+  <img width="1200" src="terraform/ya1.jpg">
 </p>
 
 ```
@@ -82,6 +82,28 @@ Events:
   Normal  EnsuredLoadBalancer   6m41s  service-controller  Ensured load balancer
 
 ```
+
+<p align="center">
+  <img width="1200" src="terraform/ya2.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya3.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya4.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya5.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya6.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya7.jpg">
+</p>
+<p align="center">
+  <img width="1200" src="terraform/ya8.jpg">
+</p>
 Полезные документы:
 
 - [MySQL cluster](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/mdb_mysql_cluster).
