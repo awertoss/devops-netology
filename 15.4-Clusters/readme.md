@@ -35,6 +35,28 @@
   <img width="1200" src="terraform/bucket1.jpg">
 </p>
 
+```
+Подключение к кластеру
+root@ubuntuserver:# yc managed-kubernetes cluster get-credentials n15 --external --force
+
+Context 'yc-n15' was added as default to kubeconfig '/root/.kube/config'.
+Check connection to cluster using 'kubectl cluster-info --kubeconfig /root/.kube/config'.
+
+Note, that authentication depends on 'yc' and its config profile 'default'.
+To access clusters using the Kubernetes API, please use Kubernetes Service Account.
+root@ubuntuserver:# kubectl cluster-info
+Kubernetes control plane is running at https://158.160.81.25
+CoreDNS is running at https://158.160.81.25/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+Применяю конфиги.
+kubectl apply -f manifests/
+deployment.apps/pma created
+service/pma-service created
+
+
+```
 Полезные документы:
 
 - [MySQL cluster](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/mdb_mysql_cluster).
