@@ -29,6 +29,12 @@
  - *Запустить микросервис phpmyadmin и подключиться к ранее созданной БД.
  - *Создать сервис-типы Load Balancer и подключиться к phpmyadmin. Предоставить скриншот с публичным адресом и подключением к БД.
 
+Конфиг: [terraform](terraform/)
+
+<p align="center">
+  <img width="1200" src="terraform/bucket1.jpg">
+</p>
+
 Полезные документы:
 
 - [MySQL cluster](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/mdb_mysql_cluster).
