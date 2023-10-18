@@ -17,6 +17,10 @@
 
 Конфиг: [bucket](terraform/bucket.tf)
 
+<p align="center">
+  <img width="1200" src="terraform/bucket1.jpg">
+</p>
+
 ```
 terraform init
 
